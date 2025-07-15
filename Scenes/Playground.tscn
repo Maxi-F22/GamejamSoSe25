@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://wx1tt663ywlw"]
+
+[ext_resource type="PackedScene" uid="uid://ctdl1epcybbda" path="res://Scenes/electro_guy.tscn" id="1_iualk"]
+
+[node name="Playground" type="Node3D"]
+
+[node name="Floor" type="CSGBox3D" parent="."]
+size = Vector3(100, 1, 100)
+
+[node name="electro_guy" parent="." instance=ExtResource("1_iualk")]
