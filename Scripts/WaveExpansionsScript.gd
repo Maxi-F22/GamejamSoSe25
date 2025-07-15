@@ -1,6 +1,5 @@
 extends Node3D
 
-@export var speed: float = 5
 @export var scale_speed: float = 1
 @export var max_scale: float = 8
 @export var char_script: CharacterBody3D

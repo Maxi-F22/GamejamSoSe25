@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://48nuwwideadk"]
+[gd_scene load_steps=8 format=3 uid="uid://48nuwwideadk"]
 
 [ext_resource type="Script" uid="uid://b0qwvast8c8al" path="res://Scripts/WaveExpansionsScript.gd" id="1_823jm"]
+[ext_resource type="Script" uid="uid://d24wibnimjfh" path="res://Scripts/AimScript.gd" id="2_a7jqq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_823jm"]
 
@@ -11,6 +12,8 @@ size = Vector3(0.997284, 0.490051, 0.0955811)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3k7xx"]
 
+[sub_resource type="PrismMesh" id="PrismMesh_a7jqq"]
+
 [node name="CharacterBody3D" type="CharacterBody3D"]
 
 [node name="Player" type="MeshInstance3D" parent="."]
@@ -18,7 +21,7 @@ mesh = SubResource("CapsuleMesh_823jm")
 skeleton = NodePath("../..")
 
 [node name="Wavedirections" type="Node3D" parent="."]
-script = ExtResource("1_823jm")
+visible = false
 
 [node name="Wave1" type="Area3D" parent="Wavedirections"]
 transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 0.5, 0, -1)
@@ -128,4 +131,29 @@ skeleton = NodePath("../../../Wave5")
 shape = SubResource("SphereShape3D_3k7xx")
 disabled = true
 
+[node name="Aimer" type="Node3D" parent="."]
+script = ExtResource("2_a7jqq")
+
+[node name="AimerMesh" type="MeshInstance3D" parent="Aimer"]
+transform = Transform3D(-2.18557e-08, 1, -4.37114e-09, 0, -4.37114e-08, -0.1, -0.5, -4.37114e-08, 1.91069e-16, 1.5, 0, 0)
+mesh = SubResource("PrismMesh_a7jqq")
+
+[node name="SingleWave" type="Node3D" parent="Aimer"]
+script = ExtResource("1_823jm")
+scale_speed = 5.0
+
+[node name="Wave1" type="Area3D" parent="Aimer/SingleWave"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.182599, 0, -0.36909)
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Aimer/SingleWave/Wave1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.407287, 0.00250244, 0.966333)
+shape = SubResource("BoxShape3D_823jm")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Aimer/SingleWave/Wave1/CollisionShape3D8"]
+transform = Transform3D(-1, 0, 3.72529e-09, 0, 0.5, 0, -2.98023e-08, 0, -0.1, -0.0104828, -0.00250244, -0.00836194)
+mesh = SubResource("BoxMesh_823jm")
+skeleton = NodePath("../..")
+
 [connection signal="area_entered" from="Wavedirections/Wave1" to="Wavedirections/Wave1" method="_on_area_entered"]
+[connection signal="area_entered" from="Aimer/SingleWave/Wave1" to="Aimer/SingleWave/Wave1" method="_on_area_entered"]
