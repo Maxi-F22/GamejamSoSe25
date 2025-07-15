@@ -1,3 +1,118 @@
-[gd_scene format=3 uid="uid://d2oqbh1jfmqg2"]
+[gd_scene load_steps=16 format=3 uid="uid://d2oqbh1jfmqg2"]
+
+[ext_resource type="Script" uid="uid://cuv1uwh8rujp2" path="res://Scripts/cam_switcher.gd" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://cvis6la7rfel3" path="res://Scenes/player_electro.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://cywnhc3qaumfr" path="res://Scenes/player_scream.tscn" id="2_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://cepwhyf65xju3" path="res://Scenes/player_mass.tscn" id="3_kry3j"]
+[ext_resource type="Script" uid="uid://dbbvdrp5x63n4" path="res://Scenes/hud.gd" id="5_ynf5e"]
+[ext_resource type="Texture2D" uid="uid://cdud2s2h135ly" path="res://Assets/HUD/bar_elektro.png" id="6_344ge"]
+[ext_resource type="Texture2D" uid="uid://3jnrmv2wf4wx" path="res://Assets/HUD/bar_heavy.png" id="7_ynf5e"]
+[ext_resource type="Texture2D" uid="uid://c5irvsa43cto6" path="res://Assets/HUD/bar_screamo.png" id="8_hptm8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7u77a"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jjgbg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bo1nx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gbba"]
+albedo_color = Color(0.0356551, 0.394296, 0.891925, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7u77a"]
+sky_top_color = Color(0.268737, 0.412045, 0.836146, 1)
+
+[sub_resource type="Sky" id="Sky_jjgbg"]
+sky_material = SubResource("ProceduralSkyMaterial_7u77a")
+
+[sub_resource type="Environment" id="Environment_bo1nx"]
+background_mode = 2
+background_color = Color(0, 0.815686, 0, 1)
+sky = SubResource("Sky_jjgbg")
 
 [node name="Main" type="Node3D"]
+
+[node name="ExRoom" type="Node3D" parent="."]
+
+[node name="RoomMesh" type="CSGMesh3D" parent="ExRoom"]
+transform = Transform3D(10, 0, 0, 0, 3, 0, 0, 0, 10, 0, 1.5, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_7u77a")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="ExRoom/RoomMesh"]
+transform = Transform3D(0.9, 0, 0, 0, 2.28, 0, 0, 0, 0.9, 0, 0.100444, 0)
+operation = 2
+mesh = SubResource("BoxMesh_jjgbg")
+
+[node name="Ground" type="CSGMesh3D" parent="ExRoom"]
+transform = Transform3D(10, 0, 0, 0, 0.5, 0, 0, 0, 10, 0, 0, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_bo1nx")
+material = SubResource("StandardMaterial3D_8gbba")
+
+[node name="CamSwitcher" type="Node3D" parent="ExRoom"]
+script = ExtResource("1_jjgbg")
+
+[node name="Camera1" type="Camera3D" parent="ExRoom/CamSwitcher"]
+transform = Transform3D(1, 0, 0, 0, 0.905783, 0.423741, 0, -0.423741, 0.905783, 0, 2.8131, 4.70766)
+
+[node name="Camera2" type="Camera3D" parent="ExRoom/CamSwitcher"]
+transform = Transform3D(-1, -8.35581e-08, 2.57058e-08, 0, 0.29404, 0.955793, -8.74228e-08, 0.955793, -0.29404, 0, 5.68384, -0.0368905)
+
+[node name="Camera3" type="Camera3D" parent="ExRoom/CamSwitcher"]
+transform = Transform3D(0.747195, -0.28162, 0.601988, 0, 0.905783, 0.423741, -0.664605, -0.316617, 0.676797, 4.18916, 2.95139, 4.21684)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bo1nx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707094, -0.592778, 0.385528, 0, 0.54521, 0.8383, -0.707119, -0.592757, 0.385515, 0, 4.21944, 0)
+shadow_enabled = true
+
+[node name="Screamo" parent="." instance=ExtResource("2_jjvhh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18315, 2.8722, 0)
+
+[node name="Heavy" parent="." instance=ExtResource("3_kry3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8722, 0)
+
+[node name="Elektro" parent="." instance=ExtResource("2_bo1nx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98794, 2.8722, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("5_ynf5e")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.5
+offset_top = -50.0
+offset_right = 177.5
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/CenterContainer"]
+custom_minimum_size = Vector2(300, 320)
+layout_mode = 2
+
+[node name="Elektro" type="TextureRect" parent="CanvasLayer/CenterContainer/Control"]
+layout_mode = 2
+offset_right = 300.0
+offset_bottom = 100.0
+texture = ExtResource("6_344ge")
+
+[node name="Heavy" type="TextureRect" parent="CanvasLayer/CenterContainer/Control"]
+layout_mode = 2
+offset_top = 110.0
+offset_right = 300.0
+offset_bottom = 210.0
+texture = ExtResource("7_ynf5e")
+
+[node name="Screamo" type="TextureRect" parent="CanvasLayer/CenterContainer/Control"]
+layout_mode = 2
+offset_top = 220.0
+offset_right = 300.0
+offset_bottom = 320.0
+texture = ExtResource("8_hptm8")
