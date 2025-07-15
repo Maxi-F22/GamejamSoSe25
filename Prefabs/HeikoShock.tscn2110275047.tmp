@@ -4,10 +4,10 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_823jm"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_823jm"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_823jm"]
 size = Vector3(0.997284, 0.490051, 0.0955811)
-
-[sub_resource type="BoxMesh" id="BoxMesh_823jm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3k7xx"]
 
@@ -23,113 +23,110 @@ skeleton = NodePath("../..")
 transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 0.5, 0, -1)
 script = ExtResource("1_823jm")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wavedirections/Wave1"]
+transform = Transform3D(0.707107, 0, -0.0707107, 0, 0.5, 0, 0.707107, 0, 0.0707107, 0, 0, 0)
+mesh = SubResource("BoxMesh_823jm")
+
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="Wavedirections/Wave1"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -0.00149965, 0.00250244, -0.0133252)
 shape = SubResource("BoxShape3D_823jm")
 debug_color = Color(0, 0.6, 0.701961, 0.423529)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wavedirections/Wave1/CollisionShape3D8"]
-transform = Transform3D(-1, 0, 3.72529e-09, 0, 0.5, 0, -2.98023e-08, 0, -0.1, -0.0104828, -0.00250244, -0.00836194)
-mesh = SubResource("BoxMesh_823jm")
-skeleton = NodePath("../..")
-
 [node name="Wave2" type="Area3D" parent="Wavedirections"]
-transform = Transform3D(-0.92388, 0, -0.382684, 0, 1, 0, 0.382684, 0, -0.92388, -0.5, 0, 1)
+transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, -0.5, 0, 1)
 script = ExtResource("1_823jm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wavedirections/Wave2"]
+transform = Transform3D(0.707107, 0, -0.0707107, 0, 0.5, 0, 0.707107, 0, 0.0707107, 0, 0, 0)
+mesh = SubResource("BoxMesh_823jm")
 
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="Wavedirections/Wave2"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, 0)
 shape = SubResource("BoxShape3D_823jm")
 debug_color = Color(0, 0.6, 0.701961, 0.423529)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wavedirections/Wave2/CollisionShape3D10"]
-transform = Transform3D(-1, 0, 3.72529e-09, 0, 0.5, 0, 0, 0, -0.1, 0, 0, 0)
-mesh = SubResource("BoxMesh_823jm")
-skeleton = NodePath("../..")
-
 [node name="Wave3" type="Area3D" parent="Wavedirections"]
 transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, -1, 0, -0.5)
 script = ExtResource("1_823jm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wavedirections/Wave3"]
+transform = Transform3D(-0.707107, 0, -0.0707107, 0, 0.5, 0, 0.707107, 0, -0.0707107, 0, 0, 0)
+mesh = SubResource("BoxMesh_823jm")
+skeleton = NodePath("")
 
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="Wavedirections/Wave3"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
 shape = SubResource("BoxShape3D_823jm")
 debug_color = Color(0, 0.6, 0.701961, 0.423529)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wavedirections/Wave3/CollisionShape3D10"]
-transform = Transform3D(-1, 0, 3.72529e-09, 0, 0.5, 0, -2.98023e-08, 0, -0.1, 0, 0, 0)
-mesh = SubResource("BoxMesh_823jm")
-skeleton = NodePath("")
-
 [node name="Wave4" type="Area3D" parent="Wavedirections"]
-transform = Transform3D(-0.92388, 0, -0.382684, 0, 1, 0, 0.382684, 0, -0.92388, 1, 0, 0.5)
+transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 1, 0, 0.5)
 script = ExtResource("1_823jm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/Wave4"]
+transform = Transform3D(0.707107, 0, 0.0707107, 0, 0.5, 0, -0.707107, 0, 0.0707107, 0, 0, 0)
+mesh = SubResource("BoxMesh_823jm")
 
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="Wavedirections/Wave4"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.000607729, -1.19209e-07, 0.00642943)
 shape = SubResource("BoxShape3D_823jm")
 debug_color = Color(0, 0.6, 0.701961, 0.423529)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/Wave4/CollisionShape3D10"]
-transform = Transform3D(1, 0, -3.72529e-09, 0, 0.5, 0, 0, 0, 0.1, 0, 0, 0)
-mesh = SubResource("BoxMesh_823jm")
-skeleton = NodePath("../..")
-
 [node name="Wave5" type="Area3D" parent="Wavedirections"]
 transform = Transform3D(0.92388, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.92388, 1, 0, -0.5)
 script = ExtResource("1_823jm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wavedirections/Wave5"]
+transform = Transform3D(0.707107, 0, -0.0707107, 0, 0.5, 0, 0.707107, 0, 0.0707107, 0, 0, 0)
+mesh = SubResource("BoxMesh_823jm")
+skeleton = NodePath("../../Wave5")
 
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="Wavedirections/Wave5"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0.004, 0, 0)
 shape = SubResource("BoxShape3D_823jm")
 debug_color = Color(0, 0.6, 0.701961, 0.423529)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wavedirections/Wave5/CollisionShape3D8"]
-transform = Transform3D(-1, 0, -3.72529e-09, 0, 0.5, 0, 0, 0, -0.1, 0.00282842, 0, -0.00282836)
-mesh = SubResource("BoxMesh_823jm")
-skeleton = NodePath("../..")
-
 [node name="Wave6" type="Area3D" parent="Wavedirections"]
-transform = Transform3D(-0.92388, 0, 0.382684, 0, 1, 0, -0.382684, 0, -0.92388, -1, 0, 0.5)
+transform = Transform3D(0.92388, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.92388, -1, 0, 0.5)
 script = ExtResource("1_823jm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wavedirections/Wave6"]
+transform = Transform3D(0.707107, 0, -0.0707107, 0, 0.5, 0, 0.707107, 0, 0.0707107, 0, 0, 0)
+mesh = SubResource("BoxMesh_823jm")
+skeleton = NodePath("../../Wave5")
 
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="Wavedirections/Wave6"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, 0)
 shape = SubResource("BoxShape3D_823jm")
 debug_color = Color(0, 0.6, 0.701961, 0.423529)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wavedirections/Wave6/CollisionShape3D10"]
-transform = Transform3D(-1, 0, 8.74228e-09, 0, 0.5, 0, -8.74228e-08, 0, -0.1, 0, 0, 0)
-mesh = SubResource("BoxMesh_823jm")
-skeleton = NodePath("../../../Wave5")
-
 [node name="Wave7" type="Area3D" parent="Wavedirections"]
 transform = Transform3D(0.92388, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.92388, -0.5, 0.003, -1)
 script = ExtResource("1_823jm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wavedirections/Wave7"]
+transform = Transform3D(-0.707107, 0, -0.0707107, 0, 0.5, 0, 0.707107, 0, -0.0707107, 0, 0, 0)
+mesh = SubResource("BoxMesh_823jm")
+skeleton = NodePath("")
 
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="Wavedirections/Wave7"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
 shape = SubResource("BoxShape3D_823jm")
 debug_color = Color(0, 0.6, 0.701961, 0.423529)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wavedirections/Wave7/CollisionShape3D10"]
-transform = Transform3D(-1, 0, -3.72529e-09, 0, 0.5, 0, 0, 0, -0.1, 0, 0, 0)
-mesh = SubResource("BoxMesh_823jm")
-skeleton = NodePath("")
-
 [node name="Wave8" type="Area3D" parent="Wavedirections"]
-transform = Transform3D(-0.92388, 0, 0.382684, 0, 1, 0, -0.382684, 0, -0.92388, 0.5, 0, 1)
+transform = Transform3D(0.92388, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.92388, 0.5, 0, 1)
 script = ExtResource("1_823jm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/Wave8"]
+transform = Transform3D(0.707107, 0, 0.0707107, 0, 0.5, 0, -0.707107, 0, 0.0707107, 0, 0, 0)
+mesh = SubResource("BoxMesh_823jm")
+skeleton = NodePath("../../Wave5")
 
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="Wavedirections/Wave8"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.000607729, -1.19209e-07, 0.00642943)
 shape = SubResource("BoxShape3D_823jm")
 debug_color = Color(0, 0.6, 0.701961, 0.423529)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/Wave8/CollisionShape3D10"]
-transform = Transform3D(1, 0, 3.72529e-09, 0, 0.5, 0, 0, 0, 0.1, 0.00411656, 1.19209e-07, -0.00497591)
-mesh = SubResource("BoxMesh_823jm")
-skeleton = NodePath("../../../Wave5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_3k7xx")
