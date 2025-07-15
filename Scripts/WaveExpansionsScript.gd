@@ -8,6 +8,10 @@ var wave_triggered = false
 
 func _ready():
 	set_process(true)
+	for child in get_children():
+		child.visible = false
+		if child is CollisionShape3D:
+			child.disabled = true
 
 func _process(delta):
 	if Input.is_action_just_pressed("WaveActivate"):
@@ -21,5 +25,13 @@ func _process(delta):
 			reset()
 func trigger_wave(delta):
 	wave_triggered = true
+	for child in get_children():
+		child.visible = true
+		if child is CollisionShape3D:
+			child.disabled = false
 func reset():
 	scale = Vector3(1, 1, 1)
+	for child in get_children():
+		child.visible = false
+		if child is CollisionShape3D:
+			child.disabled = true
