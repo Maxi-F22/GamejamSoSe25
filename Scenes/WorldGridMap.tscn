@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctq5algger0iy"]
+
+[ext_resource type="MeshLibrary" uid="uid://cvidrvhd4matp" path="res://Resources/blocks-wall-floorv09.tres" id="1_hxtjs"]
+
+[node name="WorldGridMap" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_hxtjs")
+data = {
+"cells": PackedInt32Array(65529, 65528, 1441795, 65529, 65529, 1441795, 65529, 65530, 1441795, 65529, 65531, 1441795, 65529, 65532, 1441795, 65528, 65532, 1441795, 65528, 65531, 1441795, 65528, 65530, 1441795, 65528, 65529, 1441795, 65528, 65528, 1441795)
+}
