@@ -1,0 +1,137 @@
+[gd_scene load_steps=9 format=3 uid="uid://48nuwwideadk"]
+
+[ext_resource type="Script" uid="uid://b0qwvast8c8al" path="res://Scripts/WaveExpansionsScript.gd" id="1_823jm"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_823jm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_823jm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_823jm"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lt7ax"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_a7jqq"]
+height = 0.373047
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8kxor"]
+height = 0.478088
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3k7xx"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+
+[node name="Player" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_823jm")
+skeleton = NodePath("../..")
+
+[node name="Wavedirections" type="Node3D" parent="."]
+
+[node name="Wave1" type="Area3D" parent="Wavedirections"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.5)
+script = ExtResource("1_823jm")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Wavedirections/Wave1"]
+transform = Transform3D(-1.41421, 0, 0.353553, 0, 0.5, 0, -1.41421, 0, -0.353553, 0, 0, 0)
+shape = SubResource("BoxShape3D_823jm")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wavedirections/Wave1"]
+transform = Transform3D(1.41421, 0, -0.494975, 0, 0.5, 0, 1.41421, 0, 0.494975, 0, 0, 0)
+mesh = SubResource("BoxMesh_823jm")
+
+[node name="Wave2" type="Area3D" parent="Wavedirections"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5)
+script = ExtResource("1_823jm")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Wavedirections/Wave2"]
+transform = Transform3D(-1.41421, 0, 0.353553, 0, 0.5, 0, -1.41421, 0, -0.353553, 0, 0, 0)
+shape = SubResource("BoxShape3D_823jm")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wavedirections/Wave2"]
+transform = Transform3D(1.41421, 0, -0.494975, 0, 0.5, 0, 1.41421, 0, 0.494975, 0, 0, 0)
+mesh = SubResource("BoxMesh_823jm")
+
+[node name="Wave3" type="Area3D" parent="Wavedirections"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.5)
+script = ExtResource("1_823jm")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Wavedirections/Wave3"]
+transform = Transform3D(1.41421, 0, 0.353553, 0, 0.5, 0, -1.41421, 0, 0.353553, 0, 0, 0)
+shape = SubResource("BoxShape3D_823jm")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wavedirections/Wave3"]
+transform = Transform3D(1.41421, 0, 0.494975, 0, 0.5, 0, -1.41421, 0, 0.494975, 0, 0, 0)
+mesh = SubResource("BoxMesh_823jm")
+skeleton = NodePath("")
+
+[node name="Wave4" type="Area3D" parent="Wavedirections"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+script = ExtResource("1_823jm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/Wave4"]
+transform = Transform3D(1.41421, 0, 0.494975, 0, 0.5, 0, -1.41421, 0, 0.494975, 0, 0, 0)
+mesh = SubResource("BoxMesh_823jm")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Wavedirections/Wave4"]
+transform = Transform3D(1.41421, 0, 0.353553, 0, 0.5, 0, -1.41421, 0, 0.353553, 0.000607729, -1.19209e-07, 0.00642943)
+shape = SubResource("BoxShape3D_823jm")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="WaveEndpoints" type="Node3D" parent="." groups=["WaveEnder"]]
+
+[node name="WaveEnd1" type="Area3D" parent="WaveEndpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WaveEndpoints/WaveEnd1"]
+transform = Transform3D(0.1, 0, 0, 0, 1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_lt7ax")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="WaveEndpoints/WaveEnd1"]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+shape = SubResource("CylinderShape3D_a7jqq")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="WaveEnd2" type="Area3D" parent="WaveEndpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WaveEndpoints/WaveEnd2"]
+transform = Transform3D(0.1, 0, 0, 0, 1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_lt7ax")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="WaveEndpoints/WaveEnd2"]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+shape = SubResource("CylinderShape3D_a7jqq")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="WaveEnd3" type="Area3D" parent="WaveEndpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -5)
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="WaveEndpoints/WaveEnd3"]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+shape = SubResource("CylinderShape3D_8kxor")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WaveEndpoints/WaveEnd3"]
+transform = Transform3D(0.1, 0, 0, 0, 1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_lt7ax")
+
+[node name="WaveEnd4" type="Area3D" parent="WaveEndpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="WaveEndpoints/WaveEnd4"]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+shape = SubResource("CylinderShape3D_a7jqq")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WaveEndpoints/WaveEnd4"]
+transform = Transform3D(0.1, 0, 0, 0, 1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_lt7ax")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.79653, 0.604599, 0, -0.604599, 0.79653, 0, 6.93346, 7.36788)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_3k7xx")
+disabled = true
