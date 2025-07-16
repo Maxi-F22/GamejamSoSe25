@@ -1,3 +1,262 @@
-[gd_scene format=3 uid="uid://d2oqbh1jfmqg2"]
+[gd_scene load_steps=17 format=3 uid="uid://d2oqbh1jfmqg2"]
+
+[ext_resource type="Script" uid="uid://cuv1uwh8rujp2" path="res://Scripts/CamSwitchScript.gd" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://4ggca4e7xm4w" path="res://Scenes/player_electro_wave.tscn" id="3_ynf5e"]
+[ext_resource type="Script" uid="uid://dbbvdrp5x63n4" path="res://Scripts/HUDControllerScript.gd" id="5_ynf5e"]
+[ext_resource type="Texture2D" uid="uid://cdud2s2h135ly" path="res://Assets/HUD/bar_elektro.png" id="6_344ge"]
+[ext_resource type="Texture2D" uid="uid://3jnrmv2wf4wx" path="res://Assets/HUD/bar_heavy.png" id="7_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://c5jxhrmfnpa7p" path="res://Scenes/player_scream_wave.tscn" id="8_344ge"]
+[ext_resource type="Texture2D" uid="uid://c5irvsa43cto6" path="res://Assets/HUD/bar_screamo.png" id="8_hptm8"]
+[ext_resource type="Texture2D" uid="uid://rtsxdt15mgjr" path="res://Assets/HUD/Screenshot 2025-07-16 120449.png" id="9_fdnlq"]
+[ext_resource type="PackedScene" uid="uid://48nuwwideadk" path="res://Scenes/player_mass_wave.tscn" id="9_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://ds7lmqb52bafb" path="res://Scenes/world_gridmap.tscn" id="10_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://cfmg2037l1dp3" path="res://Scenes/movable_box.tscn" id="10_hptm8"]
+[ext_resource type="Texture2D" uid="uid://d1ugxtrx3yfc1" path="res://icon.svg" id="10_jkdf5"]
+[ext_resource type="PackedScene" uid="uid://bap0knk6vg3ko" path="res://Scenes/fuse_box.tscn" id="11_d1ilt"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7u77a"]
+sky_top_color = Color(0.268737, 0.412045, 0.836146, 1)
+
+[sub_resource type="Sky" id="Sky_jjgbg"]
+sky_material = SubResource("ProceduralSkyMaterial_7u77a")
+
+[sub_resource type="Environment" id="Environment_bo1nx"]
+background_mode = 2
+background_color = Color(0, 0.815686, 0, 1)
+sky = SubResource("Sky_jjgbg")
+glow_enabled = true
 
 [node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bo1nx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("5_ynf5e")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.5
+offset_top = -50.0
+offset_right = 177.5
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/CenterContainer"]
+custom_minimum_size = Vector2(300, 320)
+layout_mode = 2
+
+[node name="Elektro" type="TextureRect" parent="CanvasLayer/CenterContainer/Control"]
+layout_mode = 2
+offset_right = 300.0
+offset_bottom = 100.0
+pivot_offset = Vector2(150, 50)
+texture = ExtResource("6_344ge")
+
+[node name="Heavy" type="TextureRect" parent="CanvasLayer/CenterContainer/Control"]
+layout_mode = 2
+offset_top = 110.0
+offset_right = 300.0
+offset_bottom = 210.0
+pivot_offset = Vector2(150, 50)
+texture = ExtResource("7_ynf5e")
+
+[node name="Screamo" type="TextureRect" parent="CanvasLayer/CenterContainer/Control"]
+layout_mode = 2
+offset_top = 220.0
+offset_right = 300.0
+offset_bottom = 320.0
+pivot_offset = Vector2(150, 50)
+texture = ExtResource("8_hptm8")
+
+[node name="Instructions" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="Control" type="Control" parent="CanvasLayer/Instructions"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Instructions/Control"]
+layout_mode = 0
+offset_top = -60.0
+offset_right = 219.0
+offset_bottom = 15.0
+text = "Hold TAB: Choose Camera
+Hold Q: Choose Character
+SPACE: Activate Wave Power"
+
+[node name="Elektro" parent="." instance=ExtResource("3_ynf5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.20787, 6.18274)
+
+[node name="Heavy" parent="." instance=ExtResource("9_ynf5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.94592, 1.78955)
+
+[node name="Screamo" parent="." instance=ExtResource("8_344ge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4.11687, 19.3772)
+
+[node name="CamSwitcher" type="Node3D" parent="."]
+transform = Transform3D(1.8, 0, 0, 0, 1, 0, 0, 0, 1.8, 0, 1.79075, 16.1857)
+script = ExtResource("1_jjgbg")
+
+[node name="Camera1" type="Camera3D" parent="CamSwitcher"]
+transform = Transform3D(0.249516, 0.166033, -0.467779, -7.5198e-09, 0.942398, 0.334493, 0.496371, -0.0834613, 0.235143, -4.54318, 3.87731, 3.08907)
+
+[node name="Camera2" type="Camera3D" parent="CamSwitcher"]
+transform = Transform3D(-0.242688, -0.216455, 0.470702, -0.0404293, 0.971786, 0.187961, -0.498106, 0.0265859, -0.244592, 9.95479, 3.82864, -3.59928)
+
+[node name="Camera3" type="Camera3D" parent="CamSwitcher"]
+transform = Transform3D(-0.399333, 0.208564, -0.32508, -0.0031653, 0.839892, 0.542744, 0.386228, 0.217764, -0.334736, -4.47503, 3.64184, -8.97879)
+
+[node name="Camera4" type="Camera3D" parent="CamSwitcher"]
+transform = Transform3D(0.398881, -0.208818, 0.325471, -0.00316533, 0.839892, 0.542745, -0.386695, -0.21752, 0.334356, 15.7018, 3.8044, -10.7221)
+
+[node name="Camera5" type="Camera3D" parent="CamSwitcher"]
+transform = Transform3D(0.370152, 0.225834, -0.347317, -0.00316533, 0.839892, 0.542745, 0.414278, -0.199798, 0.311602, -7.34196, 3.8044, -10.7221)
+
+[node name="Camera6" type="Camera3D" parent="CamSwitcher"]
+transform = Transform3D(0.327586, -0.242658, 0.377421, -0.00316532, 0.839892, 0.542745, -0.448694, -0.17899, 0.274368, 9.60762, 3.91278, -14.6258)
+
+[node name="Camera7" type="Camera3D" parent="CamSwitcher"]
+transform = Transform3D(-0.148374, -0.290968, 0.449405, -0.00316526, 0.839892, 0.542745, -0.535373, 0.079107, -0.125539, 6.04556, 3.91278, -19.967)
+
+[node name="Camera8" type="Camera3D" parent="CamSwitcher"]
+transform = Transform3D(-0.475219, 0.154919, -0.242506, -0.00316529, 0.839891, 0.542745, 0.287761, 0.25869, -0.398642, -11.1171, 3.91278, -20.0962)
+
+[node name="MinimapCamera" type="Camera3D" parent="CamSwitcher"]
+transform = Transform3D(0.555556, 0, 0, 0, -2.42841e-08, 1, 0, -0.555556, -1.34912e-08, 0.698369, 44.078, -11.7168)
+
+[node name="MinimapLayer" type="CanvasLayer" parent="CamSwitcher/MinimapCamera"]
+
+[node name="CenterContainer" type="CenterContainer" parent="CamSwitcher/MinimapCamera/MinimapLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="CamSwitcher/MinimapCamera/MinimapLayer/CenterContainer"]
+layout_mode = 2
+
+[node name="CamIcon1" type="TextureRect" parent="CamSwitcher/MinimapCamera/MinimapLayer/CenterContainer/Control"]
+layout_mode = 0
+offset_left = -117.0
+offset_top = 265.0
+offset_right = 11.0
+offset_bottom = 393.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_jkdf5")
+
+[node name="CamIcon2" type="TextureRect" parent="CamSwitcher/MinimapCamera/MinimapLayer/CenterContainer/Control"]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 134.0
+offset_right = 286.0
+offset_bottom = 262.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_jkdf5")
+
+[node name="CamIcon3" type="TextureRect" parent="CamSwitcher/MinimapCamera/MinimapLayer/CenterContainer/Control"]
+layout_mode = 0
+offset_left = -117.0
+offset_top = 28.0
+offset_right = 11.0
+offset_bottom = 156.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_jkdf5")
+
+[node name="CamIcon4" type="TextureRect" parent="CamSwitcher/MinimapCamera/MinimapLayer/CenterContainer/Control"]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 4.0
+offset_right = 394.0
+offset_bottom = 132.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_jkdf5")
+
+[node name="CamIcon5" type="TextureRect" parent="CamSwitcher/MinimapCamera/MinimapLayer/CenterContainer/Control"]
+layout_mode = 0
+offset_left = -172.0
+offset_top = 10.0
+offset_right = -44.0
+offset_bottom = 138.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_jkdf5")
+
+[node name="CamIcon6" type="TextureRect" parent="CamSwitcher/MinimapCamera/MinimapLayer/CenterContainer/Control"]
+layout_mode = 0
+offset_left = 151.0
+offset_top = -68.0
+offset_right = 279.0
+offset_bottom = 60.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_jkdf5")
+
+[node name="CamIcon7" type="TextureRect" parent="CamSwitcher/MinimapCamera/MinimapLayer/CenterContainer/Control"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = -183.0
+offset_right = 215.0
+offset_bottom = -55.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_jkdf5")
+
+[node name="CamIcon8" type="TextureRect" parent="CamSwitcher/MinimapCamera/MinimapLayer/CenterContainer/Control"]
+layout_mode = 0
+offset_left = -249.0
+offset_top = -180.0
+offset_right = -121.0
+offset_bottom = -52.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_jkdf5")
+
+[node name="Test" type="TextureRect" parent="CamSwitcher/MinimapCamera/MinimapLayer/CenterContainer/Control"]
+visible = false
+layout_mode = 0
+offset_left = -576.0
+offset_top = -327.0
+offset_right = 576.0
+offset_bottom = 327.0
+texture = ExtResource("9_fdnlq")
+
+[node name="WorldGridMap" parent="." instance=ExtResource("10_d1ilt")]
+
+[node name="Interactables" type="Node3D" parent="."]
+
+[node name="Boxes" type="Node3D" parent="Interactables"]
+
+[node name="MovableBox" parent="Interactables/Boxes" instance=ExtResource("10_hptm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.13875, 4.42852, 6.43508)
+
+[node name="FuseBoxes" type="Node3D" parent="Interactables"]
+
+[node name="LaserBox" parent="Interactables/FuseBoxes" instance=ExtResource("11_d1ilt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7826, 4.41456, -0.764895)
+_laser_control_name = "LaserFirstRoom"
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.51471, 5.93526)
+shadow_enabled = true
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.74178, 19.4818)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 10.0

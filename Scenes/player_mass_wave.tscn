@@ -1,0 +1,122 @@
+[gd_scene load_steps=7 format=3 uid="uid://48nuwwideadk"]
+
+[ext_resource type="Script" uid="uid://cynfxnpd47dtn" path="res://Scripts/CharacterControllerScript.gd" id="1_1f323"]
+[ext_resource type="Script" uid="uid://dqbkm2uy4b56f" path="res://Scripts/WaveExpansionsScript.gd" id="1_823jm"]
+[ext_resource type="PackedScene" uid="uid://dtkwmvgyaid6p" path="res://Scenes/fat_guy.tscn" id="3_vj7m7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_823jm"]
+size = Vector3(0.997284, 0.490051, 0.0955811)
+
+[sub_resource type="BoxMesh" id="BoxMesh_823jm"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m1h2r"]
+
+[node name="Heavy" type="CharacterBody3D"]
+input_ray_pickable = false
+script = ExtResource("1_1f323")
+
+[node name="Wavedirections" type="Node3D" parent="." node_paths=PackedStringArray("char_script")]
+script = ExtResource("1_823jm")
+char_script = NodePath("..")
+
+[node name="MassWave1" type="Area3D" parent="Wavedirections"]
+transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 0.5, 0, -1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wavedirections/MassWave1"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -0.00149965, 0.00250244, -0.0133252)
+shape = SubResource("BoxShape3D_823jm")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/MassWave1/CollisionShape3D"]
+transform = Transform3D(-1, 0, 3.72529e-09, 0, 0.5, 0, 0, 0, -0.1, -0.0104828, -0.00250244, -0.00836194)
+mesh = SubResource("BoxMesh_823jm")
+
+[node name="MassWave2" type="Area3D" parent="Wavedirections"]
+transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, -0.5, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wavedirections/MassWave2"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, 0)
+shape = SubResource("BoxShape3D_823jm")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/MassWave2/CollisionShape3D"]
+transform = Transform3D(-1, 0, 3.72529e-09, 0, 0.5, 0, 0, 0, -0.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_823jm")
+
+[node name="MassWave3" type="Area3D" parent="Wavedirections"]
+transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, -1, 0, -0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wavedirections/MassWave3"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+shape = SubResource("BoxShape3D_823jm")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/MassWave3/CollisionShape3D"]
+transform = Transform3D(-1, 0, 3.72529e-09, 0, 0.5, 0, 0, 0, -0.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_823jm")
+
+[node name="MassWave4" type="Area3D" parent="Wavedirections"]
+transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 1, 0, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wavedirections/MassWave4"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.000607729, -1.19209e-07, 0.00642943)
+shape = SubResource("BoxShape3D_823jm")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/MassWave4/CollisionShape3D"]
+transform = Transform3D(1, 0, -3.72529e-09, 0, 0.5, 0, 0, 0, 0.1, 0.00411654, 1.19209e-07, -0.00497603)
+mesh = SubResource("BoxMesh_823jm")
+
+[node name="MassWave5" type="Area3D" parent="Wavedirections"]
+transform = Transform3D(0.92388, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.92388, 1, 0, -0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wavedirections/MassWave5"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0.004, 0, 0)
+shape = SubResource("BoxShape3D_823jm")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/MassWave5/CollisionShape3D"]
+transform = Transform3D(-1, 0, -3.72529e-09, 0, 0.5, 0, 0, 0, -0.1, 0.00282842, 0, -0.00282836)
+mesh = SubResource("BoxMesh_823jm")
+
+[node name="MassWave6" type="Area3D" parent="Wavedirections"]
+transform = Transform3D(0.92388, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.92388, -1, 0, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wavedirections/MassWave6"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, 0)
+shape = SubResource("BoxShape3D_823jm")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/MassWave6/CollisionShape3D"]
+transform = Transform3D(-1, 0, -3.72529e-09, 0, 0.5, 0, 0, 0, -0.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_823jm")
+
+[node name="MassWave7" type="Area3D" parent="Wavedirections"]
+transform = Transform3D(0.92388, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.92388, -0.5, 0.003, -1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wavedirections/MassWave7"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+shape = SubResource("BoxShape3D_823jm")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/MassWave7/CollisionShape3D"]
+transform = Transform3D(-1, 0, -3.72529e-09, 0, 0.5, 0, 0, 0, -0.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_823jm")
+
+[node name="MassWave8" type="Area3D" parent="Wavedirections"]
+transform = Transform3D(0.92388, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.92388, 0.5, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wavedirections/MassWave8"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.000607729, -1.19209e-07, 0.00642943)
+shape = SubResource("BoxShape3D_823jm")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/MassWave8/CollisionShape3D"]
+transform = Transform3D(1, 0, 3.72529e-09, 0, 0.5, 0, 0, 0, 0.1, 0.00411656, 1.19209e-07, -0.00497591)
+mesh = SubResource("BoxMesh_823jm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_m1h2r")
+
+[node name="PlayerModel" parent="." instance=ExtResource("3_vj7m7")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -1.01298, 0)

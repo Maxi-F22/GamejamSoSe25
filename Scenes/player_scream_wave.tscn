@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5jxhrmfnpa7p"]
+
+[ext_resource type="Script" uid="uid://cynfxnpd47dtn" path="res://Scripts/CharacterControllerScript.gd" id="1_axias"]
+[ext_resource type="Script" uid="uid://dqbkm2uy4b56f" path="res://Scripts/WaveExpansionsScript.gd" id="1_bp4fg"]
+[ext_resource type="Script" uid="uid://d24wibnimjfh" path="res://Scripts/AimScript.gd" id="3_3de4r"]
+[ext_resource type="PackedScene" uid="uid://bn6uwkx8m74hu" path="res://Scenes/woman.tscn" id="3_x7hxy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bp4fg"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_114t1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w2l0f"]
+size = Vector3(0.997284, 0.490051, 0.0955811)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pgjs5"]
+
+[node name="Screamo" type="CharacterBody3D"]
+script = ExtResource("1_axias")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_bp4fg")
+
+[node name="PlayerModel" parent="." instance=ExtResource("3_x7hxy")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -1.11355, 0)
+
+[node name="Aimer" type="Node3D" parent="."]
+script = ExtResource("3_3de4r")
+orbit_radius = 1.0
+
+[node name="AimerMesh" type="MeshInstance3D" parent="Aimer"]
+transform = Transform3D(0.5, 0, 0, 0, -4.37114e-08, -0.1, 0, 1, -4.37114e-09, 0, 0, 0)
+mesh = SubResource("PrismMesh_114t1")
+
+[node name="SingleWave" type="Node3D" parent="Aimer" node_paths=PackedStringArray("char_script")]
+script = ExtResource("1_bp4fg")
+scale_speed = 20.0
+max_scale = 10.0
+char_script = NodePath("../..")
+is_single = true
+
+[node name="ElektroWave1" type="Area3D" parent="Aimer/SingleWave"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Aimer/SingleWave/ElektroWave1"]
+shape = SubResource("BoxShape3D_w2l0f")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Aimer/SingleWave/ElektroWave1/CollisionShape3D"]
+transform = Transform3D(-1, 0, -8.74228e-09, 0, 0.5, 0, 8.74228e-08, 0, -0.1, -0.0104828, -0.00250244, -0.00836194)
+mesh = SubResource("BoxMesh_pgjs5")
+skeleton = NodePath("../..")
