@@ -1,30 +1,30 @@
 [gd_scene load_steps=18 format=3 uid="uid://d2oqbh1jfmqg2"]
 
 [ext_resource type="Script" path="res://Scripts/CamSwitchScript.gd" id="1_jjgbg"]
-[ext_resource type="PackedScene" uid="uid://4ggca4e7xm4w" path="res://Scenes/player_electro_wave.tscn" id="3_ynf5e"]
-[ext_resource type="Script" uid="uid://dbbvdrp5x63n4" path="res://Scripts/HUDControllerScript.gd" id="5_ynf5e"]
+[ext_resource type="PackedScene" path="res://Scenes/player_electro_wave.tscn" id="3_ynf5e"]
+[ext_resource type="Script" path="res://Scripts/HUDControllerScript.gd" id="5_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://cdud2s2h135ly" path="res://Assets/HUD/bar_elektro.png" id="6_344ge"]
 [ext_resource type="Texture2D" uid="uid://3jnrmv2wf4wx" path="res://Assets/HUD/bar_heavy.png" id="7_ynf5e"]
-[ext_resource type="PackedScene" uid="uid://c5jxhrmfnpa7p" path="res://Scenes/player_scream_wave.tscn" id="8_344ge"]
+[ext_resource type="PackedScene" path="res://Scenes/player_scream_wave.tscn" id="8_344ge"]
 [ext_resource type="Texture2D" uid="uid://c5irvsa43cto6" path="res://Assets/HUD/bar_screamo.png" id="8_hptm8"]
 [ext_resource type="Texture2D" uid="uid://rtsxdt15mgjr" path="res://Assets/HUD/Screenshot 2025-07-16 120449.png" id="9_fdnlq"]
-[ext_resource type="PackedScene" uid="uid://ds7lmqb52bafb" path="res://Scenes/world_gridmap.tscn" id="10_d1ilt"]
-[ext_resource type="PackedScene" uid="uid://cfmg2037l1dp3" path="res://Scenes/movable_box.tscn" id="10_hptm8"]
+[ext_resource type="PackedScene" uid="uid://g7ehlqgp6riy" path="res://Scenes/world_gridmap.tscn" id="10_d1ilt"]
+[ext_resource type="PackedScene" path="res://Scenes/movable_box.tscn" id="10_hptm8"]
 [ext_resource type="Texture2D" uid="uid://d1ugxtrx3yfc1" path="res://icon.svg" id="10_jkdf5"]
-[ext_resource type="PackedScene" uid="uid://bap0knk6vg3ko" path="res://Scenes/fuse_box.tscn" id="11_d1ilt"]
-[ext_resource type="PackedScene" uid="uid://48nuwwideadk" path="res://Scenes/player_mass_wave.tscn" id="13_fdnlq"]
-[ext_resource type="PackedScene" uid="uid://3ytbx8xgif1k" path="res://Scenes/GlassWall.tscn" id="13_jkdf5"]
+[ext_resource type="PackedScene" path="res://Scenes/fuse_box.tscn" id="11_d1ilt"]
+[ext_resource type="PackedScene" path="res://Prefabs/HeikoShock.tscn" id="13_fdnlq"]
+[ext_resource type="PackedScene" path="res://Scenes/GlassWall.tscn" id="13_jkdf5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7u77a"]
 sky_top_color = Color(0.268737, 0.412045, 0.836146, 1)
 
-[sub_resource type="Sky" id="Sky_jjgbg"]
+[sub_resource type="Sky" id="Sky_jkdf5"]
 sky_material = SubResource("ProceduralSkyMaterial_7u77a")
 
 [sub_resource type="Environment" id="Environment_bo1nx"]
 background_mode = 2
 background_color = Color(0, 0.815686, 0, 1)
-sky = SubResource("Sky_jjgbg")
+sky = SubResource("Sky_jkdf5")
 glow_enabled = true
 
 [node name="Main" type="Node3D"]

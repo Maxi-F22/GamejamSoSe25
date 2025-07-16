@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqo4a2o4b5nwp"
+uid="uid://bjt5hqgo117jm"
 path.s3tc="res://.godot/imported/floor-wall-blockv07_floorBlock5.png-4f5f297da2fcb742bd8ef857f3c02a73.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "1319e1918473be00cd47bc0f993be85e"
 }
 
 [deps]

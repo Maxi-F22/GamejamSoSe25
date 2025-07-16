@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=3 uid="uid://badc2xk5fh3x5"]
+
+[ext_resource type="Script" uid="uid://c55xv6bya38yl" path="res://Scripts/MainMenu.gd" id="1_cmrfp"]
+[ext_resource type="FontFile" uid="uid://me783eka0ak" path="res://Minecraftia-Regular.ttf" id="2_853f1"]
+[ext_resource type="PackedScene" uid="uid://d2oqbh1jfmqg2" path="res://Scenes/Main.tscn" id="2_loo7a"]
+[ext_resource type="Script" uid="uid://dcnbq0qs2uony" path="res://Scripts/TextScript.gd" id="4_if7li"]
+[ext_resource type="PackedScene" path="res://Scenes/fuse_box.tscn" id="5_8um5k"]
+[ext_resource type="PackedScene" uid="uid://u7rplkk3umyo" path="res://Scenes/electro_guy.tscn" id="5_koqhg"]
+[ext_resource type="PackedScene" path="res://Scenes/fat_guy.tscn" id="6_cmrfp"]
+[ext_resource type="MeshLibrary" uid="uid://cvidrvhd4matp" path="res://Assets/Gridmap/Resources/blocks-wall-floorv09.tres" id="7_loo7a"]
+[ext_resource type="PackedScene" uid="uid://bcsysk5dtq7hj" path="res://Assets/Models/camera.glb" id="8_if7li"]
+
+[node name="MainMenu" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("1_cmrfp")
+LevelScene = ExtResource("2_loo7a")
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 450.0
+offset_top = 222.0
+offset_right = 667.0
+offset_bottom = 345.0
+text = "Play"
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.0
+offset_top = -228.0
+offset_right = -90.0
+offset_bottom = -182.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/normal_font = ExtResource("2_853f1")
+theme_override_fonts/bold_italics_font = ExtResource("2_853f1")
+theme_override_fonts/bold_font = ExtResource("2_853f1")
+theme_override_font_sizes/bold_italics_font_size = 10
+bbcode_enabled = true
+text = " WAVES OF FREEDOM"
+tab_size = 5
+script = ExtResource("4_if7li")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/RichTextLabel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -22.0
+offset_right = 99.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(100, 10)
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/normal_font = ExtResource("2_853f1")
+theme_override_fonts/bold_italics_font = ExtResource("2_853f1")
+theme_override_fonts/bold_font = ExtResource("2_853f1")
+theme_override_font_sizes/bold_italics_font_size = 10
+bbcode_enabled = true
+text = " WAVES OF FREEDOM"
+script = ExtResource("4_if7li")
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, -0.636078, 0.771625, 0, 0.771625, 0.636078, -1, 2.78039e-08, -3.37288e-08, -1.68865, 5.66084, 19.8451)
+
+[node name="LaserBox" parent="." instance=ExtResource("5_8um5k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3935, 3.17861, 24.8756)
+script = null
+
+[node name="electro_guy2" parent="." instance=ExtResource("5_koqhg")]
+transform = Transform3D(-0.0607417, 0, 0.0520619, 0, 0.08, 0, -0.0520619, 0, -0.0607417, -7.74937, 2.00205, 23.0469)
+
+[node name="Heavy" parent="." instance=ExtResource("6_cmrfp")]
+transform = Transform3D(0.0435711, 0, 0.0670936, 0, 0.08, 0, -0.0670936, 0, 0.0435711, -8.27243, 2, 17.0498)
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("7_loo7a")
+data = {
+"cells": PackedInt32Array(65531, 11, 196610, 65532, 11, 196610, 65533, 11, 196610, 65534, 11, 196610, 65531, 10, 196609, 65532, 10, 196609, 65533, 10, 196609, 65531, 9, 196609, 65532, 9, 196609, 65533, 9, 196609, 65531, 8, 196610, 65532, 8, 196610, 65533, 8, 196610, 65534, 8, 196610, 65535, 8, 196610, 65534, 10, 196610, 65534, 9, 196610, 65535, 9, 196610, 65535, 10, 196610, 65535, 11, 196610, 65530, 8, 1114115, 65530, 9, 1114115, 65530, 10, 1114115, 65530, 11, 1114115, 65530, 12, 1114115, 65531, 12, 1114115, 65532, 12, 1114115, 65533, 12, 1114115, 65534, 12, 1114115, 65535, 12, 1114115, 65530, 7, 1048579, 65531, 7, 1048579, 65532, 7, 1048579, 65533, 7, 1048579, 65534, 7, 1048579, 65535, 7, 1048579, 131071, 7, 65542, 131070, 7, 65542, 131069, 7, 65542, 131068, 7, 65542, 131067, 7, 65542, 131066, 7, 9, 131066, 12, 1048585, 131066, 11, 327686, 131066, 10, 327686, 131066, 9, 327686, 131066, 8, 327686, 131067, 12, 589830, 131068, 12, 589830, 131069, 12, 589830, 131071, 12, 589830, 131070, 12, 589830, 196602, 7, 9, 196602, 12, 1048585, 196602, 11, 1048584, 196602, 8, 1048584, 196607, 12, 655366, 196606, 12, 655366, 196605, 12, 655366, 196604, 12, 655366, 196603, 12, 655366, 196607, 7, 6, 196606, 7, 6, 196605, 7, 6, 196604, 7, 6, 196603, 7, 6, 196602, 9, 1048582, 196602, 10, 1048582)
+}
+metadata/_editor_floor_ = Vector3(0, 2, 0)
+
+[node name="camera" parent="." instance=ExtResource("8_if7li")]
+transform = Transform3D(0.47378, 0.0878099, 0.507762, -0.127565, 0.688278, 0, -0.49926, -0.0925323, 0.481848, -11.52, 2.43704, 25.4956)
+
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_on_button_pressed"]
+[connection signal="ready" from="CanvasLayer/RichTextLabel" to="CanvasLayer" method="_on_rich_text_label_ready"]
+[connection signal="ready" from="CanvasLayer/RichTextLabel" to="CanvasLayer/RichTextLabel" method="_on_ready"]
