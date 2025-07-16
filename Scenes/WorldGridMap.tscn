@@ -1,13 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctq5algger0iy"]
+[gd_scene load_steps=13 format=3 uid="uid://ctq5algger0iy"]
 
 [ext_resource type="MeshLibrary" uid="uid://cvidrvhd4matp" path="res://Resources/blocks-wall-floorv09.tres" id="1_hxtjs"]
 [ext_resource type="PackedScene" uid="uid://bcsysk5dtq7hj" path="res://Assets/camera.glb" id="2_vtsl5"]
 [ext_resource type="PackedScene" uid="uid://dy1jeka6sdnaf" path="res://Assets/laser_04.glb" id="3_sdwh0"]
 [ext_resource type="PackedScene" uid="uid://d010bq3xj8xnb" path="res://Assets/laser_horizontal_03.glb" id="4_lvmhw"]
+[ext_resource type="PackedScene" uid="uid://djo4fdmatggvv" path="res://Scenes/stromkasten.tscn" id="5_6u7yt"]
+[ext_resource type="Texture2D" uid="uid://cxlepal5iohd5" path="res://Assets/overlay.png" id="6_0c3lu"]
+[ext_resource type="Script" uid="uid://cbd7vywjxe4xh" path="res://Scripts/Overlay.gd" id="6_d1s0c"]
+[ext_resource type="Texture2D" uid="uid://bbl1ct02dx6ab" path="res://Assets/punkt.png" id="8_h3lhy"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6u7yt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0c3lu"]
+albedo_color = Color(0.758192, 0.758192, 0.758192, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_h3lhy"]
+
+[sub_resource type="SystemFont" id="SystemFont_ihnnn"]
 
 [node name="WorldGridMap" type="Node3D"]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_hxtjs")
@@ -42,113 +53,176 @@ transform = Transform3D(-0.265936, 0, 0.423413, 0, 0.5, 0, -0.423413, 0, -0.2659
 [node name="camera2" parent="Cameras" instance=ExtResource("2_vtsl5")]
 transform = Transform3D(-0.42698, 0, -0.26017, 0, 0.5, 0, 0.26017, 0, -0.42698, 19.1842, 3.43537, 8.94175)
 
-[node name="laser01" type="Node3D" parent="."]
+[node name="LaserFirstRoom" type="Node3D" parent="."]
 transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, -0.276248, -0.0439506, 0.971182)
 
-[node name="laser_04" parent="laser01" instance=ExtResource("3_sdwh0")]
+[node name="laser_04" parent="LaserFirstRoom" instance=ExtResource("3_sdwh0")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -8.47462, 1.95859, 10.1152)
 
-[node name="laser_11" parent="laser01" instance=ExtResource("3_sdwh0")]
+[node name="laser_11" parent="LaserFirstRoom" instance=ExtResource("3_sdwh0")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -9.08858, 1.95859, 10.1152)
 
-[node name="laser_05" parent="laser01" instance=ExtResource("3_sdwh0")]
+[node name="laser_05" parent="LaserFirstRoom" instance=ExtResource("3_sdwh0")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -7.81723, 1.95859, 10.1152)
 
-[node name="laser_06" parent="laser01" instance=ExtResource("3_sdwh0")]
+[node name="laser_06" parent="LaserFirstRoom" instance=ExtResource("3_sdwh0")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -7.2315, 1.95859, 10.1152)
 
-[node name="laser_07" parent="laser01" instance=ExtResource("3_sdwh0")]
+[node name="laser_07" parent="LaserFirstRoom" instance=ExtResource("3_sdwh0")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -6.66405, 1.95859, 10.1152)
 
-[node name="laser_08" parent="laser01" instance=ExtResource("3_sdwh0")]
+[node name="laser_08" parent="LaserFirstRoom" instance=ExtResource("3_sdwh0")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -6.12486, 1.95859, 10.1152)
 
-[node name="laser_09" parent="laser01" instance=ExtResource("3_sdwh0")]
+[node name="laser_09" parent="LaserFirstRoom" instance=ExtResource("3_sdwh0")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -5.56706, 1.95859, 10.1152)
 
-[node name="laser_10" parent="laser01" instance=ExtResource("3_sdwh0")]
+[node name="laser_10" parent="LaserFirstRoom" instance=ExtResource("3_sdwh0")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -4.99303, 1.95859, 10.1152)
 
-[node name="laser02" type="Node3D" parent="."]
+[node name="LaserSecondRoomFront" type="Node3D" parent="."]
 transform = Transform3D(0.91, 0, 0, 0, 0.91, 0, 0, 0, 0.91, -11.7911, 0.15947, -23.1851)
 
-[node name="laser_04" parent="laser02" instance=ExtResource("3_sdwh0")]
+[node name="laser_04" parent="LaserSecondRoomFront" instance=ExtResource("3_sdwh0")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -8.51146, 1.95859, 10.1152)
 
-[node name="laser_12" parent="laser02" instance=ExtResource("3_sdwh0")]
+[node name="laser_12" parent="LaserSecondRoomFront" instance=ExtResource("3_sdwh0")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -9.81186, 1.95859, 10.1152)
 
-[node name="laser_13" parent="laser02" instance=ExtResource("3_sdwh0")]
+[node name="laser_13" parent="LaserSecondRoomFront" instance=ExtResource("3_sdwh0")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -10.3477, 1.95859, 10.1152)
 
-[node name="laser_11" parent="laser02" instance=ExtResource("3_sdwh0")]
+[node name="laser_11" parent="LaserSecondRoomFront" instance=ExtResource("3_sdwh0")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -9.17524, 1.95859, 10.1152)
 
-[node name="laser_05" parent="laser02" instance=ExtResource("3_sdwh0")]
+[node name="laser_05" parent="LaserSecondRoomFront" instance=ExtResource("3_sdwh0")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -7.88295, 1.95859, 10.1152)
 
-[node name="laser_06" parent="laser02" instance=ExtResource("3_sdwh0")]
+[node name="laser_06" parent="LaserSecondRoomFront" instance=ExtResource("3_sdwh0")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -7.24702, 1.95859, 10.1152)
 
-[node name="laser_07" parent="laser02" instance=ExtResource("3_sdwh0")]
+[node name="laser_07" parent="LaserSecondRoomFront" instance=ExtResource("3_sdwh0")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -6.64321, 1.95859, 10.1152)
 
-[node name="laser_08" parent="laser02" instance=ExtResource("3_sdwh0")]
+[node name="laser_08" parent="LaserSecondRoomFront" instance=ExtResource("3_sdwh0")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -6.04297, 1.95859, 10.1152)
 
-[node name="laser_09" parent="laser02" instance=ExtResource("3_sdwh0")]
+[node name="laser_09" parent="LaserSecondRoomFront" instance=ExtResource("3_sdwh0")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -5.4736, 1.95859, 10.1152)
 
-[node name="laser_10" parent="laser02" instance=ExtResource("3_sdwh0")]
+[node name="laser_10" parent="LaserSecondRoomFront" instance=ExtResource("3_sdwh0")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -4.89998, 1.95859, 10.1152)
 
-[node name="laser_14" parent="laser02" instance=ExtResource("3_sdwh0")]
+[node name="laser_14" parent="LaserSecondRoomFront" instance=ExtResource("3_sdwh0")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -4.38189, 1.95859, 10.1152)
 
-[node name="laser02_blau" type="Node3D" parent="."]
+[node name="LaserSecondRoomBack" type="Node3D" parent="."]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -3.17735, 0, 3.46355)
 
-[node name="laser_horizontal_03" parent="laser02_blau" instance=ExtResource("4_lvmhw")]
+[node name="laser_horizontal_03" parent="LaserSecondRoomBack" instance=ExtResource("4_lvmhw")]
 transform = Transform3D(-5.68248e-09, -0.13, 0, 0.13, -5.68248e-09, 0, 0, 0, 0.13, -13.8811, 19.6484, -11.4909)
 
-[node name="laser_horizontal_17" parent="laser02_blau" instance=ExtResource("4_lvmhw")]
+[node name="laser_horizontal_17" parent="LaserSecondRoomBack" instance=ExtResource("4_lvmhw")]
 transform = Transform3D(-5.68248e-09, -0.13, 0, 0.13, -5.68248e-09, 0, 0, 0, 0.13, -13.3185, 19.6484, -11.4909)
 
-[node name="laser_horizontal_04" parent="laser02_blau" instance=ExtResource("4_lvmhw")]
+[node name="laser_horizontal_04" parent="LaserSecondRoomBack" instance=ExtResource("4_lvmhw")]
 transform = Transform3D(-5.68248e-09, -0.13, 0, 0.13, -5.68248e-09, 0, 0, 0, 0.13, -14.3907, 19.6484, -11.4909)
 
-[node name="laser_horizontal_05" parent="laser02_blau" instance=ExtResource("4_lvmhw")]
+[node name="laser_horizontal_05" parent="LaserSecondRoomBack" instance=ExtResource("4_lvmhw")]
 transform = Transform3D(-5.68248e-09, -0.13, 0, 0.13, -5.68248e-09, 0, 0, 0, 0.13, -14.9301, 19.6484, -11.4909)
 
-[node name="laser_horizontal_06" parent="laser02_blau" instance=ExtResource("4_lvmhw")]
+[node name="laser_horizontal_06" parent="LaserSecondRoomBack" instance=ExtResource("4_lvmhw")]
 transform = Transform3D(-5.68248e-09, -0.13, 0, 0.13, -5.68248e-09, 0, 0, 0, 0.13, -15.5256, 19.6484, -11.4909)
 
-[node name="laser_horizontal_07" parent="laser02_blau" instance=ExtResource("4_lvmhw")]
+[node name="laser_horizontal_07" parent="LaserSecondRoomBack" instance=ExtResource("4_lvmhw")]
 transform = Transform3D(-5.68248e-09, -0.13, 0, 0.13, -5.68248e-09, 0, 0, 0, 0.13, -16.0348, 19.6484, -11.4909)
 
-[node name="laser_horizontal_08" parent="laser02_blau" instance=ExtResource("4_lvmhw")]
+[node name="laser_horizontal_08" parent="LaserSecondRoomBack" instance=ExtResource("4_lvmhw")]
 transform = Transform3D(-5.68248e-09, -0.13, 0, 0.13, -5.68248e-09, 0, 0, 0, 0.13, -16.5455, 19.6484, -11.4909)
 
-[node name="laser_horizontal_09" parent="laser02_blau" instance=ExtResource("4_lvmhw")]
+[node name="laser_horizontal_09" parent="LaserSecondRoomBack" instance=ExtResource("4_lvmhw")]
 transform = Transform3D(-5.68248e-09, -0.13, 0, 0.13, -5.68248e-09, 0, 0, 0, 0.13, -17.0565, 19.6484, -11.4909)
 
-[node name="laser_horizontal_10" parent="laser02_blau" instance=ExtResource("4_lvmhw")]
+[node name="laser_horizontal_10" parent="LaserSecondRoomBack" instance=ExtResource("4_lvmhw")]
 transform = Transform3D(-5.68248e-09, -0.13, 0, 0.13, -5.68248e-09, 0, 0, 0, 0.13, -17.5689, 19.6484, -11.4909)
 
-[node name="laser_horizontal_11" parent="laser02_blau" instance=ExtResource("4_lvmhw")]
+[node name="laser_horizontal_11" parent="LaserSecondRoomBack" instance=ExtResource("4_lvmhw")]
 transform = Transform3D(-5.68248e-09, -0.13, 0, 0.13, -5.68248e-09, 0, 0, 0, 0.13, -17.9963, 19.6484, -11.4909)
 
-[node name="laser_horizontal_12" parent="laser02_blau" instance=ExtResource("4_lvmhw")]
+[node name="laser_horizontal_12" parent="LaserSecondRoomBack" instance=ExtResource("4_lvmhw")]
 transform = Transform3D(-5.68248e-09, -0.13, 0, 0.13, -5.68248e-09, 0, 0, 0, 0.13, -18.452, 19.6484, -11.4909)
 
-[node name="laser_horizontal_13" parent="laser02_blau" instance=ExtResource("4_lvmhw")]
+[node name="laser_horizontal_13" parent="LaserSecondRoomBack" instance=ExtResource("4_lvmhw")]
 transform = Transform3D(-5.68248e-09, -0.13, 0, 0.13, -5.68248e-09, 0, 0, 0, 0.13, -18.9759, 19.6484, -11.4909)
 
-[node name="laser_horizontal_14" parent="laser02_blau" instance=ExtResource("4_lvmhw")]
+[node name="laser_horizontal_14" parent="LaserSecondRoomBack" instance=ExtResource("4_lvmhw")]
 transform = Transform3D(-5.68248e-09, -0.13, 0, 0.13, -5.68248e-09, 0, 0, 0, 0.13, -19.4478, 19.6484, -11.4909)
 
-[node name="laser_horizontal_15" parent="laser02_blau" instance=ExtResource("4_lvmhw")]
+[node name="laser_horizontal_15" parent="LaserSecondRoomBack" instance=ExtResource("4_lvmhw")]
 transform = Transform3D(-5.68248e-09, -0.13, 0, 0.13, -5.68248e-09, 0, 0, 0, 0.13, -19.9307, 19.6484, -11.4909)
 
-[node name="laser_horizontal_16" parent="laser02_blau" instance=ExtResource("4_lvmhw")]
+[node name="laser_horizontal_16" parent="LaserSecondRoomBack" instance=ExtResource("4_lvmhw")]
 transform = Transform3D(-5.68248e-09, -0.13, 0, 0.13, -5.68248e-09, 0, 0, 0, 0.13, -20.4267, 19.6484, -11.4909)
+
+[node name="Stromkasten" type="Node3D" parent="."]
+
+[node name="stromkasten" parent="Stromkasten" instance=ExtResource("5_6u7yt")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -8.737, 2.824, -31.171)
+
+[node name="stromkasten3" parent="Stromkasten" instance=ExtResource("5_6u7yt")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 27.243, 2.804, -21.166)
+
+[node name="stromkasten2" parent="Stromkasten" instance=ExtResource("5_6u7yt")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -10.056, 3.704, -13.161)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(30, 0, 0, 0, -1, 2.62268e-06, 0, -8.74228e-08, -30, 5, 6, -4.5)
+mesh = SubResource("PlaneMesh_6u7yt")
+surface_material_override/0 = SubResource("StandardMaterial3D_0c3lu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("6_d1s0c")
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer"]
+offset_left = 909.0
+offset_top = 85.0
+offset_right = 1105.0
+offset_bottom = 125.0
+theme_override_fonts/font = SubResource("SystemFont_h3lhy")
+theme_override_font_sizes/font_size = 29
+text = "18:32:21"
+horizontal_alignment = 1
+
+[node name="DateLabel" type="Label" parent="CanvasLayer"]
+offset_left = 931.0
+offset_top = 44.0
+offset_right = 1079.0
+offset_bottom = 84.0
+theme_override_fonts/font = SubResource("SystemFont_ihnnn")
+theme_override_font_sizes/font_size = 29
+text = "14.07.2025"
+
+[node name="pixelgröße" type="Label" parent="CanvasLayer"]
+offset_left = 423.0
+offset_top = 557.0
+offset_right = 694.0
+offset_bottom = 597.0
+theme_override_fonts/font = SubResource("SystemFont_ihnnn")
+theme_override_font_sizes/font_size = 29
+text = "1920 x 1080 | 25fps"
+
+[node name="Overlay" type="TextureRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.79, 0.74)
+texture = ExtResource("6_0c3lu")
+
+[node name="RecDot" type="TextureRect" parent="CanvasLayer"]
+offset_left = 48.0
+offset_top = 52.0
+offset_right = 78.0
+offset_bottom = 82.0
+texture = ExtResource("8_h3lhy")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.155, 10.485, 0)
