@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2oqbh1jfmqg2"]
+[gd_scene load_steps=7 format=3 uid="uid://d2oqbh1jfmqg2"]
 
 [ext_resource type="PackedScene" uid="uid://48nuwwideadk" path="res://Prefabs/HeikoShock.tscn" id="1_jjgbg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bo1nx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jjgbg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjgbg"]
+albedo_color = Color(0.117647, 0.309804, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bo1nx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jjgbg"]
+size = Vector3(26.6398, 0.310059, 22.5509)
 
 [node name="Main" type="Node3D"]
 
@@ -27,3 +35,15 @@ shape = SubResource("BoxShape3D_bo1nx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.322731, -7.70972)
 mesh = SubResource("BoxMesh_jjgbg")
 skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(6.26, 0, 0, 0, 6.26, 0, 0, 0, 6.26, 0, -1.645, 0)
+material_override = SubResource("StandardMaterial3D_jjgbg")
+mesh = SubResource("PlaneMesh_bo1nx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+transform = Transform3D(0.159744, 0, 0, 0, 0.159744, 0, 0, 0, 0.159744, 0, 0.26278, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922355, -2.44182, -3.51557)
+shape = SubResource("BoxShape3D_jjgbg")
