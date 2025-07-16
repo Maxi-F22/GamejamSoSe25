@@ -141,7 +141,7 @@ mesh = SubResource("PrismMesh_a7jqq")
 
 [node name="SingleWave" type="Node3D" parent="Aimer" node_paths=PackedStringArray("char_script")]
 script = ExtResource("1_823jm")
-scale_speed = 10.0
+scale_speed = 20.0
 max_scale = 10.0
 char_script = NodePath("../..")
 isSingle = true

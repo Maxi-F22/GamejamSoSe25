@@ -10,7 +10,7 @@ func _ready():
 		push_error("Camera3D not found.")
 
 func _process(_delta):
-	if not camera:
+	if not camera or $SingleWave.get_child(0).visible:
 		return
 
 	var mouse_pos = get_viewport().get_mouse_position()

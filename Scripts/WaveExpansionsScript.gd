@@ -4,6 +4,7 @@ extends Node3D
 @export var max_scale: float = 8
 @export var char_script: CharacterBody3D
 @export var isSingle: bool = false
+
 var wave_triggered = false
 var waves = []
 var forward
@@ -17,9 +18,9 @@ func _ready():
 		if wave is Area3D:
 			wave.body_entered.connect(_on_child_body_entered.bind(wave))
 		for child in wave.get_children():
-			child.call_deferred("set", "visible", true)
+			child.call_deferred("set", "visible", false)
 			if child is CollisionShape3D:
-				child.call_deferred("set", "disabled", false)
+				child.call_deferred("set", "disabled", true)
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("WaveActivate"):# and char_script.is_active_character:
@@ -28,7 +29,6 @@ func _physics_process(delta):
 		for wave in waves:
 			for child in wave.get_children():
 				if scale.z < max_scale:
-					#child.scale.z += scale_speed * delta
 					if isSingle == false:
 						scale.z += scale_speed * delta
 						scale.x += scale_speed * delta
