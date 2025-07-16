@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c5jxhrmfnpa7p"]
 
-[ext_resource type="Script" path="res://Scripts/CharacterControllerScript.gd" id="1_axias"]
+[ext_resource type="Script" uid="uid://cynfxnpd47dtn" path="res://Scripts/CharacterControllerScript.gd" id="1_axias"]
 [ext_resource type="Script" uid="uid://dqbkm2uy4b56f" path="res://Scripts/WaveExpansionsScript.gd" id="1_bp4fg"]
 [ext_resource type="Script" uid="uid://d24wibnimjfh" path="res://Scripts/AimScript.gd" id="3_3de4r"]
 [ext_resource type="PackedScene" uid="uid://bn6uwkx8m74hu" path="res://Scenes/woman.tscn" id="3_x7hxy"]
