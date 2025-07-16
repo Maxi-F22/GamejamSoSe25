@@ -1,7 +1,7 @@
 extends Node3D
 
 var minimap_container : CenterContainer
-
+var hud_controller : CanvasLayer
 var char_scripts = []
 var current_cam : Camera3D
 var cams = []
@@ -9,7 +9,7 @@ var current_cam_index = 0
 var minimap_cam : Camera3D
 var texture_rects
 var current_active_rect : TextureRect = null
-var active_cam_icon = ""
+var active_cam_icon = "CamIcon1"
 
 func _ready():
 	minimap_container = get_node("MinimapCamera/MinimapLayer/CenterContainer")
@@ -17,6 +17,7 @@ func _ready():
 	char_scripts.append(get_tree().get_root().get_node("Main/Elektro"))
 	char_scripts.append(get_tree().get_root().get_node("Main/Heavy"))
 	char_scripts.append(get_tree().get_root().get_node("Main/Screamo"))
+	hud_controller = get_tree().get_root().get_node("Main/CanvasLayer")
 	for child in get_children():
 		if child is Camera3D:
 			if child.name == "MinimapCamera":
@@ -56,13 +57,12 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("Switch Cam"):
 		minimap_cam.current = true
 		minimap_container.visible = true
+		hud_controller.active_char = ""
 		for character in char_scripts:
-			character.allow_movement = false
+			character.is_active_character = false
 	else:
 		current_cam.current = true
 		minimap_container.visible = false
-		for character in char_scripts:
-			character.allow_movement = true
 
 func _on_texture_rect_hovered(rect: TextureRect):
 	var tween = create_tween()
@@ -72,7 +72,7 @@ func _on_texture_rect_unhovered(rect: TextureRect):
 	var tween = create_tween()
 	tween.tween_property(rect, "scale", Vector2(0.3, 0.3), 0.1)
 
-func set_active_border(character_name: String):
+func set_active_border(camera_name: String):
 	# Entferne alle vorherigen Borders
 	remove_all_borders()
 	
@@ -81,7 +81,7 @@ func set_active_border(character_name: String):
 	
 	# Finde das TextureRect mit dem entsprechenden Namen
 	for rect in texture_rects:
-		if rect.name == character_name:
+		if rect.name == camera_name:
 			add_red_border(rect)
 			current_active_rect = rect
 			break

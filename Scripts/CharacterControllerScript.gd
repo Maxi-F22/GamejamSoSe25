@@ -33,10 +33,12 @@ func _physics_process(delta):
 			var target_rot = atan2(direction.x, direction.z)
 			rotation.y = lerp_angle(rotation.y, target_rot, 0.15)
 		else:
-			play_animation("idle")
 			velocity = Vector3(0,0,0)
 			is_moving = false
-			
+
+	if not player_anim_player.is_playing():
+		play_animation("idle")
+
 	move_and_slide()
  
 func _unhandled_input(event: InputEvent) -> void:

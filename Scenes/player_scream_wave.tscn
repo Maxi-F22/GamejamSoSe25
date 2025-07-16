@@ -23,9 +23,10 @@ shape = SubResource("CapsuleShape3D_bp4fg")
 [node name="PlayerModel" parent="." instance=ExtResource("3_x7hxy")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -1.11355, 0)
 
-[node name="Aimer" type="Node3D" parent="."]
+[node name="Aimer" type="Node3D" parent="." node_paths=PackedStringArray("char_script")]
 script = ExtResource("3_3de4r")
 orbit_radius = 1.0
+char_script = NodePath("..")
 
 [node name="AimerMesh" type="MeshInstance3D" parent="Aimer"]
 transform = Transform3D(0.5, 0, 0, 0, -4.37114e-08, -0.1, 0, 1, -4.37114e-09, 0, 0, 0)
@@ -38,14 +39,14 @@ max_scale = 10.0
 char_script = NodePath("../..")
 is_single = true
 
-[node name="ElektroWave1" type="Area3D" parent="Aimer/SingleWave"]
+[node name="ScreamWave1" type="Area3D" parent="Aimer/SingleWave"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0.5)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Aimer/SingleWave/ElektroWave1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Aimer/SingleWave/ScreamWave1"]
 shape = SubResource("BoxShape3D_w2l0f")
 debug_color = Color(0, 0.6, 0.701961, 0.423529)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Aimer/SingleWave/ElektroWave1/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Aimer/SingleWave/ScreamWave1/CollisionShape3D"]
 transform = Transform3D(-1, 0, -8.74228e-09, 0, 0.5, 0, 8.74228e-08, 0, -0.1, -0.0104828, -0.00250244, -0.00836194)
 mesh = SubResource("BoxMesh_pgjs5")
 skeleton = NodePath("../..")

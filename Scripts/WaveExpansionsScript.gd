@@ -6,8 +6,8 @@ extends Node3D
 @export var is_single: bool = false
 
 var wave_triggered = false
+var is_activating = false
 var waves = []
-var forward
 
 func _ready():
 	for child in get_children():	
@@ -24,18 +24,19 @@ func _ready():
 				child.call_deferred("set", "disabled", true)
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("Wave Activate") and char_script.is_active_character and not wave_triggered:
+	if Input.is_action_just_pressed("Wave Activate") and char_script.is_active_character and not is_activating:
+		is_activating = true
 		char_script.allow_movement = false
 		if char_script.name == "Elektro":
 			char_script.play_animation("interaction")
 			trigger_wave()
 		elif char_script.name == "Heavy":
 			char_script.play_animation("jump")
-			await get_tree().create_timer(2.0).timeout
+			await get_tree().create_timer(1.5).timeout
 			trigger_wave()
 		elif char_script.name == "Screamo":
 			char_script.play_animation("scream")
-			await get_tree().create_timer(1.0).timeout
+			await get_tree().create_timer(0.75).timeout
 			trigger_wave()
 
 	if wave_triggered:
@@ -72,6 +73,7 @@ func reset(WaveHit: Area3D = null):
 	else:
 		char_script.allow_movement = true
 		wave_triggered = false
+		is_activating = false
 		scale = Vector3(1, 1, 1)
 		for wave in waves:
 			wave.call_deferred("set", "visible", false)

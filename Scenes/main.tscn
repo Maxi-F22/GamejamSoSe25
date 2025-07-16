@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d2oqbh1jfmqg2"]
+[gd_scene load_steps=16 format=3 uid="uid://d2oqbh1jfmqg2"]
 
 [ext_resource type="Script" uid="uid://cuv1uwh8rujp2" path="res://Scripts/CamSwitchScript.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://4ggca4e7xm4w" path="res://Scenes/player_electro_wave.tscn" id="3_ynf5e"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://3jnrmv2wf4wx" path="res://Assets/HUD/bar_heavy.png" id="7_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://c5jxhrmfnpa7p" path="res://Scenes/player_scream_wave.tscn" id="8_344ge"]
 [ext_resource type="Texture2D" uid="uid://c5irvsa43cto6" path="res://Assets/HUD/bar_screamo.png" id="8_hptm8"]
-[ext_resource type="Texture2D" uid="uid://rtsxdt15mgjr" path="res://Assets/HUD/Screenshot 2025-07-16 120449.png" id="9_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://48nuwwideadk" path="res://Scenes/player_mass_wave.tscn" id="9_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://ds7lmqb52bafb" path="res://Scenes/world_gridmap.tscn" id="10_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://cfmg2037l1dp3" path="res://Scenes/movable_box.tscn" id="10_hptm8"]
@@ -25,6 +24,9 @@ background_mode = 2
 background_color = Color(0, 0.815686, 0, 1)
 sky = SubResource("Sky_jjgbg")
 glow_enabled = true
+glow_intensity = 1.0
+glow_strength = 0.35
+glow_blend_mode = 0
 
 [node name="Main" type="Node3D"]
 
@@ -224,15 +226,6 @@ offset_bottom = -52.0
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("10_jkdf5")
 
-[node name="Test" type="TextureRect" parent="CamSwitcher/MinimapCamera/MinimapLayer/CenterContainer/Control"]
-visible = false
-layout_mode = 0
-offset_left = -576.0
-offset_top = -327.0
-offset_right = 576.0
-offset_bottom = 327.0
-texture = ExtResource("9_fdnlq")
-
 [node name="WorldGridMap" parent="." instance=ExtResource("10_d1ilt")]
 
 [node name="Interactables" type="Node3D" parent="."]
@@ -250,12 +243,43 @@ _laser_control_name = "LaserFirstRoom"
 
 [node name="Lights" type="Node3D" parent="."]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.51471, 5.93526)
+[node name="OmniLight3D1" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.73081, 5.74178, 19.4818)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 2.0
 shadow_enabled = true
+omni_range = 10.0
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.74178, 19.4818)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.35216, 5.74178, 19.4818)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9255, 5.74178, 11.0729)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.06576, 5.74178, 11.0729)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.53601, 5.74178, 3.18022)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.52973, 5.74178, 3.18022)
 light_color = Color(0.904452, 0.875655, 0.690502, 1)
 light_energy = 2.0
 shadow_enabled = true

@@ -25,9 +25,10 @@ shape = SubResource("CapsuleShape3D_7r3u0")
 [node name="PlayerModel" parent="." instance=ExtResource("3_55on4")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -1.01264, 0)
 
-[node name="Aimer" type="Node3D" parent="."]
+[node name="Aimer" type="Node3D" parent="." node_paths=PackedStringArray("char_script")]
 script = ExtResource("4_bfl78")
 orbit_radius = 1.0
+char_script = NodePath("..")
 
 [node name="AimerMesh" type="MeshInstance3D" parent="Aimer"]
 transform = Transform3D(0.5, 0, 0, 0, -4.37114e-08, -0.1, 0, 1, -4.37114e-09, 0, 0, 0)
