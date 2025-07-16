@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgtiy0gmonum6"]
+
+[ext_resource type="Script" uid="uid://dko6fdf6flnuc" path="res://Scripts/MainMenuScript.gd" id="1_tt5f1"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bnhvo"]
+
+[node name="MainMenu" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("1_tt5f1")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+material = SubResource("CanvasItemMaterial_bnhvo")
+offset_left = 503.0
+offset_top = 137.0
+offset_right = 662.0
+offset_bottom = 160.0
+text = "WAVES OF FREEDOM"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 531.0
+offset_top = 204.0
+offset_right = 623.0
+offset_bottom = 243.0
+text = "Play"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_on_button_pressed"]
