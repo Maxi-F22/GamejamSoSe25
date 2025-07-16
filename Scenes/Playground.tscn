@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://wx1tt663ywlw"]
+[gd_scene load_steps=4 format=3 uid="uid://wx1tt663ywlw"]
+
+[ext_resource type="PackedScene" uid="uid://dydl8asv84h3b" path="res://Scenes/electro_guy.tscn" id="1_iualk"]
+[ext_resource type="PackedScene" uid="uid://dgq61tqfwu4r7" path="res://Scenes/fat_guy.tscn" id="2_exwnq"]
+[ext_resource type="PackedScene" uid="uid://cal2jtjst2cm3" path="res://Scenes/woman.tscn" id="3_eqbnc"]
 
 [node name="Playground" type="Node3D"]
 
@@ -8,3 +12,11 @@ size = Vector3(500, 1, 500)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.3141, 92.0333)
+
+[node name="electro_guy" parent="." instance=ExtResource("1_iualk")]
+
+[node name="fat_guy" parent="." instance=ExtResource("2_exwnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0072, 0, 0)
+
+[node name="woman" parent="." instance=ExtResource("3_eqbnc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.2023, 0, 0)
