@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhbsav18sji6b"]
+
+[ext_resource type="PackedScene" uid="uid://cyun73qip540m" path="res://Assets/Models/cobbleWallBig.glb" id="1_j4jes"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3w8jx"]
+size = Vector3(2.89896, 4.36258, 0.6)
+
+[node name="BreakableWall" type="Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0743561, 0.0790019, 0)
+shape = SubResource("BoxShape3D_3w8jx")
+
+[node name="cobbleWallBig" parent="." instance=ExtResource("1_j4jes")]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, -2.09459, 0)

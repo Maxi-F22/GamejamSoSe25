@@ -1,17 +1,23 @@
-[gd_scene load_steps=16 format=3 uid="uid://d2oqbh1jfmqg2"]
+[gd_scene load_steps=24 format=3 uid="uid://d2oqbh1jfmqg2"]
 
 [ext_resource type="Script" uid="uid://cuv1uwh8rujp2" path="res://Scripts/CamSwitchScript.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://4ggca4e7xm4w" path="res://Scenes/player_electro_wave.tscn" id="3_ynf5e"]
 [ext_resource type="Script" uid="uid://dbbvdrp5x63n4" path="res://Scripts/HUDControllerScript.gd" id="5_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://cdud2s2h135ly" path="res://Assets/HUD/bar_elektro.png" id="6_344ge"]
+[ext_resource type="PackedScene" uid="uid://dhbsav18sji6b" path="res://Scenes/breakable_wall.tscn" id="7_b3802"]
 [ext_resource type="Texture2D" uid="uid://3jnrmv2wf4wx" path="res://Assets/HUD/bar_heavy.png" id="7_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://c5jxhrmfnpa7p" path="res://Scenes/player_scream_wave.tscn" id="8_344ge"]
+[ext_resource type="Script" uid="uid://bhf7q2ake1obg" path="res://Scripts/GlassWallScript.gd" id="8_fevyy"]
 [ext_resource type="Texture2D" uid="uid://c5irvsa43cto6" path="res://Assets/HUD/bar_screamo.png" id="8_hptm8"]
 [ext_resource type="PackedScene" uid="uid://48nuwwideadk" path="res://Scenes/player_mass_wave.tscn" id="9_ynf5e"]
-[ext_resource type="PackedScene" uid="uid://ds7lmqb52bafb" path="res://Scenes/world_gridmap.tscn" id="10_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://cfmg2037l1dp3" path="res://Scenes/movable_box.tscn" id="10_hptm8"]
-[ext_resource type="Texture2D" uid="uid://d1ugxtrx3yfc1" path="res://icon.svg" id="10_jkdf5"]
+[ext_resource type="Script" uid="uid://x4pml0rfi1ro" path="res://Scripts/Overlay.gd" id="10_pdsj5"]
 [ext_resource type="PackedScene" uid="uid://bap0knk6vg3ko" path="res://Scenes/fuse_box.tscn" id="11_d1ilt"]
+[ext_resource type="Texture2D" uid="uid://cxlepal5iohd5" path="res://Assets/Models/overlay.png" id="11_ee4r6"]
+[ext_resource type="Texture2D" uid="uid://bbl1ct02dx6ab" path="res://Assets/Models/punkt.png" id="12_gt3je"]
+[ext_resource type="PackedScene" uid="uid://cg1mt8ppkngax" path="res://Scenes/WorldGridMap.tscn" id="13_3pmx8"]
+[ext_resource type="Script" uid="uid://c6j3erf85dk5l" path="res://Scripts/GenerateGridMapAreaScript.gd" id="14_u50mg"]
+[ext_resource type="PackedScene" uid="uid://djbb1axjnbcjq" path="res://Scenes/pressure_plate.tscn" id="18_hibaj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7u77a"]
 sky_top_color = Color(0.268737, 0.412045, 0.836146, 1)
@@ -28,12 +34,14 @@ glow_intensity = 1.0
 glow_strength = 0.35
 glow_blend_mode = 0
 
+[sub_resource type="SystemFont" id="SystemFont_hpc6h"]
+
+[sub_resource type="SystemFont" id="SystemFont_kltya"]
+
 [node name="Main" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_bo1nx")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
 script = ExtResource("5_ynf5e")
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
@@ -76,44 +84,31 @@ offset_bottom = 320.0
 pivot_offset = Vector2(150, 50)
 texture = ExtResource("8_hptm8")
 
-[node name="Instructions" type="CenterContainer" parent="CanvasLayer"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bo1nx")
 
-[node name="Control" type="Control" parent="CanvasLayer/Instructions"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Instructions/Control"]
-layout_mode = 0
-offset_top = -60.0
-offset_right = 219.0
-offset_bottom = 15.0
-text = "Hold TAB: Choose Camera
-Hold Q: Choose Character
-SPACE: Activate Wave Power"
+[node name="WorldGridMap" parent="." instance=ExtResource("13_3pmx8")]
+script = ExtResource("14_u50mg")
 
 [node name="Elektro" parent="." instance=ExtResource("3_ynf5e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.20787, 6.18274)
+transform = Transform3D(0.419262, 0, 0.907865, 0, 1, 0, -0.907865, 0, 0.419262, 2.87534, 3.38245, 17.6136)
 
 [node name="Heavy" parent="." instance=ExtResource("9_ynf5e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.94592, 1.78955)
+transform = Transform3D(0.0401492, 0, 0.999194, 0, 1, 0, -0.999194, 0, 0.0401492, 0.908181, 3.63308, 19.3561)
 
 [node name="Screamo" parent="." instance=ExtResource("8_344ge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4.11687, 19.3772)
+transform = Transform3D(-0.0939693, 0, 0.995575, 0, 1, 0, -0.995575, 0, -0.0939693, 2.19043, 3.48966, 21.683)
 
 [node name="CamSwitcher" type="Node3D" parent="."]
 transform = Transform3D(1.8, 0, 0, 0, 1, 0, 0, 0, 1.8, 0, 1.79075, 16.1857)
 script = ExtResource("1_jjgbg")
 
 [node name="Camera1" type="Camera3D" parent="CamSwitcher"]
-transform = Transform3D(0.249516, 0.166033, -0.467779, -7.5198e-09, 0.942398, 0.334493, 0.496371, -0.0834613, 0.235143, -4.54318, 3.87731, 3.08907)
+transform = Transform3D(0.440682, -0.113156, 0.318805, -7.44049e-09, 0.942398, 0.334494, -0.338291, -0.147405, 0.415298, 4.53274, 3.87731, 3.22424)
 
 [node name="Camera2" type="Camera3D" parent="CamSwitcher"]
-transform = Transform3D(-0.242688, -0.216455, 0.470702, -0.0404293, 0.971786, 0.187961, -0.498106, 0.0265859, -0.244592, 9.95479, 3.82864, -3.59928)
+transform = Transform3D(-0.24012, -0.295328, 0.439251, -0.0679626, 0.871351, 0.402571, -0.499021, 0.0675853, -0.234633, 9.95479, 3.82864, -3.59928)
+fov = 90.0
 
 [node name="Camera3" type="Camera3D" parent="CamSwitcher"]
 transform = Transform3D(-0.399333, 0.208564, -0.32508, -0.0031653, 0.839892, 0.542744, 0.386228, 0.217764, -0.334736, -4.47503, 3.64184, -8.97879)
@@ -133,154 +128,324 @@ transform = Transform3D(-0.148374, -0.290968, 0.449405, -0.00316526, 0.839892, 0
 [node name="Camera8" type="Camera3D" parent="CamSwitcher"]
 transform = Transform3D(-0.475219, 0.154919, -0.242506, -0.00316529, 0.839891, 0.542745, 0.287761, 0.25869, -0.398642, -11.1171, 3.91278, -20.0962)
 
+[node name="Camera9" type="Camera3D" parent="CamSwitcher"]
+transform = Transform3D(0.555518, -0.00101826, 0.00641856, -0.00228479, 0.938027, 0.346556, -0.00637366, -0.192533, 0.521088, -4.97592, 2.30874, -17.4466)
+
+[node name="Camera10" type="Camera3D" parent="CamSwitcher"]
+transform = Transform3D(-0.401951, -0.133768, 0.359421, -0.0022848, 0.938027, 0.346556, -0.383505, 0.138477, -0.377346, 6.11405, 2.30874, -12.9676)
+
 [node name="MinimapCamera" type="Camera3D" parent="CamSwitcher"]
-transform = Transform3D(0.555556, 0, 0, 0, -2.42841e-08, 1, 0, -0.555556, -1.34912e-08, 0.698369, 44.078, -11.7168)
+transform = Transform3D(0.555556, 0, 0, 0, -2.42841e-08, 1, 0, -0.555556, -1.34912e-08, 0.698369, 54.4362, -16.057)
 
-[node name="MinimapLayer" type="CanvasLayer" parent="CamSwitcher/MinimapCamera"]
+[node name="CanvasLayer" type="CanvasLayer" parent="CamSwitcher"]
+script = ExtResource("10_pdsj5")
 
-[node name="CenterContainer" type="CenterContainer" parent="CamSwitcher/MinimapCamera/MinimapLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+[node name="OverlayContainer" type="CenterContainer" parent="CamSwitcher/CanvasLayer"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="CamSwitcher/CanvasLayer/OverlayContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TimeLabel" type="Label" parent="CamSwitcher/CanvasLayer/OverlayContainer/Control"]
+layout_mode = 2
+offset_left = 650.0
+offset_top = -356.0
+offset_right = 765.0
+offset_bottom = -316.0
+theme_override_fonts/font = SubResource("SystemFont_hpc6h")
+theme_override_font_sizes/font_size = 29
+text = "18:32:21"
+horizontal_alignment = 1
+
+[node name="DateLabel" type="Label" parent="CamSwitcher/CanvasLayer/OverlayContainer/Control"]
+layout_mode = 2
+offset_left = 614.0
+offset_top = -393.0
+offset_right = 762.0
+offset_bottom = -353.0
+theme_override_fonts/font = SubResource("SystemFont_kltya")
+theme_override_font_sizes/font_size = 29
+text = "14.07.2025"
+
+[node name="pixelgröße" type="Label" parent="CamSwitcher/CanvasLayer/OverlayContainer/Control"]
+layout_mode = 2
+offset_left = -150.0
+offset_top = 350.0
+offset_right = 150.0
+offset_bottom = 390.0
+pivot_offset = Vector2(150, 20)
+theme_override_fonts/font = SubResource("SystemFont_kltya")
+theme_override_font_sizes/font_size = 29
+text = "1920 x 1080 | 25fps"
+horizontal_alignment = 1
+
+[node name="Overlay" type="TextureRect" parent="CamSwitcher/CanvasLayer/OverlayContainer/Control"]
+layout_mode = 2
+offset_left = -850.0
+offset_top = -450.0
+offset_right = 850.0
+offset_bottom = 450.0
+texture = ExtResource("11_ee4r6")
+
+[node name="RecDot" type="TextureRect" parent="CamSwitcher/CanvasLayer/OverlayContainer/Control"]
+layout_mode = 2
+offset_left = -779.0
+offset_top = -382.0
+offset_right = -729.0
+offset_bottom = -332.0
+texture = ExtResource("12_gt3je")
+
+[node name="Control" type="Control" parent="CamSwitcher/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="CamSwitcher/MinimapCamera/MinimapLayer/CenterContainer"]
-layout_mode = 2
-
-[node name="CamIcon1" type="TextureRect" parent="CamSwitcher/MinimapCamera/MinimapLayer/CenterContainer/Control"]
-layout_mode = 0
-offset_left = -117.0
-offset_top = 265.0
-offset_right = 11.0
-offset_bottom = 393.0
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("10_jkdf5")
-
-[node name="CamIcon2" type="TextureRect" parent="CamSwitcher/MinimapCamera/MinimapLayer/CenterContainer/Control"]
-layout_mode = 0
-offset_left = 158.0
-offset_top = 134.0
-offset_right = 286.0
-offset_bottom = 262.0
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("10_jkdf5")
-
-[node name="CamIcon3" type="TextureRect" parent="CamSwitcher/MinimapCamera/MinimapLayer/CenterContainer/Control"]
-layout_mode = 0
-offset_left = -117.0
-offset_top = 28.0
-offset_right = 11.0
-offset_bottom = 156.0
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("10_jkdf5")
-
-[node name="CamIcon4" type="TextureRect" parent="CamSwitcher/MinimapCamera/MinimapLayer/CenterContainer/Control"]
-layout_mode = 0
-offset_left = 266.0
-offset_top = 4.0
-offset_right = 394.0
-offset_bottom = 132.0
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("10_jkdf5")
-
-[node name="CamIcon5" type="TextureRect" parent="CamSwitcher/MinimapCamera/MinimapLayer/CenterContainer/Control"]
-layout_mode = 0
-offset_left = -172.0
-offset_top = 10.0
-offset_right = -44.0
-offset_bottom = 138.0
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("10_jkdf5")
-
-[node name="CamIcon6" type="TextureRect" parent="CamSwitcher/MinimapCamera/MinimapLayer/CenterContainer/Control"]
-layout_mode = 0
-offset_left = 151.0
-offset_top = -68.0
-offset_right = 279.0
-offset_bottom = 60.0
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("10_jkdf5")
-
-[node name="CamIcon7" type="TextureRect" parent="CamSwitcher/MinimapCamera/MinimapLayer/CenterContainer/Control"]
-layout_mode = 0
-offset_left = 87.0
-offset_top = -183.0
-offset_right = 215.0
-offset_bottom = -55.0
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("10_jkdf5")
-
-[node name="CamIcon8" type="TextureRect" parent="CamSwitcher/MinimapCamera/MinimapLayer/CenterContainer/Control"]
-layout_mode = 0
-offset_left = -249.0
-offset_top = -180.0
-offset_right = -121.0
-offset_bottom = -52.0
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("10_jkdf5")
-
-[node name="WorldGridMap" parent="." instance=ExtResource("10_d1ilt")]
-
 [node name="Interactables" type="Node3D" parent="."]
-
-[node name="Boxes" type="Node3D" parent="Interactables"]
-
-[node name="MovableBox" parent="Interactables/Boxes" instance=ExtResource("10_hptm8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.13875, 4.42852, 6.43508)
 
 [node name="FuseBoxes" type="Node3D" parent="Interactables"]
 
 [node name="LaserBox" parent="Interactables/FuseBoxes" instance=ExtResource("11_d1ilt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7826, 4.41456, -0.764895)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4286, 4.10311, -12.6591)
 _laser_control_name = "LaserFirstRoom"
+
+[node name="LaserBox2" parent="Interactables/FuseBoxes" instance=ExtResource("11_d1ilt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.90706, 3.22665, -30.6518)
+_laser_control_name = "LaserSecondRoomFront"
+
+[node name="LaserBox3" parent="Interactables/FuseBoxes" instance=ExtResource("11_d1ilt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.1268, 3.22665, -20.6464)
+_laser_control_name = "LaserSecondRoomBack"
+
+[node name="Boxes" type="Node3D" parent="Interactables"]
+
+[node name="MovableBox1" parent="Interactables/Boxes" instance=ExtResource("10_hptm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.47555, 3.1362, 13.2317)
+
+[node name="MovableBox2" parent="Interactables/Boxes" instance=ExtResource("10_hptm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4226, 2.94643, -17.585)
+
+[node name="MovableBox3" parent="Interactables/Boxes" instance=ExtResource("10_hptm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.03554, 2.99235, -24.4095)
+
+[node name="Plates" type="Node3D" parent="Interactables/Boxes"]
+
+[node name="PressurePlate1" parent="Interactables/Boxes/Plates" instance=ExtResource("18_hibaj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8329, 2.14813, 11.0925)
+_door_control_name = "Gate3"
+
+[node name="PressurePlate2" parent="Interactables/Boxes/Plates" instance=ExtResource("18_hibaj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4045, 2.14813, -19.5909)
+_door_control_name = "Gate2"
+
+[node name="PressurePlate3" parent="Interactables/Boxes/Plates" instance=ExtResource("18_hibaj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.121, 2.14813, -3.20448)
+_door_control_name = "Gate1"
+
+[node name="Breakables" type="Node3D" parent="Interactables"]
+
+[node name="BreakableWall1" parent="Interactables/Breakables" instance=ExtResource("7_b3802")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.52891, 4.07747, 15.4946)
+script = ExtResource("8_fevyy")
+
+[node name="BreakableWall2" parent="Interactables/Breakables" instance=ExtResource("7_b3802")]
+transform = Transform3D(-5.94475e-08, 0, 1.36, 0, 1.36, 0, -1.36, 0, -5.94475e-08, 11.4414, 3.11203, 10.8721)
+script = ExtResource("8_fevyy")
+
+[node name="BreakableWall3" parent="Interactables/Breakables" instance=ExtResource("7_b3802")]
+transform = Transform3D(1.115, 0, 0, 0, 1.115, 0, 0, 0, 1.115, 9.64207, 3.64352, -1.30657)
+script = ExtResource("8_fevyy")
+
+[node name="BreakableWall4" parent="Interactables/Breakables" instance=ExtResource("7_b3802")]
+transform = Transform3D(-4.87382e-08, 0, 1.115, 0, 1.115, 0, -1.115, 0, -4.87382e-08, -6.25843, 3.64352, -3.41429)
+script = ExtResource("8_fevyy")
+
+[node name="BreakableWall5" parent="Interactables/Breakables" instance=ExtResource("7_b3802")]
+transform = Transform3D(1.51, 0, 0, 0, 1.51, 0, 0, 0, 1.51, 27.1517, 2.62417, -14.4984)
+script = ExtResource("8_fevyy")
 
 [node name="Lights" type="Node3D" parent="."]
 
 [node name="OmniLight3D1" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.73081, 5.74178, 19.4818)
 light_color = Color(0.904452, 0.875655, 0.690502, 1)
-light_energy = 2.0
+light_energy = 5.0
 shadow_enabled = true
 omni_range = 10.0
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.35216, 5.74178, 19.4818)
 light_color = Color(0.904452, 0.875655, 0.690502, 1)
-light_energy = 2.0
+light_energy = 5.0
 shadow_enabled = true
 omni_range = 10.0
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9255, 5.74178, 11.0729)
 light_color = Color(0.904452, 0.875655, 0.690502, 1)
-light_energy = 2.0
+light_energy = 5.0
 shadow_enabled = true
 omni_range = 10.0
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.06576, 5.74178, 11.0729)
 light_color = Color(0.904452, 0.875655, 0.690502, 1)
-light_energy = 2.0
+light_energy = 5.0
 shadow_enabled = true
 omni_range = 10.0
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.53601, 5.74178, 3.18022)
 light_color = Color(0.904452, 0.875655, 0.690502, 1)
-light_energy = 2.0
+light_energy = 5.0
 shadow_enabled = true
 omni_range = 10.0
 
 [node name="OmniLight3D6" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.52973, 5.74178, 3.18022)
 light_color = Color(0.904452, 0.875655, 0.690502, 1)
-light_energy = 2.0
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.43175, 5.74178, -4.21055)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0859, 5.74178, -4.21055)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5052, 5.74178, -16.6692)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5054, 5.74178, -16.6692)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D11" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6151, 5.74178, -16.6692)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D12" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.66598, 5.74178, -18.3515)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D13" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5298, 5.74178, -9.31206)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D14" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6232, 5.74178, -17.7421)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D15" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8813, 5.74178, -4.29858)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D16" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.00096, 5.74178, -26.6657)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D17" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.07461, 5.74178, -17.6111)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D18" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.93631, 5.74178, -45.0201)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D19" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.93631, 5.74178, -37.949)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D20" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.93631, 5.74178, -30.7961)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D21" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.93631, 5.74178, -23.9437)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D22" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.08858, 5.74178, -7.3039)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D23" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.44348, 5.74178, 12.7469)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D24" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.36253, 5.74178, -9.93537)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D25" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7171, 5.74178, -4.21055)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 5.0
 shadow_enabled = true
 omni_range = 10.0

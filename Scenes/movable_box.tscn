@@ -1,15 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfmg2037l1dp3"]
+[gd_scene load_steps=5 format=3 uid="uid://cfmg2037l1dp3"]
 
 [ext_resource type="Script" uid="uid://cp1qqjnyawmwh" path="res://Scripts/MoveBoxScript.gd" id="1_7u5cl"]
+[ext_resource type="PackedScene" uid="uid://co1x0gec2235y" path="res://Assets/Models/box.glb" id="2_t3sbr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7am4r"]
 size = Vector3(1.5, 1.5, 1.5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_7u5cl"]
-size = Vector3(1.5, 1.5, 1.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t3sbr"]
-albedo_color = Color(0.21, 0.15855, 0.0042, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7u5cl"]
 size = Vector3(1.6, 1.6, 1.6)
@@ -21,11 +16,10 @@ script = ExtResource("1_7u5cl")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_7am4r")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_7u5cl")
-surface_material_override/0 = SubResource("StandardMaterial3D_t3sbr")
-
 [node name="BoxArea" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BoxArea"]
 shape = SubResource("BoxShape3D_7u5cl")
+
+[node name="BoxModel" parent="." instance=ExtResource("2_t3sbr")]
+transform = Transform3D(0.532606, 0, -0.706792, 0, 0.885, 0, 0.706792, 0, 0.532606, -0.237769, -0.912474, 0)

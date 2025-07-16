@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqbkm2uy4b56f" path="res://Scripts/WaveExpansionsScript.gd" id="1_7r3u0"]
 [ext_resource type="Script" uid="uid://cynfxnpd47dtn" path="res://Scripts/CharacterControllerScript.gd" id="1_u8dvs"]
-[ext_resource type="PackedScene" uid="uid://u7rplkk3umyo" path="res://Scenes/electro_guy.tscn" id="3_55on4"]
+[ext_resource type="PackedScene" uid="uid://u7rplkk3umyo" path="res://Scenes/Models/electro_model.tscn" id="3_55on4"]
 [ext_resource type="Script" uid="uid://d24wibnimjfh" path="res://Scripts/AimScript.gd" id="4_bfl78"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7r3u0"]
