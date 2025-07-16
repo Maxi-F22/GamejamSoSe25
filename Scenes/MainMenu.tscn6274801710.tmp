@@ -10,62 +10,44 @@
 script = ExtResource("1_tt5f1")
 
 [node name="Button" type="Button" parent="CanvasLayer"]
-offset_left = 450.0
-offset_top = 222.0
-offset_right = 667.0
-offset_bottom = 345.0
+offset_left = 531.0
+offset_top = 204.0
+offset_right = 623.0
+offset_bottom = 243.0
 text = "Play"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -290.0
-offset_top = -228.0
-offset_right = -90.0
-offset_bottom = -182.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = -1
+offset_left = 286.0
+offset_top = 98.0
+offset_right = 485.0
+offset_bottom = 136.0
 scale = Vector2(3, 3)
-size_flags_horizontal = 4
-size_flags_vertical = 6
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_offset_y = 10
 theme_override_fonts/normal_font = ExtResource("2_853f1")
 theme_override_fonts/bold_italics_font = ExtResource("2_853f1")
-theme_override_fonts/bold_font = ExtResource("2_853f1")
 theme_override_font_sizes/bold_italics_font_size = 10
 bbcode_enabled = true
-text = " WAVES OF FREEDOM"
+text = "   WAVES OF FREEDOM"
 tab_size = 5
 script = ExtResource("3_8saeu")
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/RichTextLabel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -22.0
-offset_right = 99.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(100, 10)
+layout_mode = 0
+offset_left = -0.333333
+offset_top = -2.66667
+offset_right = 192.667
+offset_bottom = 25.3333
 theme_override_colors/default_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_offset_y = 10
 theme_override_fonts/normal_font = ExtResource("2_853f1")
 theme_override_fonts/bold_italics_font = ExtResource("2_853f1")
-theme_override_fonts/bold_font = ExtResource("2_853f1")
 theme_override_font_sizes/bold_italics_font_size = 10
 bbcode_enabled = true
-text = " WAVES OF FREEDOM"
+text = "   WAVES OF FREEDOM"
 script = ExtResource("3_8saeu")
 
 [node name="Floor" type="CSGBox3D" parent="."]
