@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ctq5algger0iy"]
+[gd_scene load_steps=17 format=3 uid="uid://ctq5algger0iy"]
 
 [ext_resource type="MeshLibrary" uid="uid://cvidrvhd4matp" path="res://Resources/blocks-wall-floorv09.tres" id="1_hxtjs"]
 [ext_resource type="PackedScene" uid="uid://bcsysk5dtq7hj" path="res://Assets/camera.glb" id="2_vtsl5"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bbl1ct02dx6ab" path="res://Assets/punkt.png" id="8_h3lhy"]
 [ext_resource type="PackedScene" uid="uid://co1x0gec2235y" path="res://Assets/box.glb" id="9_ihnnn"]
 [ext_resource type="PackedScene" uid="uid://bsfisyfugskev" path="res://Assets/pressureplate.glb" id="10_cx0ex"]
+[ext_resource type="PackedScene" uid="uid://c4713afk240bb" path="res://Assets/door1.glb" id="11_0u6gf"]
+[ext_resource type="PackedScene" uid="uid://bybgpjkweqi5p" path="res://Assets/door2.glb" id="12_f5tn2"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6u7yt"]
 
@@ -250,3 +252,11 @@ transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 18.6073, 1.87777, 11.24
 
 [node name="pressureplate3" parent="Pressurplatte" instance=ExtResource("10_cx0ex")]
 transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -17.8802, 1.87777, -2.47208)
+
+[node name="Türen" type="Node3D" parent="."]
+
+[node name="door12" parent="Türen" instance=ExtResource("11_0u6gf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.9311, 3.98693, -48.966)
+
+[node name="door22" parent="Türen" instance=ExtResource("12_f5tn2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0351, 3.98338, -48.9705)
