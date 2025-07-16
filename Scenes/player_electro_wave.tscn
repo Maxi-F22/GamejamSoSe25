@@ -1,127 +1,53 @@
-[gd_scene load_steps=8 format=3 uid="uid://4ggca4e7xm4w"]
+[gd_scene load_steps=9 format=3 uid="uid://4ggca4e7xm4w"]
 
 [ext_resource type="Script" uid="uid://dqbkm2uy4b56f" path="res://Scripts/WaveExpansionsScript.gd" id="1_7r3u0"]
 [ext_resource type="Script" uid="uid://cynfxnpd47dtn" path="res://Scripts/CharacterControllerScript.gd" id="1_u8dvs"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_823jm"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7r3u0"]
-albedo_color = Color(1, 1, 0, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_823jm"]
-size = Vector3(0.997284, 0.490051, 0.0955811)
-
-[sub_resource type="BoxMesh" id="BoxMesh_823jm"]
+[ext_resource type="PackedScene" uid="uid://u7rplkk3umyo" path="res://Scenes/electro_guy.tscn" id="3_55on4"]
+[ext_resource type="Script" uid="uid://d24wibnimjfh" path="res://Scripts/AimScript.gd" id="4_bfl78"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7r3u0"]
+height = 1.5
+
+[sub_resource type="PrismMesh" id="PrismMesh_go3ba"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mx0kd"]
+size = Vector3(0.997284, 0.490051, 0.0955811)
+
+[sub_resource type="BoxMesh" id="BoxMesh_257cg"]
 
 [node name="Elektro" type="CharacterBody3D"]
 script = ExtResource("1_u8dvs")
 
-[node name="Player" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_823jm")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_7r3u0")
-
-[node name="Wavedirections" type="Node3D" parent="." node_paths=PackedStringArray("char_script")]
-script = ExtResource("1_7r3u0")
-char_script = NodePath("..")
-
-[node name="ElektroWave1" type="Area3D" parent="Wavedirections"]
-transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 0.5, 0, -1)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wavedirections/ElektroWave1"]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -0.00149965, 0.00250244, -0.0133252)
-shape = SubResource("BoxShape3D_823jm")
-debug_color = Color(0, 0.6, 0.701961, 0.423529)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/ElektroWave1/CollisionShape3D"]
-transform = Transform3D(-1, 0, 3.72529e-09, 0, 0.5, 0, 0, 0, -0.1, -0.0104828, -0.00250244, -0.00836194)
-mesh = SubResource("BoxMesh_823jm")
-
-[node name="ElektroWave2" type="Area3D" parent="Wavedirections"]
-transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, -0.5, 0, 1)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wavedirections/ElektroWave2"]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, 0)
-shape = SubResource("BoxShape3D_823jm")
-debug_color = Color(0, 0.6, 0.701961, 0.423529)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/ElektroWave2/CollisionShape3D"]
-transform = Transform3D(-1, 0, 3.72529e-09, 0, 0.5, 0, 0, 0, -0.1, 0, 0, 0)
-mesh = SubResource("BoxMesh_823jm")
-
-[node name="ElektroWave3" type="Area3D" parent="Wavedirections"]
-transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, -1, 0, -0.5)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wavedirections/ElektroWave3"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
-shape = SubResource("BoxShape3D_823jm")
-debug_color = Color(0, 0.6, 0.701961, 0.423529)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/ElektroWave3/CollisionShape3D"]
-transform = Transform3D(-1, 0, 3.72529e-09, 0, 0.5, 0, 0, 0, -0.1, 0, 0, 0)
-mesh = SubResource("BoxMesh_823jm")
-
-[node name="ElektroWave4" type="Area3D" parent="Wavedirections"]
-transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 1, 0, 0.5)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wavedirections/ElektroWave4"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.000607729, -1.19209e-07, 0.00642943)
-shape = SubResource("BoxShape3D_823jm")
-debug_color = Color(0, 0.6, 0.701961, 0.423529)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/ElektroWave4/CollisionShape3D"]
-transform = Transform3D(1, 0, -3.72529e-09, 0, 0.5, 0, 0, 0, 0.1, 0.00411654, 1.19209e-07, -0.00497603)
-mesh = SubResource("BoxMesh_823jm")
-
-[node name="ElektroWave5" type="Area3D" parent="Wavedirections"]
-transform = Transform3D(0.92388, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.92388, 1, 0, -0.5)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wavedirections/ElektroWave5"]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0.004, 0, 0)
-shape = SubResource("BoxShape3D_823jm")
-debug_color = Color(0, 0.6, 0.701961, 0.423529)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/ElektroWave5/CollisionShape3D"]
-transform = Transform3D(-1, 0, -3.72529e-09, 0, 0.5, 0, 0, 0, -0.1, 0.00282842, 0, -0.00282836)
-mesh = SubResource("BoxMesh_823jm")
-
-[node name="ElektroWave6" type="Area3D" parent="Wavedirections"]
-transform = Transform3D(0.92388, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.92388, -1, 0, 0.5)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wavedirections/ElektroWave6"]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, 0)
-shape = SubResource("BoxShape3D_823jm")
-debug_color = Color(0, 0.6, 0.701961, 0.423529)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/ElektroWave6/CollisionShape3D"]
-transform = Transform3D(-1, 0, -3.72529e-09, 0, 0.5, 0, 0, 0, -0.1, 0, 0, 0)
-mesh = SubResource("BoxMesh_823jm")
-
-[node name="ElektroWave7" type="Area3D" parent="Wavedirections"]
-transform = Transform3D(0.92388, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.92388, -0.5, 0.003, -1)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wavedirections/ElektroWave7"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
-shape = SubResource("BoxShape3D_823jm")
-debug_color = Color(0, 0.6, 0.701961, 0.423529)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/ElektroWave7/CollisionShape3D"]
-transform = Transform3D(-1, 0, -3.72529e-09, 0, 0.5, 0, 0, 0, -0.1, 0, 0, 0)
-mesh = SubResource("BoxMesh_823jm")
-
-[node name="ElektroWave8" type="Area3D" parent="Wavedirections"]
-transform = Transform3D(0.92388, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.92388, 0.5, 0, 1)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wavedirections/ElektroWave8"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.000607729, -1.19209e-07, 0.00642943)
-shape = SubResource("BoxShape3D_823jm")
-debug_color = Color(0, 0.6, 0.701961, 0.423529)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Wavedirections/ElektroWave8/CollisionShape3D"]
-transform = Transform3D(1, 0, 3.72529e-09, 0, 0.5, 0, 0, 0, 0.1, 0.00411656, 1.19209e-07, -0.00497591)
-mesh = SubResource("BoxMesh_823jm")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.228556, 0)
 shape = SubResource("CapsuleShape3D_7r3u0")
+
+[node name="PlayerModel" parent="." instance=ExtResource("3_55on4")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -1.01264, 0)
+
+[node name="Aimer" type="Node3D" parent="."]
+script = ExtResource("4_bfl78")
+orbit_radius = 1.0
+
+[node name="AimerMesh" type="MeshInstance3D" parent="Aimer"]
+transform = Transform3D(0.5, 0, 0, 0, -4.37114e-08, -0.1, 0, 1, -4.37114e-09, 0, 0, 0)
+mesh = SubResource("PrismMesh_go3ba")
+
+[node name="SingleWave" type="Node3D" parent="Aimer" node_paths=PackedStringArray("char_script")]
+script = ExtResource("1_7r3u0")
+scale_speed = 20.0
+max_scale = 10.0
+char_script = NodePath("../..")
+is_single = true
+
+[node name="ElektroWave1" type="Area3D" parent="Aimer/SingleWave"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Aimer/SingleWave/ElektroWave1"]
+shape = SubResource("BoxShape3D_mx0kd")
+debug_color = Color(0, 0.6, 0.701961, 0.423529)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Aimer/SingleWave/ElektroWave1/CollisionShape3D"]
+transform = Transform3D(-1, 0, -8.74228e-09, 0, 0.5, 0, 8.74228e-08, 0, -0.1, -0.0104828, -0.00250244, -0.00836194)
+mesh = SubResource("BoxMesh_257cg")
+skeleton = NodePath("../..")

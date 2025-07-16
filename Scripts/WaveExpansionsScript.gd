@@ -3,6 +3,7 @@ extends Node3D
 @export var scale_speed: float = 1
 @export var max_scale: float = 3
 @export var char_script: CharacterBody3D
+@export var is_single: bool = false
 
 var wave_triggered = false
 var waves = []
@@ -23,22 +24,35 @@ func _ready():
 				child.call_deferred("set", "disabled", true)
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("Wave Activate") and char_script.is_active_character:
-		trigger_wave()
+	if Input.is_action_just_pressed("Wave Activate") and char_script.is_active_character and not wave_triggered:
+		char_script.allow_movement = false
+		if char_script.name == "Elektro":
+			char_script.play_animation("interaction")
+			trigger_wave()
+		elif char_script.name == "Heavy":
+			char_script.play_animation("jump")
+			await get_tree().create_timer(2.0).timeout
+			trigger_wave()
+		elif char_script.name == "Screamo":
+			char_script.play_animation("scream")
+			await get_tree().create_timer(1.0).timeout
+			trigger_wave()
+
 	if wave_triggered:
 		for wave in waves:
 			for child in wave.get_children():
 				if scale.z < max_scale:
-					#child.scale.z += scale_speed * delta
-					scale.z += scale_speed * delta
-					scale.x += scale_speed * delta
+					if is_single == false:
+						scale.z += scale_speed * delta
+						scale.x += scale_speed * delta
+					else:
+						scale.z += scale_speed * delta
 				else:
 					reset()
 
 # make waves Visible and trigger the expansion
 func trigger_wave():
 	wave_triggered = true
-	char_script.allow_movement = false
 	for wave in waves:
 		wave.call_deferred("set", "visible", true)
 		for child in wave.get_children():
