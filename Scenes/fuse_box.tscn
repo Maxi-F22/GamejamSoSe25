@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bap0knk6vg3ko"]
+
+[ext_resource type="Script" uid="uid://dtq0q6ur73qw5" path="res://Scripts/LaserFuseBoxScript.gd" id="1_uwvrc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fcbgt"]
+size = Vector3(1, 3, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uwvrc"]
+size = Vector3(1, 1, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gojlo"]
+albedo_color = Color(0.323017, 0.408416, 0.068606, 1)
+
+[node name="LaserBox" type="Area3D"]
+collision_layer = 2
+script = ExtResource("1_uwvrc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fcbgt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_uwvrc")
+surface_material_override/0 = SubResource("StandardMaterial3D_gojlo")

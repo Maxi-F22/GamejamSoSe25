@@ -1,14 +1,15 @@
 extends CharacterBody3D
 
-@export var speed: float = 3.0
+@export var speed: float = 5.0
 
 var cam_switcher
 var is_moving = false
+var allow_movement = true
 var is_active_character = false
 var target_position = Vector3(0,0,0)
 
 func _ready():
-	cam_switcher = get_tree().get_root().get_node("Main/ExRoom/CamSwitcher")
+	cam_switcher = get_tree().get_root().get_node("Main/CamSwitcher")
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -17,7 +18,7 @@ func _physics_process(delta):
 
 	# Move active character towards the position clicked with the mouse
 	elif is_on_floor() and is_moving:
-		if Vector3(global_position.x, 0, global_position.z).distance_to(target_position) > 0.26:
+		if Vector3(global_position.x, 0, global_position.z).distance_to(target_position) > 2.01 and allow_movement:
 			# Move toward the target
 			var direction = (target_position - global_position)
 			direction.y = 0
@@ -33,7 +34,6 @@ func _physics_process(delta):
 func _unhandled_input(event: InputEvent) -> void:
 	# Get mouse button input and raycast clicked position on ground
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT and is_active_character:
-		is_moving = true
 		var space_state = get_world_3d().direct_space_state
 		var cam = cam_switcher.current_cam
 		var mousepos = get_viewport().get_mouse_position()
@@ -41,8 +41,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		var origin = cam.project_ray_origin(mousepos)
 		var end = origin + cam.project_ray_normal(mousepos) * 1000
 		var query = PhysicsRayQueryParameters3D.create(origin, end)
+		query.collision_mask = 1
 		query.collide_with_areas = true
 
 		var result = space_state.intersect_ray(query)
-		if result && result.collider.name == "Ground":
+		if result && result.collider.name == "GridMap":
+			is_moving = true
 			target_position = result.position

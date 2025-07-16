@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cabdlxd133kmj"
-path="res://.godot/imported/charmenu_heavy.png-3371623d7578e2e6b0067da29dac6720.ctex"
+uid="uid://rtsxdt15mgjr"
+path="res://.godot/imported/Screenshot 2025-07-16 120449.png-f85fb4c72863202a3ebd814336ec340f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/HUD/charmenu_heavy.png"
-dest_files=["res://.godot/imported/charmenu_heavy.png-3371623d7578e2e6b0067da29dac6720.ctex"]
+source_file="res://Assets/HUD/Screenshot 2025-07-16 120449.png"
+dest_files=["res://.godot/imported/Screenshot 2025-07-16 120449.png-f85fb4c72863202a3ebd814336ec340f.ctex"]
 
 [params]
 
