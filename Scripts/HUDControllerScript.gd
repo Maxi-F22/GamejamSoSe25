@@ -60,10 +60,10 @@ func _process(_delta):
 func set_active_character_border(character_name: String):
 	# Entferne alle vorherigen Borders
 	remove_all_borders()
-    
+	
 	# Warte einen Frame und füge neue Border hinzu
 	await get_tree().process_frame
-    
+	
 	# Finde das TextureRect mit dem entsprechenden Namen
 	var texture_rects = _hud_container.find_children("*", "TextureRect", true)
 	for rect in texture_rects:
@@ -78,12 +78,12 @@ func add_red_border(rect: TextureRect):
 	border.name = "RedBorder"
 	border.texture = create_border_texture()
 	border.mouse_filter = Control.MOUSE_FILTER_IGNORE  # Ignoriere Maus-Events
-    
+	
 	# Setze Border größer als das TextureRect
 	border.position = Vector2(-5, -5)
 	border.size = rect.size + Vector2(10, 10)
 	border.z_index = -1  # Hinter das TextureRect
-    
+	
 	rect.add_child(border)
 
 func remove_all_borders():
@@ -97,12 +97,12 @@ func create_border_texture() -> ImageTexture:
 	# Erstelle eine einfache rote Border-Textur
 	var image = Image.create(32, 32, false, Image.FORMAT_RGBA8)
 	image.fill(Color.RED)
-    
+	
 	# Mache das Innere transparent (nur Border)
 	for x in range(4, 28):
 		for y in range(4, 28):
 			image.set_pixel(x, y, Color.TRANSPARENT)
-    
+	
 	var texture = ImageTexture.new()
 	texture.set_image(image)
 	return texture

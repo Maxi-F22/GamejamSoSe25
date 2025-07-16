@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://48nuwwideadk"]
 
-[ext_resource type="Script" uid="uid://cynfxnpd47dtn" path="res://Scripts/CharacterControllerScript.gd" id="1_1f323"]
+[ext_resource type="Script" path="res://Scripts/CharacterControllerScript.gd" id="1_1f323"]
 [ext_resource type="Script" uid="uid://dqbkm2uy4b56f" path="res://Scripts/WaveExpansionsScript.gd" id="1_823jm"]
 [ext_resource type="PackedScene" uid="uid://dtkwmvgyaid6p" path="res://Scenes/fat_guy.tscn" id="3_vj7m7"]
 

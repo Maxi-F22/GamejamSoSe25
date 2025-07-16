@@ -15,6 +15,10 @@ run/main_scene="uid://d2oqbh1jfmqg2"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[dotnet]
+
+project/assembly_name="Gamejam"
+
 [input]
 
 "Switch Cam"={

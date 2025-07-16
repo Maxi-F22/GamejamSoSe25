@@ -27,13 +27,13 @@ func _on_box_area_entered(area: Area3D):
 
 func push_away_from_player(player: Node3D):
 	is_being_pushed = true
-    
+	
 	freeze_mode = RigidBody3D.FREEZE_MODE_KINEMATIC
 
 	# Berechne Richtung von Spieler zur Box
 	var raw_direction = (global_position - player.global_position).normalized()
 	raw_direction.y = 0  # Keine Y-Bewegung
-    
+	
 	# Reduziere auf Hauptachsen (nur X oder Z)
 	push_direction = get_cardinal_direction(raw_direction)
 			

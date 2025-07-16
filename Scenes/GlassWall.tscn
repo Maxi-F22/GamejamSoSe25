@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://3ytbx8xgif1k"]
+
+[ext_resource type="Script" uid="uid://bhf7q2ake1obg" path="res://Scripts/GlassWallScript.gd" id="1_wcgkp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wdc86"]
+size = Vector3(0.520935, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wcgkp"]
+
+[node name="Glass_Wall" type="Area3D"]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+script = ExtResource("1_wcgkp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_wdc86")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_wcgkp")
