@@ -141,11 +141,13 @@ mesh = SubResource("PrismMesh_a7jqq")
 
 [node name="SingleWave" type="Node3D" parent="Aimer" node_paths=PackedStringArray("char_script")]
 script = ExtResource("1_823jm")
-scale_speed = 5.0
+scale_speed = 10.0
+max_scale = 10.0
 char_script = NodePath("../..")
+isSingle = true
 
 [node name="Wave1" type="Area3D" parent="Aimer/SingleWave"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0.5)
 
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="Aimer/SingleWave/Wave1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

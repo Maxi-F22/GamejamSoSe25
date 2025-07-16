@@ -3,10 +3,11 @@ extends Node3D
 @export var scale_speed: float = 1
 @export var max_scale: float = 8
 @export var char_script: CharacterBody3D
-
+@export var isSingle: bool = false
 var wave_triggered = false
 var waves = []
 var forward
+
 
 func _ready():
 	for child in get_children():	
@@ -28,8 +29,11 @@ func _physics_process(delta):
 			for child in wave.get_children():
 				if scale.z < max_scale:
 					#child.scale.z += scale_speed * delta
-					scale.z += scale_speed * delta
-					scale.x += scale_speed * delta
+					if isSingle == false:
+						scale.z += scale_speed * delta
+						scale.x += scale_speed * delta
+					else:
+						scale.z += scale_speed * delta
 				else:
 					reset()
 
