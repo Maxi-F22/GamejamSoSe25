@@ -117,11 +117,25 @@ position = Vector2(958, 546.5)
 scale = Vector2(1.3168, 1.23543)
 texture = ExtResource("11_if7li")
 
-[node name="ventCover2" parent="CanvasLayer" instance=ExtResource("3_8e205")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9186, 5.35814, 20.1351)
-
-[node name="Poster2" parent="CanvasLayer" instance=ExtResource("4_2x1g0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.89179, 3.89259, 15.0051)
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 85.0
+offset_top = 872.0
+offset_right = 353.0
+offset_bottom = 974.0
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/normal_font = ExtResource("2_853f1")
+theme_override_fonts/mono_font = ExtResource("2_853f1")
+theme_override_fonts/italics_font = ExtResource("2_853f1")
+theme_override_fonts/bold_italics_font = ExtResource("2_853f1")
+theme_override_fonts/bold_font = ExtResource("2_853f1")
+theme_override_font_sizes/bold_font_size = 17
+bbcode_enabled = true
+text = "[b]Tab - Minimap
+Leertaste - Fähigkeiten
+Q - Charakter Auswahl[/b]"
+vertical_alignment = 1
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, -0.0662739, 0.997801, 0, 0.997801, 0.0662739, -1, 2.89692e-09, -4.36153e-08, -2.77716, 4.57144, 19.9782)
@@ -151,33 +165,39 @@ light_specular = 2.278
 script = ExtResource("10_loo7a")
 rotation_speed = 210.0
 
-[node name="Envrionment" type="Node3D" parent="."]
+[node name="Environment" type="Node3D" parent="."]
 
-[node name="electro_guy2" parent="Envrionment" instance=ExtResource("5_koqhg")]
+[node name="electro_guy2" parent="Environment" instance=ExtResource("5_koqhg")]
 transform = Transform3D(-0.0607417, 0, 0.0520619, 0, 0.08, 0, -0.0520619, 0, -0.0607417, -8.12791, 2.00205, 22.5799)
 script = ExtResource("6_if7li")
 
-[node name="Heavy" parent="Envrionment" instance=ExtResource("6_cmrfp")]
+[node name="Heavy" parent="Environment" instance=ExtResource("6_cmrfp")]
 transform = Transform3D(0.00348954, 0, 0.0799238, 0, 0.08, 0, -0.0799238, 0, 0.00348954, -9.89977, 1.99009, 19.8865)
 
-[node name="woman2" parent="Envrionment" instance=ExtResource("9_cmrfp")]
+[node name="woman2" parent="Environment" instance=ExtResource("9_cmrfp")]
 transform = Transform3D(0.0228234, 0, 0.0265347, 0, 0.035, 0, -0.0265347, 0, 0.0228234, -8.31247, 1.8678, 17.2952)
 script = ExtResource("6_if7li")
 
-[node name="bed2" parent="Envrionment" instance=ExtResource("11_rrcx7")]
+[node name="bed2" parent="Environment" instance=ExtResource("11_rrcx7")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -8.4202, 2.44663, 15.7239)
 
-[node name="fireExtinguisher2" parent="Envrionment" instance=ExtResource("12_rrcx7")]
+[node name="fireExtinguisher2" parent="Environment" instance=ExtResource("12_rrcx7")]
 transform = Transform3D(0.175143, 0, 0.984543, 0, 1, 0, -0.984543, 0, 0.175143, -9.90538, 2.86955, 24.8679)
 
-[node name="PipeThingy" parent="Envrionment" instance=ExtResource("13_fh7cp")]
+[node name="PipeThingy" parent="Environment" instance=ExtResource("13_fh7cp")]
 transform = Transform3D(-4.37114e-08, 0, -1.36, 0, 1, 0, 1, 0, -5.94475e-08, -7.9786, 5.28321, 15.4951)
 
-[node name="bed3" parent="Envrionment" instance=ExtResource("11_rrcx7")]
+[node name="bed3" parent="Environment" instance=ExtResource("11_rrcx7")]
 transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -10.3648, 2.50328, 20.2087)
 
-[node name="Sirene" parent="Envrionment" instance=ExtResource("15_7467j")]
+[node name="Sirene" parent="Environment" instance=ExtResource("15_7467j")]
 transform = Transform3D(1, 0, 0, 0, -0.997986, -0.063435, 0, 0.063435, -0.997986, -8.3048, 5.95947, 24.5158)
+
+[node name="ventCover2" parent="Environment" instance=ExtResource("3_8e205")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9186, 5.35814, 20.1351)
+
+[node name="Poster2" parent="Environment" instance=ExtResource("4_2x1g0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.89179, 3.89259, 15.0051)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -11.5956, 4.53554, 22.6904)
