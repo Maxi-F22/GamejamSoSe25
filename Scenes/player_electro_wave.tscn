@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://4ggca4e7xm4w"]
+[gd_scene load_steps=10 format=3 uid="uid://4ggca4e7xm4w"]
 
 [ext_resource type="Script" uid="uid://dqbkm2uy4b56f" path="res://Scripts/WaveExpansionsScript.gd" id="1_7r3u0"]
 [ext_resource type="Script" uid="uid://cynfxnpd47dtn" path="res://Scripts/CharacterControllerScript.gd" id="1_u8dvs"]
 [ext_resource type="PackedScene" uid="uid://u7rplkk3umyo" path="res://Scenes/Models/electro_model.tscn" id="3_55on4"]
 [ext_resource type="Script" uid="uid://d24wibnimjfh" path="res://Scripts/AimScript.gd" id="4_bfl78"]
+[ext_resource type="AudioStream" uid="uid://cat5v1psv4ike" path="res://Assets/Sounds/projectile_throw.wav" id="5_go3ba"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7r3u0"]
 height = 1.5
@@ -54,3 +55,6 @@ transform = Transform3D(-1, 0, -8.74228e-09, 0, 0.5, 0, 8.74228e-08, 0, -0.1, -0
 visible = false
 mesh = SubResource("BoxMesh_257cg")
 skeleton = NodePath("../..")
+
+[node name="ProjectileSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_go3ba")

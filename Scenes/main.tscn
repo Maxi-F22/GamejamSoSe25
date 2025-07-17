@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://d2oqbh1jfmqg2"]
+[gd_scene load_steps=32 format=3 uid="uid://d2oqbh1jfmqg2"]
 
 [ext_resource type="Script" uid="uid://cuv1uwh8rujp2" path="res://Scripts/CamSwitchScript.gd" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://bmpo0m20oukcf" path="res://Assets/HUD/Electro_auswahl.png" id="2_b3802"]
@@ -25,12 +25,14 @@
 [ext_resource type="PackedScene" uid="uid://dxkyksootv8ny" path="res://Assets/Environment/Poster/Poster.tscn" id="23_7k868"]
 [ext_resource type="PackedScene" uid="uid://dff24ss15qpq5" path="res://Assets/Environment/Poster/Poster2.tscn" id="24_hpc6h"]
 [ext_resource type="PackedScene" uid="uid://cxdpe0vdxig1o" path="res://Assets/Environment/Poster/Poster4.tscn" id="25_kltya"]
+[ext_resource type="AudioStream" uid="uid://28fwv6ihoflp" path="res://Assets/Sounds/Music/game_music.wav" id="26_cbgmd"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7u77a"]
-sky_top_color = Color(0.268737, 0.412045, 0.836146, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cbgmd"]
+sky_top_color = Color(0.281779, 0.487011, 0.513083, 1)
+energy_multiplier = 1.5
 
 [sub_resource type="Sky" id="Sky_jjgbg"]
-sky_material = SubResource("ProceduralSkyMaterial_7u77a")
+sky_material = SubResource("ProceduralSkyMaterial_cbgmd")
 
 [sub_resource type="Environment" id="Environment_bo1nx"]
 background_mode = 2
@@ -103,10 +105,10 @@ environment = SubResource("Environment_bo1nx")
 script = ExtResource("14_u50mg")
 
 [node name="Elektro" parent="." instance=ExtResource("3_ynf5e")]
-transform = Transform3D(0.419262, 0, 0.907865, 0, 1, 0, -0.907865, 0, 0.419262, -10.6983, 3.38245, -8.00413)
+transform = Transform3D(0.419262, 0, 0.907865, 0, 1, 0, -0.907865, 0, 0.419262, 3.80473, 3.38245, 17.6357)
 
 [node name="Heavy" parent="." instance=ExtResource("9_ynf5e")]
-transform = Transform3D(0.258768, 0, 0.96594, 0, 1, 0, -0.96594, 0, 0.258768, 2.49176, 3.63308, 19.5103)
+transform = Transform3D(0.258768, 0, 0.96594, 0, 1, 0, -0.96594, 0, 0.258768, 2.49176, 3.63308, 19.3896)
 
 [node name="Screamo" parent="." instance=ExtResource("8_344ge")]
 transform = Transform3D(-0.0939693, 0, 0.995575, 0, 1, 0, -0.995575, 0, -0.0939693, 2.19043, 3.48966, 21.683)
@@ -554,3 +556,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.69306, -0.971648)
 
 [node name="Poster5" parent="Environment/Poster" instance=ExtResource("25_kltya")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.47419, 4.34711, 16.0066)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_cbgmd")
+volume_db = -10.587
+autoplay = true

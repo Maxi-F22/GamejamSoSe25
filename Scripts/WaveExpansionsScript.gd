@@ -7,6 +7,9 @@ extends Node3D
 @export var max_scale: float = 3
 @export var char_script: CharacterBody3D
 @export var is_single: bool = false
+var jump_sound: AudioStreamPlayer3D
+var projectile_sound: AudioStreamPlayer3D
+var scream_sound: AudioStreamPlayer3D
 
 var wave_triggered = false
 var is_activating = false
@@ -18,6 +21,13 @@ var active_throw_effects = []
 var stop_throw = false
 
 func _ready():
+	if char_script.name == "Elektro":
+		projectile_sound = char_script.get_node("ProjectileSound")
+	elif char_script.name == "Heavy":
+		jump_sound = char_script.get_node("JumpSound")
+	elif char_script.name == "Screamo":
+		scream_sound = char_script.get_node("ScreamSound")
+		
 	for child in get_children():	
 		waves.append(child)
 
@@ -37,17 +47,20 @@ func _physics_process(delta):
 		char_script.allow_movement = false
 		if char_script.name == "Elektro":
 			char_script.play_animation("interaction")
+			projectile_sound.play()
 			await get_tree().create_timer(0.25).timeout
 			trigger_wave()
 			spawn_throw_effect()
 		elif char_script.name == "Heavy":
 			char_script.play_animation("jump")
 			await get_tree().create_timer(2.0).timeout
-			play_animation()
+			jump_sound.play()
+			play_wave_animation()
 			trigger_wave()
 		elif char_script.name == "Screamo":
 			char_script.play_animation("scream")
 			await get_tree().create_timer(0.75).timeout
+			scream_sound.play()
 			trigger_wave()
 			spawn_throw_effect()
 
@@ -77,6 +90,7 @@ func trigger_wave():
 
 # Reset position of certain or ALL wave segments
 func reset(WaveHit: Area3D = null):
+	cleanup_throw_effects()
 	#triggered if wave has been hit by a wall
 	if WaveHit != null:
 		WaveHit.call_deferred("set", "visible", false)
@@ -88,7 +102,6 @@ func reset(WaveHit: Area3D = null):
 		char_script.allow_movement = true
 		wave_triggered = false
 		is_activating = false
-		stop_throw = true
 		scale = Vector3(1, 1, 1)
 		for wave in waves:
 			wave.call_deferred("set", "visible", false)
@@ -107,7 +120,7 @@ func _on_area_entered(hitting_area: Area3D, hit_area: Area3D):
 	if hitting_area.name.contains("GridMap"):
 		reset(hit_area)
 
-func play_animation():
+func play_wave_animation():
 	var wave_model
 	wave_model = char_script.get_node("WaveModel")
 	var	wave_model_orig_scale = wave_model.scale
@@ -180,6 +193,8 @@ func spawn_throw_effect():
 	active_throw_effects.append(throw_data)
 
 func update_throw_effects(delta: float):
+	if stop_throw:
+		return
 	for i in range(active_throw_effects.size() - 1, -1, -1):
 		var throw_data = active_throw_effects[i]
 		var throw_instance = throw_data.instance
@@ -194,6 +209,19 @@ func update_throw_effects(delta: float):
 		throw_data.distance_traveled += movement.length()
 		
 		# Prüfe ob maximale Distanz erreicht
-		if stop_throw:
-			active_throw_effects.remove_at(i)
-			throw_instance.queue_free()
+		# if stop_throw:
+		# 	active_throw_effects.remove_at(i)
+		# 	throw_instance.queue_free()
+
+
+func cleanup_throw_effects():
+	stop_throw = true	
+    
+    # Entferne alle aktiven Throw-Effekte sofort
+	for throw_data in active_throw_effects:
+		if is_instance_valid(throw_data.instance):
+			throw_data.instance.visible = false
+			throw_data.instance.queue_free()
+    
+    # Leere die Liste
+	active_throw_effects.clear()

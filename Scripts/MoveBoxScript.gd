@@ -7,9 +7,13 @@ var target_position = Vector3.ZERO
 var grid_map: GridMap
 var original_rotation
 var original_position
+var box_push_sound: AudioStreamPlayer3D
+var box_destroy_sound: AudioStreamPlayer3D
 
 func _ready() -> void:
     var box_area = get_node("BoxArea")
+    box_push_sound = get_node("PushSound")
+    box_destroy_sound = get_node("DestroySound")
     box_area.collision_layer = 2
     box_area.area_entered.connect(_on_box_area_entered)
 
@@ -31,12 +35,15 @@ func _physics_process(delta: float) -> void:
         # Stoppe wenn Ziel erreicht
         if global_position.distance_to(target_position) < 0.1:
             global_position = target_position
+            
+            box_push_sound.stop()
             stop_pushing()
 
 func _on_box_area_entered(area):
     if area.name.contains("MassWave") and not is_being_pushed:
         var player = area.get_parent().get_parent()
         push_until_wall(player)
+        box_push_sound.play()
     if area.name.contains("ScreamWave"):
         reset_position()
     if area.name.contains("LaserArea"):
@@ -105,4 +112,6 @@ func stop_pushing():
 
 func reset_position():
     global_position = original_position
+    box_destroy_sound.play()
+    box_push_sound.stop()
     stop_pushing()

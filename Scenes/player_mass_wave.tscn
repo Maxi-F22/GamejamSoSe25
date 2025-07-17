@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://48nuwwideadk"]
+[gd_scene load_steps=9 format=3 uid="uid://48nuwwideadk"]
 
 [ext_resource type="Script" uid="uid://cynfxnpd47dtn" path="res://Scripts/CharacterControllerScript.gd" id="1_1f323"]
 [ext_resource type="Script" uid="uid://dqbkm2uy4b56f" path="res://Scripts/WaveExpansionsScript.gd" id="1_823jm"]
 [ext_resource type="PackedScene" uid="uid://og575jp5pwvg" path="res://Scenes/Models/heavy_wave_model.tscn" id="4_qs5ip"]
+[ext_resource type="AudioStream" uid="uid://dvtsi46a3mhpn" path="res://Assets/Sounds/Fat_voice_jump.wav" id="5_1sk66"]
 [ext_resource type="PackedScene" uid="uid://yrgfhgs7aea1" path="res://Scenes/Models/heavy.tscn" id="5_6vphx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_823jm"]
@@ -134,3 +135,6 @@ transform = Transform3D(0.475, 0, 0, 0, 0.475, 0, 0, 0, 0.475, 0, -1.49519, 0)
 [node name="WaveModel" parent="." instance=ExtResource("4_qs5ip")]
 transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, 0, -0.68652, 0)
 visible = false
+
+[node name="JumpSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_1sk66")

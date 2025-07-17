@@ -3,8 +3,10 @@ extends Area3D
 var glass_unit_object: Area3D
 var is_deactivated = false
 var anim_player: AnimationPlayer
+var wall_destroy_sound: AudioStreamPlayer3D
 
 func _ready() -> void:
+	wall_destroy_sound = get_node("WallDestroySound")
 	anim_player = get_node("WallModel/AnimationPlayer")
 	collision_layer = 2
 	area_entered.connect(_on_glass_area_entered)
@@ -18,3 +20,4 @@ func _physics_process(_delta):
 func _on_glass_area_entered(area: Area3D):
 	if area.name.contains("ScreamWave"):
 		is_deactivated = true
+		wall_destroy_sound.play()

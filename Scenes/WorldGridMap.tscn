@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://cg1mt8ppkngax"]
+[gd_scene load_steps=25 format=3 uid="uid://cg1mt8ppkngax"]
 
 [ext_resource type="MeshLibrary" uid="uid://cvidrvhd4matp" path="res://Assets/Gridmap/Resources/blocks-wall-floorv09.tres" id="1_hxtjs"]
 [ext_resource type="PackedScene" uid="uid://bcsysk5dtq7hj" path="res://Assets/Models/camera.glb" id="2_vtsl5"]
 [ext_resource type="PackedScene" uid="uid://dy1jeka6sdnaf" path="res://Assets/Models/laser_04.glb" id="3_sdwh0"]
 [ext_resource type="PackedScene" uid="uid://d010bq3xj8xnb" path="res://Assets/Models/laser_horizontal_03.glb" id="4_lvmhw"]
+[ext_resource type="AudioStream" uid="uid://cxdmol6wrle4r" path="res://Assets/Sounds/open_gitter_door.wav" id="6_jyr2w"]
 [ext_resource type="PackedScene" uid="uid://delxqlla5a70f" path="res://Assets/Models/cable1.glb" id="7_f5tn2"]
 [ext_resource type="PackedScene" uid="uid://c7adxkk7dmdub" path="res://Assets/Models/cable4.glb" id="8_jyr2w"]
 [ext_resource type="PackedScene" uid="uid://d4kkhklv4ue24" path="res://Assets/Models/cable5.glb" id="9_gmqti"]
@@ -13,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bybgpjkweqi5p" path="res://Assets/Models/door2.glb" id="12_f5tn2"]
 [ext_resource type="PackedScene" uid="uid://eeu37c6mr3n0" path="res://Assets/Models/cableBlue4.glb" id="12_pposm"]
 [ext_resource type="PackedScene" uid="uid://q2th3nax15ek" path="res://Assets/Models/cable3.glb" id="13_cam1a"]
+[ext_resource type="Texture2D" uid="uid://dankq2ya3wm62" path="res://Assets/Environment/outdoor.jpg" id="15_gmqti"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0c3lu"]
 size = Vector3(6.14, 4.369, 1)
@@ -244,6 +246,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02332, 3.98338, -33.7005)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0614319, -0.206054, 0.149841)
 shape = SubResource("BoxShape3D_f5tn2")
 
+[node name="GitterSound" type="AudioStreamPlayer3D" parent="Türen/Gate1"]
+stream = ExtResource("6_jyr2w")
+volume_db = 28.0
+
 [node name="Gate2" parent="Türen" instance=ExtResource("12_f5tn2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02332, 3.98338, -27.5027)
 
@@ -254,6 +260,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.16605)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0614319, -0.206054, 0.149841)
 shape = SubResource("BoxShape3D_f5tn2")
 
+[node name="GitterSound" type="AudioStreamPlayer3D" parent="Türen/Gate2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.1978)
+stream = ExtResource("6_jyr2w")
+volume_db = 28.0
+
 [node name="Gate3" parent="Türen" instance=ExtResource("12_f5tn2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02332, 3.98338, -21.6213)
 
@@ -263,6 +274,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.160028)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Türen/Gate3/StaticBody3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0614319, -0.206054, 0.149841)
 shape = SubResource("BoxShape3D_f5tn2")
+
+[node name="GitterSound" type="AudioStreamPlayer3D" parent="Türen/Gate3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.0792)
+stream = ExtResource("6_jyr2w")
+volume_db = 28.0
 
 [node name="FinalDoor" parent="." instance=ExtResource("11_0u6gf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8551, 3.98693, -49.8626)
@@ -389,3 +405,21 @@ transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.8
 
 [node name="cable24" parent="CabelSecondRoomFront" instance=ExtResource("10_5o3hb")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -12.822, 5.424, -13.941)
+
+[node name="OutdoorSprites" type="Node3D" parent="."]
+
+[node name="Outdoor1" type="Sprite3D" parent="OutdoorSprites"]
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 29.9983, 4.38227, -6.94178)
+texture = ExtResource("15_gmqti")
+
+[node name="Outdoor2" type="Sprite3D" parent="OutdoorSprites"]
+transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -9.98108, 4.38227, 19.071)
+texture = ExtResource("15_gmqti")
+
+[node name="Outdoor4" type="Sprite3D" parent="OutdoorSprites"]
+transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -9.98108, 4.38227, 5.02031)
+texture = ExtResource("15_gmqti")
+
+[node name="Outdoor3" type="Sprite3D" parent="OutdoorSprites"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6.02447, 3.87299, -50.1065)
+texture = ExtResource("15_gmqti")
