@@ -127,13 +127,13 @@ func _on_texture_rect_unhovered(rect: TextureRect):
 	tween.tween_property(rect, "scale", Vector2(1, 1), 0.1)
 
 func set_active_border(camera_name: String):
-    # Entferne alle vorherigen Borders
+	# Entferne alle vorherigen Borders
 	remove_all_borders()
-    
-    # Warte einen Frame und füge neue Border hinzu
+	
+	# Warte einen Frame und füge neue Border hinzu
 	await get_tree().process_frame
-    
-    # Finde das TextureRect mit dem entsprechenden Namen
+	
+	# Finde das TextureRect mit dem entsprechenden Namen
 	for rect in texture_rects:
 		if rect.name == camera_name:
 			add_png_border(rect)
@@ -141,27 +141,27 @@ func set_active_border(camera_name: String):
 			break
 
 func add_png_border(rect: TextureRect):
-    # Erstelle TextureRect für PNG-Border
+	# Erstelle TextureRect für PNG-Border
 	var border = TextureRect.new()
 	border.name = "PngBorder" + rect.name
 	border.texture = border_texture  # Verwende das geladene PNG
 	border.mouse_filter = Control.MOUSE_FILTER_IGNORE  # Ignoriere Maus-Events
-    
-    # Erweiterte Konfiguration für das Border-PNG
+	
+	# Erweiterte Konfiguration für das Border-PNG
 	border.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
 	border.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-    
-    # Border größer als das Icon machen
+	
+	# Border größer als das Icon machen
 	var border_scale = 1.2 
 	border.size = rect.size * border_scale
 	border.position = Vector2(
 		-(border.size.x - rect.size.x) / 2,  # Zentriere horizontal
 		-(border.size.y - rect.size.y) / 2   # Zentriere vertikal
 	)
-    
+	
 	border.z_index = -1  # Hinter das Icon
-    
-    # Border als erstes Kind hinzufügen (damit es hinten erscheint)
+	
+	# Border als erstes Kind hinzufügen (damit es hinten erscheint)
 	rect.add_child(border)
 	rect.move_child(border, 0)
 
