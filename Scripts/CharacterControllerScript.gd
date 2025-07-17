@@ -12,6 +12,10 @@ var target_position = Vector3(0,0,0)
 var player_anim_player : AnimationPlayer
 var active_arrow_instance = null
 
+var position_check_timer = 0.0
+var position_check_interval = 0.5
+var last_position = Vector3.ZERO
+
 func _ready():
 	cam_switcher = get_tree().get_root().get_node("Main/CamSwitcher")
 	player_anim_player = _player_model.get_node("AnimationPlayer")
@@ -40,6 +44,8 @@ func _physics_process(delta):
 
 	if not player_anim_player.is_playing():
 		play_animation("idle")
+
+	check_if_stuck(delta)
 
 	move_and_slide()
  
@@ -98,3 +104,19 @@ func spawn_mouse_arrow(mouse_position: Vector3):
 
 	if is_instance_valid(active_arrow_instance):
 		active_arrow_instance.queue_free()
+
+func check_if_stuck(delta: float):
+	position_check_timer += delta
+    
+	if position_check_timer >= 1.0:
+		var distance_moved = global_position.distance_to(last_position)
+        
+        # Wenn Charakter versucht sich zu bewegen aber stecken geblieben ist
+		if is_moving and distance_moved < 0.1:
+			print("Character appears stuck - stopping movement")
+			is_moving = false
+			velocity = Vector3.ZERO
+			play_animation("idle")
+        
+		last_position = global_position
+		position_check_timer = 0.0

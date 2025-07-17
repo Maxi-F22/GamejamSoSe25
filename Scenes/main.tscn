@@ -155,6 +155,9 @@ fov = 30.0
 [node name="Camera12" type="Camera3D" parent="CamSwitcher"]
 transform = Transform3D(-0.0215422, -0.301357, 0.466221, -0.00316527, 0.839892, 0.542745, -0.555135, 0.0102162, -0.019047, 5.44223, 3.67324, -22.4423)
 
+[node name="Camera13" type="Camera3D" parent="CamSwitcher"]
+transform = Transform3D(0.488672, -0.142134, 0.222801, -0.0196285, 0.821686, 0.56724, -0.26356, -0.317754, 0.37536, 11.8151, 3.83007, -10.7497)
+
 [node name="MinimapCamera" type="Camera3D" parent="CamSwitcher"]
 transform = Transform3D(0.555556, 0, 0, 0, -2.42841e-08, 1, 0, -0.555556, -1.34912e-08, 0.698369, 54.4362, -16.057)
 
@@ -265,7 +268,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8329, 2.14813, 11.0925)
 _door_control_name = "Gate3"
 
 [node name="PressurePlate2" parent="Interactables/Boxes/Plates" instance=ExtResource("18_hibaj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4045, 2.14813, -19.5909)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9052, 2.14813, -19.8275)
 _door_control_name = "Gate2"
 
 [node name="PressurePlate3" parent="Interactables/Boxes/Plates" instance=ExtResource("18_hibaj")]

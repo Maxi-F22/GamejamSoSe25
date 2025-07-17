@@ -80,6 +80,9 @@ transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 
 [node name="camera7" parent="Cameras" instance=ExtResource("2_vtsl5")]
 transform = Transform3D(-0.265936, 0, 0.423413, 0, 0.5, 0, -0.423413, 0, -0.265936, 18.1013, 3.41913, -8.84477)
 
+[node name="camera12" parent="Cameras" instance=ExtResource("2_vtsl5")]
+transform = Transform3D(-0.265936, 0, 0.423413, 0, 0.5, 0, -0.423413, 0, -0.265936, 22.1012, 3.41913, -1.80873)
+
 [node name="camera8" parent="Cameras" instance=ExtResource("2_vtsl5")]
 transform = Transform3D(-0.265936, 0, 0.423413, 0, 0.5, 0, -0.423413, 0, -0.265936, 29.1013, 3.41913, -1.81138)
 
