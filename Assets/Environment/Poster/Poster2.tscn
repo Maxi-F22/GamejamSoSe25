@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dff24ss15qpq5"]
+
+[ext_resource type="Texture2D" uid="uid://b2hyc5pd8irym" path="res://Assets/Environment/Poster/Untitled_Artwork.png" id="1_jt5cl"]
+
+[node name="Poster2" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.0204973, 2.38419e-07, 0.000393867)
+texture = ExtResource("1_jt5cl")

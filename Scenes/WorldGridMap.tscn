@@ -1,11 +1,18 @@
-[gd_scene load_steps=15 format=3 uid="uid://cg1mt8ppkngax"]
+[gd_scene load_steps=22 format=3 uid="uid://cg1mt8ppkngax"]
 
 [ext_resource type="MeshLibrary" uid="uid://cvidrvhd4matp" path="res://Assets/Gridmap/Resources/blocks-wall-floorv09.tres" id="1_hxtjs"]
 [ext_resource type="PackedScene" uid="uid://bcsysk5dtq7hj" path="res://Assets/Models/camera.glb" id="2_vtsl5"]
 [ext_resource type="PackedScene" uid="uid://dy1jeka6sdnaf" path="res://Assets/Models/laser_04.glb" id="3_sdwh0"]
 [ext_resource type="PackedScene" uid="uid://d010bq3xj8xnb" path="res://Assets/Models/laser_horizontal_03.glb" id="4_lvmhw"]
+[ext_resource type="PackedScene" uid="uid://delxqlla5a70f" path="res://Assets/Models/cable1.glb" id="7_f5tn2"]
+[ext_resource type="PackedScene" uid="uid://c7adxkk7dmdub" path="res://Assets/Models/cable4.glb" id="8_jyr2w"]
+[ext_resource type="PackedScene" uid="uid://d4kkhklv4ue24" path="res://Assets/Models/cable5.glb" id="9_gmqti"]
+[ext_resource type="PackedScene" uid="uid://dqh1yr5cxj8wd" path="res://Assets/Models/cable2.glb" id="10_5o3hb"]
 [ext_resource type="PackedScene" uid="uid://c4713afk240bb" path="res://Assets/Models/door1.glb" id="11_0u6gf"]
+[ext_resource type="PackedScene" uid="uid://ci10p8j5v1d6" path="res://Assets/Models/cableBlue2.glb" id="11_yth3a"]
 [ext_resource type="PackedScene" uid="uid://bybgpjkweqi5p" path="res://Assets/Models/door2.glb" id="12_f5tn2"]
+[ext_resource type="PackedScene" uid="uid://eeu37c6mr3n0" path="res://Assets/Models/cableBlue4.glb" id="12_pposm"]
+[ext_resource type="PackedScene" uid="uid://q2th3nax15ek" path="res://Assets/Models/cable3.glb" id="13_cam1a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0c3lu"]
 size = Vector3(6.14, 4.369, 1)
@@ -236,3 +243,126 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02332, 3.98338, -21.6213)
 
 [node name="FinalDoor" parent="." instance=ExtResource("11_0u6gf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8551, 3.98693, -49.8626)
+
+[node name="CabelFirstRoom" type="Node3D" parent="."]
+
+[node name="cable12" parent="CabelFirstRoom" instance=ExtResource("7_f5tn2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18054, 4.4234, -12.4616)
+
+[node name="cable13" parent="CabelFirstRoom" instance=ExtResource("7_f5tn2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.287, 4.573, 0.004)
+
+[node name="cable42" parent="CabelFirstRoom" instance=ExtResource("8_jyr2w")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.825, 4.495, -12.763)
+
+[node name="cable43" parent="CabelFirstRoom" instance=ExtResource("8_jyr2w")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.825, 4.56938, -8.76024)
+
+[node name="cable45" parent="CabelFirstRoom" instance=ExtResource("8_jyr2w")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.79034, 2.85203, 1.50983)
+
+[node name="cable46" parent="CabelFirstRoom" instance=ExtResource("8_jyr2w")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.83975, 2.9288, 5.50966)
+
+[node name="cable47" parent="CabelFirstRoom" instance=ExtResource("8_jyr2w")]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -8.84018, 7.865, 10.349)
+
+[node name="cable44" parent="CabelFirstRoom" instance=ExtResource("8_jyr2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.74562, 4.57921, -2.09495)
+
+[node name="cable52" parent="CabelFirstRoom" instance=ExtResource("9_gmqti")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.8866, 4.59859, -7.76551)
+
+[node name="cable53" parent="CabelFirstRoom" instance=ExtResource("9_gmqti")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.8866, 4.66613, -3.76293)
+
+[node name="cable56" parent="CabelFirstRoom" instance=ExtResource("9_gmqti")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.83446, 2.95044, 6.5112)
+
+[node name="cable22" parent="CabelFirstRoom" instance=ExtResource("10_5o3hb")]
+transform = Transform3D(-0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, -0.939693, -21.3009, 4.61505, 0.588601)
+
+[node name="cable54" parent="CabelFirstRoom" instance=ExtResource("9_gmqti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7357, 4.67541, -2.16294)
+
+[node name="cable55" parent="CabelFirstRoom" instance=ExtResource("9_gmqti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7475, 4.6047, -2.16294)
+
+[node name="cable23" parent="CabelFirstRoom" instance=ExtResource("10_5o3hb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.257, 4.553, -1.905)
+
+[node name="cable24" parent="CabelFirstRoom" instance=ExtResource("10_5o3hb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.136, 4.553, 7.712)
+
+[node name="cable25" parent="CabelFirstRoom" instance=ExtResource("10_5o3hb")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, -8.822, 4.32, 10.694)
+
+[node name="cable26" parent="CabelFirstRoom" instance=ExtResource("10_5o3hb")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -8.82821, 3.12725, -5.48663)
+
+[node name="cable27" parent="CabelFirstRoom" instance=ExtResource("10_5o3hb")]
+transform = Transform3D(1.31134e-07, 1, -4.37114e-08, 3.82137e-15, 4.37114e-08, 1, 1, -1.31134e-07, 1.91069e-15, -8.938, 3.267, 18.498)
+
+[node name="cable28" parent="CabelFirstRoom" instance=ExtResource("10_5o3hb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.219, 4.406, -4.747)
+
+[node name="CabelSecondRoomBack" type="Node3D" parent="."]
+
+[node name="cableBlue22" parent="CabelSecondRoomBack" instance=ExtResource("11_yth3a")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 17.301, 3.41147, -20.764)
+
+[node name="cableBlue23" parent="CabelSecondRoomBack" instance=ExtResource("11_yth3a")]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -20.899, 5.391, 5.99)
+
+[node name="cableBlue24" parent="CabelSecondRoomBack" instance=ExtResource("11_yth3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.823, 5.011, -5.601)
+
+[node name="cableBlue42" parent="CabelSecondRoomBack" instance=ExtResource("12_pposm")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 25.4394, 8.02415, -20.6774)
+
+[node name="cableBlue43" parent="CabelSecondRoomBack" instance=ExtResource("12_pposm")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.858, 5.043, -6.995)
+
+[node name="CabelSecondRoomFront" type="Node3D" parent="."]
+
+[node name="cable32" parent="CabelSecondRoomFront" instance=ExtResource("13_cam1a")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.5617, 3.48834, -35.9756)
+
+[node name="cable42" parent="CabelSecondRoomFront" instance=ExtResource("8_jyr2w")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.8708, 3.52345, -31.9948)
+
+[node name="cable43" parent="CabelSecondRoomFront" instance=ExtResource("8_jyr2w")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.863, 3.60417, -27.9905)
+
+[node name="cable44" parent="CabelSecondRoomFront" instance=ExtResource("8_jyr2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1371, 3.70491, -20.8488)
+
+[node name="cable45" parent="CabelSecondRoomFront" instance=ExtResource("8_jyr2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1257, 3.77159, -20.8488)
+
+[node name="cable46" parent="CabelSecondRoomFront" instance=ExtResource("8_jyr2w")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.792, 3.858, -20.7708)
+
+[node name="cable52" parent="CabelSecondRoomFront" instance=ExtResource("9_gmqti")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.9414, 3.62921, -26.9931)
+
+[node name="cable53" parent="CabelSecondRoomFront" instance=ExtResource("9_gmqti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.131, 3.80876, -20.9298)
+
+[node name="cable54" parent="CabelSecondRoomFront" instance=ExtResource("9_gmqti")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.8698, 3.95971, -15.8371)
+
+[node name="cable12" parent="CabelSecondRoomFront" instance=ExtResource("7_f5tn2")]
+transform = Transform3D(-0.996195, 0, 0.0871556, 0, 1, 0, -0.0871556, 0, -0.996195, -25.074, 3.7, -22.362)
+
+[node name="cable13" parent="CabelSecondRoomFront" instance=ExtResource("7_f5tn2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.771, 3.795, -20.467)
+
+[node name="cable22" parent="CabelSecondRoomFront" instance=ExtResource("10_5o3hb")]
+transform = Transform3D(-0.0135631, 0.999848, -0.0109832, -0.62932, -2.75085e-08, 0.777146, 0.777028, 0.0174524, 0.629225, -11.017, -1.782, -16.871)
+
+[node name="cable23" parent="CabelSecondRoomFront" instance=ExtResource("10_5o3hb")]
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, -20.897, -4.182, -14.225)
+
+[node name="cable24" parent="CabelSecondRoomFront" instance=ExtResource("10_5o3hb")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -12.822, 5.424, -13.941)

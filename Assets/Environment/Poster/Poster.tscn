@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxkyksootv8ny"]
+
+[ext_resource type="Texture2D" uid="uid://dwixl6pxe7hk6" path="res://Assets/Environment/Poster/Bismark.png" id="1_6n534"]
+
+[node name="Poster" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("1_6n534")
