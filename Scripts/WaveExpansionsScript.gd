@@ -33,6 +33,7 @@ func _physics_process(delta):
 		elif char_script.name == "Heavy":
 			char_script.play_animation("jump")
 			await get_tree().create_timer(1.5).timeout
+			play_animation()
 			trigger_wave()
 		elif char_script.name == "Screamo":
 			char_script.play_animation("scream")
@@ -87,3 +88,14 @@ func reset(WaveHit: Area3D = null):
 func _on_area_entered(hitting_area: Area3D, hit_area: Area3D):
 	if hitting_area.name.contains("GridMap"):
 		reset(hit_area)
+
+func play_animation():
+	var wave_model
+	wave_model = char_script.get_node("WaveModel")
+	var	wave_model_orig_scale = wave_model.scale
+	wave_model.visible = true
+	while wave_model.scale.x < 1.0:
+		await get_tree().process_frame
+		wave_model.scale += Vector3.ONE * 2.0 * get_physics_process_delta_time()
+	wave_model.visible = false
+	wave_model.scale = wave_model_orig_scale

@@ -3,6 +3,7 @@ extends Node3D
 @onready var minimap_root := $CanvasLayer/Control # Control-Node, wo Icons rein sollen
 
 var icon_texture: Texture2D = load("res://Assets/HUD/cam_icon.png")
+var border_texture: Texture2D = load("res://Assets/HUD/cam_border.png")
 var overlay_container : CenterContainer
 var hud_controller : CanvasLayer
 var char_scripts = []
@@ -39,6 +40,7 @@ func create_camera_icons():
 	for i in range(cams.size()):
 		var cam = cams[i]
 		var icon = TextureRect.new()
+		icon.name = "CameraIcon" + str(i+1)
 		icon.texture = icon_texture
 		
 		icon.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
@@ -90,7 +92,7 @@ func _process(_delta: float) -> void:
 
 	if minimap_root.visible:
 		var hovered = get_viewport().gui_get_hovered_control()
-		if hovered and hovered.name.contains("TextureRect"):
+		if hovered and hovered.name.contains("CameraIcon"):
 			active_cam_icon = hovered.name
 	else:
 		set_active_border(active_cam_icon)
@@ -125,49 +127,46 @@ func _on_texture_rect_unhovered(rect: TextureRect):
 	tween.tween_property(rect, "scale", Vector2(1, 1), 0.1)
 
 func set_active_border(camera_name: String):
-	# Entferne alle vorherigen Borders
+    # Entferne alle vorherigen Borders
 	remove_all_borders()
-	
-	# Warte einen Frame und füge neue Border hinzu
+    
+    # Warte einen Frame und füge neue Border hinzu
 	await get_tree().process_frame
-	
-	# Finde das TextureRect mit dem entsprechenden Namen
+    
+    # Finde das TextureRect mit dem entsprechenden Namen
 	for rect in texture_rects:
 		if rect.name == camera_name:
-			add_red_border(rect)
+			add_png_border(rect)
 			current_active_rect = rect
 			break
 
-func add_red_border(rect: TextureRect):
-	# Erstelle einen NinePatchRect als Border
-	var border = NinePatchRect.new()
-	border.name = "RedBorder"
-	border.texture = create_border_texture()
+func add_png_border(rect: TextureRect):
+    # Erstelle TextureRect für PNG-Border
+	var border = TextureRect.new()
+	border.name = "PngBorder" + rect.name
+	border.texture = border_texture  # Verwende das geladene PNG
 	border.mouse_filter = Control.MOUSE_FILTER_IGNORE  # Ignoriere Maus-Events
-	
-	# Setze Border größer als das TextureRect
-	border.position = Vector2(-5, -5)
-	border.size = rect.size + Vector2(10, 10)
-	border.z_index = -1  # Hinter das TextureRect
-	
+    
+    # Erweiterte Konfiguration für das Border-PNG
+	border.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+	border.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+    
+    # Border größer als das Icon machen
+	var border_scale = 1.2 
+	border.size = rect.size * border_scale
+	border.position = Vector2(
+		-(border.size.x - rect.size.x) / 2,  # Zentriere horizontal
+		-(border.size.y - rect.size.y) / 2   # Zentriere vertikal
+	)
+    
+	border.z_index = -1  # Hinter das Icon
+    
+    # Border als erstes Kind hinzufügen (damit es hinten erscheint)
 	rect.add_child(border)
+	rect.move_child(border, 0)
 
 func remove_all_borders():
 	for rect in texture_rects:
-		var border = rect.get_node_or_null("RedBorder")
+		var border = rect.get_node_or_null("PngBorder" + rect.name)  # Neuer Name
 		if border:
 			border.queue_free()
-
-func create_border_texture() -> ImageTexture:
-	# Erstelle eine einfache rote Border-Textur
-	var image = Image.create(32, 32, false, Image.FORMAT_RGBA8)
-	image.fill(Color.RED)
-	
-	# Mache das Innere transparent (nur Border)
-	for x in range(4, 28):
-		for y in range(4, 28):
-			image.set_pixel(x, y, Color.TRANSPARENT)
-	
-	var texture = ImageTexture.new()
-	texture.set_image(image)
-	return texture

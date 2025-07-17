@@ -6,6 +6,7 @@ var is_being_pushed = false
 var target_position = Vector3.ZERO
 var grid_map: GridMap
 var original_rotation
+var original_position
 
 func _ready() -> void:
     var box_area = get_node("BoxArea")
@@ -13,6 +14,7 @@ func _ready() -> void:
     box_area.area_entered.connect(_on_box_area_entered)
 
     original_rotation = global_rotation
+    original_position = global_position
     
     # Finde GridMap
     grid_map = find_gridmap()
@@ -35,6 +37,10 @@ func _on_box_area_entered(area):
     if area.name.contains("MassWave") and not is_being_pushed:
         var player = area.get_parent().get_parent()
         push_until_wall(player)
+    if area.name.contains("ScreamWave"):
+        reset_position()
+    if area.name.contains("LaserArea"):
+        reset_position()
 
 func push_until_wall(player: Node3D):
     is_being_pushed = true
@@ -47,8 +53,6 @@ func push_until_wall(player: Node3D):
     
     # Finde Position vor der nächsten Wand
     target_position = find_wall_stop_position(push_direction)
-    
-    print("Pushing box to wall stop at: ", target_position)
 
 func find_wall_stop_position(direction: Vector3) -> Vector3:
     if not grid_map:
@@ -98,4 +102,7 @@ func get_cardinal_direction(direction: Vector3) -> Vector3:
 func stop_pushing():
     is_being_pushed = false
     freeze_mode = RigidBody3D.FREEZE_MODE_STATIC
-    print("Box stopped at: ", global_position)
+
+func reset_position():
+    global_position = original_position
+    stop_pushing()

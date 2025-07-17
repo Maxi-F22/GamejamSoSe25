@@ -1,15 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhbsav18sji6b"]
+[gd_scene load_steps=4 format=3 uid="uid://dhbsav18sji6b"]
 
-[ext_resource type="PackedScene" uid="uid://cyun73qip540m" path="res://Assets/Models/cobbleWallBig.glb" id="1_j4jes"]
+[ext_resource type="Script" uid="uid://bhf7q2ake1obg" path="res://Scripts/GlassWallScript.gd" id="1_3w8jx"]
+[ext_resource type="PackedScene" uid="uid://dqqvax0hjmt61" path="res://Scenes/Models/wall_model.tscn" id="2_3w8jx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3w8jx"]
 size = Vector3(2.89896, 4.36258, 0.6)
 
 [node name="BreakableWall" type="Area3D"]
+script = ExtResource("1_3w8jx")
+
+[node name="WallModel" parent="." instance=ExtResource("2_3w8jx")]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, -2.05293, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0743561, 0.0790019, 0)
 shape = SubResource("BoxShape3D_3w8jx")
-
-[node name="cobbleWallBig" parent="." instance=ExtResource("1_j4jes")]
-transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, -2.09459, 0)

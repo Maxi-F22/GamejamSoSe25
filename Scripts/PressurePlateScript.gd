@@ -3,9 +3,11 @@ extends Area3D
 @export var _door_control_name: String
 var door_unit_object: Node3D
 var is_deactivated = false
+var cam_switcher
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	cam_switcher = get_tree().get_root().get_node("Main/CamSwitcher")
 	collision_layer = 2
 	collision_mask = 2
 	area_entered.connect(_on_plate_area_entered)
@@ -21,3 +23,6 @@ func _physics_process(delta: float) -> void:
 func _on_plate_area_entered(area: Area3D):
 	if area.name.contains("BoxArea"):
 		is_deactivated = true
+		await get_tree().create_timer(1.0).timeout
+		cam_switcher.current_cam_index = 8
+		cam_switcher.active_cam_icon = "CameraIcon7"
