@@ -35,8 +35,10 @@ glow_strength = 0.35
 glow_blend_mode = 0
 
 [sub_resource type="SystemFont" id="SystemFont_hpc6h"]
+subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_kltya"]
+subpixel_positioning = 0
 
 [node name="Main" type="Node3D"]
 
