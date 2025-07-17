@@ -2,7 +2,7 @@ extends Node3D
 
 @export var electro_throw_scene  = preload("res://Scenes/Models/electro_throw.tscn")
 @export var electro_hit_scene= preload("res://Scenes/Models/electro_aufprall.tscn")
-# @export var screamo_throw_scene = preload("res://Scenes/Models/electro_aufprall.tscn")
+@export var screamo_throw_scene = preload("res://Scenes/Models/woman_scream.tscn")
 @export var scale_speed: float = 1
 @export var max_scale: float = 3
 @export var char_script: CharacterBody3D
@@ -14,7 +14,6 @@ var waves = []
 var hit_effect_duration: float = 1.0
 var hit_effect_scale: float = 1.0
 var throw_speed: float = 10.0
-var throw_distance: float = 20.0
 var active_throw_effects = []
 var stop_throw = false
 
@@ -50,6 +49,7 @@ func _physics_process(delta):
 			char_script.play_animation("scream")
 			await get_tree().create_timer(0.75).timeout
 			trigger_wave()
+			spawn_throw_effect()
 
 	if wave_triggered:
 		for wave in waves:
@@ -151,7 +151,14 @@ func animate_hit_effect(hit_instance: Node3D):
 
 
 func spawn_throw_effect():
-	var throw_instance = electro_throw_scene.instantiate()
+	var throw_instance = null
+	if char_script.name == "Elektro":
+		throw_instance = electro_throw_scene.instantiate()
+	elif char_script.name == "Screamo":
+		throw_instance = screamo_throw_scene.instantiate()
+	else:
+		return
+
 	get_tree().current_scene.add_child(throw_instance)
 	stop_throw = false
 	# Position am Spieler
@@ -171,8 +178,6 @@ func spawn_throw_effect():
 		"distance_traveled": 0.0
 	}
 	active_throw_effects.append(throw_data)
-	
-	print("Spawned throw effect moving in direction: ", throw_direction)
 
 func update_throw_effects(delta: float):
 	for i in range(active_throw_effects.size() - 1, -1, -1):
@@ -190,5 +195,5 @@ func update_throw_effects(delta: float):
 		
 		# Prüfe ob maximale Distanz erreicht
 		if stop_throw:
-			throw_instance.queue_free()
 			active_throw_effects.remove_at(i)
+			throw_instance.queue_free()

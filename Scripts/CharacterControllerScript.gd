@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+@export var mouse_arrow = preload("res://Scenes/Models/waypoint.tscn")
 @export var speed: float = 5.0
 @onready var _player_model: = $PlayerModel  as Node3D
 
@@ -9,6 +10,7 @@ var allow_movement = true
 var is_active_character = false
 var target_position = Vector3(0,0,0)
 var player_anim_player : AnimationPlayer
+var active_arrow_instance = null
 
 func _ready():
 	cam_switcher = get_tree().get_root().get_node("Main/CamSwitcher")
@@ -58,6 +60,41 @@ func _unhandled_input(event: InputEvent) -> void:
 		if result && result.collider.name == "GridMap":
 			is_moving = true
 			target_position = result.position
+			spawn_mouse_arrow(result.position)
 
 func play_animation(anim_name) -> void:
 	player_anim_player.play(anim_name)
+
+func spawn_mouse_arrow(mouse_position: Vector3):
+	# Entferne vorherigen Arrow falls vorhanden
+	if active_arrow_instance != null and is_instance_valid(active_arrow_instance):
+		active_arrow_instance.queue_free()
+	
+	# Instanziiere neuen Arrow
+	active_arrow_instance = mouse_arrow.instantiate()
+	get_tree().current_scene.add_child(active_arrow_instance)
+	
+	active_arrow_instance.global_position = mouse_position + Vector3(0, 0, 0)
+	active_arrow_instance.scale = Vector3(0.2,0.2,0.2)
+
+
+	# AnimationPlayer zurücksetzen und korrekt starten
+	var arrow_anim_player = active_arrow_instance.get_node("AnimationPlayer")
+	
+	# Stoppe alle laufenden Animationen
+	arrow_anim_player.stop()
+	
+	# Setze auf Anfang zurück
+	arrow_anim_player.seek(0.0)
+	
+	# Warte einen Frame damit alles zurückgesetzt ist
+	await get_tree().process_frame
+	
+	# Starte Animation von vorne
+	arrow_anim_player.play("CubeAction")
+	
+	# Warte 3 Sekunden
+	await get_tree().create_timer(3.0).timeout
+
+	if is_instance_valid(active_arrow_instance):
+		active_arrow_instance.queue_free()

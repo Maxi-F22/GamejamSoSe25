@@ -103,10 +103,10 @@ environment = SubResource("Environment_bo1nx")
 script = ExtResource("14_u50mg")
 
 [node name="Elektro" parent="." instance=ExtResource("3_ynf5e")]
-transform = Transform3D(0.419262, 0, 0.907865, 0, 1, 0, -0.907865, 0, 0.419262, 4.70246, 3.38245, 17.751)
+transform = Transform3D(0.419262, 0, 0.907865, 0, 1, 0, -0.907865, 0, 0.419262, -10.6983, 3.38245, -8.00413)
 
 [node name="Heavy" parent="." instance=ExtResource("9_ynf5e")]
-transform = Transform3D(0.0401492, 0, 0.999194, 0, 1, 0, -0.999194, 0, 0.0401492, 5.01113, 3.63308, -16.8902)
+transform = Transform3D(0.258768, 0, 0.96594, 0, 1, 0, -0.96594, 0, 0.258768, 2.49176, 3.63308, 19.5103)
 
 [node name="Screamo" parent="." instance=ExtResource("8_344ge")]
 transform = Transform3D(-0.0939693, 0, 0.995575, 0, 1, 0, -0.995575, 0, -0.0939693, 2.19043, 3.48966, 21.683)
@@ -233,7 +233,7 @@ grow_vertical = 2
 
 [node name="FuseBoxes" type="Node3D" parent="Interactables"]
 
-[node name="LaserBox" parent="Interactables/FuseBoxes" instance=ExtResource("11_d1ilt")]
+[node name="LaserBox1" parent="Interactables/FuseBoxes" instance=ExtResource("11_d1ilt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4286, 4.10311, -12.6591)
 _laser_control_name = "LaserFirstRoom"
 
@@ -256,9 +256,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4226, 2.94643, -17.585)
 [node name="MovableBox3" parent="Interactables/Boxes" instance=ExtResource("10_hptm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.03554, 2.99235, -23.8033)
 
-[node name="MovableBox4" parent="Interactables/Boxes" instance=ExtResource("10_hptm8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23437, 2.99235, 2.58538)
-
 [node name="Plates" type="Node3D" parent="Interactables/Boxes"]
 
 [node name="PressurePlate1" parent="Interactables/Boxes/Plates" instance=ExtResource("18_hibaj")]
@@ -271,10 +268,6 @@ _door_control_name = "Gate2"
 
 [node name="PressurePlate3" parent="Interactables/Boxes/Plates" instance=ExtResource("18_hibaj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.121, 2.14813, -3.20448)
-_door_control_name = "Gate1"
-
-[node name="PressurePlate4" parent="Interactables/Boxes/Plates" instance=ExtResource("18_hibaj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1387, 2.14813, 2.62032)
 _door_control_name = "Gate1"
 
 [node name="Breakables" type="Node3D" parent="Interactables"]

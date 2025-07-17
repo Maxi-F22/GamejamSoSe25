@@ -9,6 +9,9 @@ transparency = 1
 albedo_color = Color(1, 1, 0, 1)
 albedo_texture = ExtResource("1_o43o3")
 roughness = 0.5
+emission_enabled = true
+emission = Color(0.8, 1, 0, 1)
+emission_energy_multiplier = 13.26
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_bgjo1"]
 _surfaces = [{

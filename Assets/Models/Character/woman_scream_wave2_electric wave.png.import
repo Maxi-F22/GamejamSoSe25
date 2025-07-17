@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckimw0r8mli0k"
-path.s3tc="res://.godot/imported/scream_woman_wave_green_sparkle_woman.png-0733b2334f87a5f32e1b9a27faa8c908.s3tc.ctex"
+uid="uid://40jmpv5ynkm8"
+path.s3tc="res://.godot/imported/woman_scream_wave2_electric wave.png-cfd162effe748794132c5b645c9aa3f9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "7ca313b096c27f0d7b1e3c373d9f49ce"
+"md5": "bd9e35c3ed06a054eebe22d309ac2ef9"
 }
 
 [deps]
 
-source_file="res://Assets/Models/Character/scream_woman_wave_green_sparkle_woman.png"
-dest_files=["res://.godot/imported/scream_woman_wave_green_sparkle_woman.png-0733b2334f87a5f32e1b9a27faa8c908.s3tc.ctex"]
+source_file="res://Assets/Models/Character/woman_scream_wave2_electric wave.png"
+dest_files=["res://.godot/imported/woman_scream_wave2_electric wave.png-cfd162effe748794132c5b645c9aa3f9.s3tc.ctex"]
 
 [params]
 

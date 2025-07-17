@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ces7ujm3pvu0o"
-path="res://.godot/imported/scream_woman_wave.glb-4ef9f94d1839b6753c1aea1a3d2a5cdf.scn"
+uid="uid://bq0fvfxgv51cs"
+path="res://.godot/imported/woman_scream_wave2.glb-2921178443ab7c9453a05fec6f216f8a.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Character/scream_woman_wave.glb"
-dest_files=["res://.godot/imported/scream_woman_wave.glb-4ef9f94d1839b6753c1aea1a3d2a5cdf.scn"]
+source_file="res://Assets/Models/Character/woman_scream_wave2.glb"
+dest_files=["res://.godot/imported/woman_scream_wave2.glb-2921178443ab7c9453a05fec6f216f8a.scn"]
 
 [params]
 
