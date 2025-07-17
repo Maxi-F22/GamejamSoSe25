@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://dd7gkrmajlrwb"]
+[gd_scene load_steps=18 format=3 uid="uid://dd7gkrmajlrwb"]
 
 [ext_resource type="FontFile" uid="uid://me783eka0ak" path="res://Minecraftia-Regular.ttf" id="2_853f1"]
+[ext_resource type="PackedScene" uid="uid://biodnmnd52j34" path="res://Assets/Environment/ventCover.glb" id="3_8e205"]
 [ext_resource type="PackedScene" uid="uid://bap0knk6vg3ko" path="res://Scenes/fuse_box.tscn" id="5_8um5k"]
 [ext_resource type="PackedScene" uid="uid://u7rplkk3umyo" path="res://Scenes/Models/electro_model.tscn" id="5_koqhg"]
 [ext_resource type="PackedScene" uid="uid://dtkwmvgyaid6p" path="res://Scenes/Models/heavy_model.tscn" id="6_cmrfp"]
@@ -113,6 +114,9 @@ modulate = Color(1, 1, 1, 0.172549)
 position = Vector2(958, 546.5)
 scale = Vector2(1.3168, 1.23543)
 texture = ExtResource("11_if7li")
+
+[node name="ventCover2" parent="CanvasLayer" instance=ExtResource("3_8e205")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9186, 5.35814, 20.1351)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, -0.0662739, 0.997801, 0, 0.997801, 0.0662739, -1, 2.89692e-09, -4.36153e-08, -2.77716, 4.57144, 19.9782)
