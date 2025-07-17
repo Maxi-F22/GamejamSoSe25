@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var fader: ColorRect = $ColorRect
 
-func fade_and_change_scene(scene_path: String) -> void:
+func fade_and_change_scene(_scene_path: String) -> void:
 	# make sure we start fully transparent
 	fader.color = Color(0, 0, 0, 0)
 	fader.visible = true

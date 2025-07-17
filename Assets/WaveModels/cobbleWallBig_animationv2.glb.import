@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cxs0lraxlrssx"
-path="res://.godot/imported/cobbleWallBig_animationv2.glb-9eca46ff5583ff92b16de570f91d6e61.scn"
+valid=false
 
 [deps]
 
 source_file="res://Assets/WaveModels/cobbleWallBig_animationv2.glb"
-dest_files=["res://.godot/imported/cobbleWallBig_animationv2.glb-9eca46ff5583ff92b16de570f91d6e61.scn"]
 
 [params]
 

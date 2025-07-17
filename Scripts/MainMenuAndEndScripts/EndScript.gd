@@ -19,5 +19,5 @@ func _on_body_exited(body):
 		present_characters.erase(body.name)
 
 func _check_all_present():
-	if character_names.all(func(name): return present_characters.has(name)):
+	if character_names.all(func(char_name): return present_characters.has(char_name)):
 		$FadeCanvas.fade_and_change_scene("res://Scenes/EndScene.tscn")

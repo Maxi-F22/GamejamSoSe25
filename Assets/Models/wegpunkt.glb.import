@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://d1i38g108ty4f"
-path="res://.godot/imported/wegpunkt.glb-8470834fbc7ba84aa9312a769c04730f.scn"
+valid=false
 
 [deps]
 
 source_file="res://Assets/Models/wegpunkt.glb"
-dest_files=["res://.godot/imported/wegpunkt.glb-8470834fbc7ba84aa9312a769c04730f.scn"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b3oecel8fspm3"]
+[gd_scene load_steps=20 format=3 uid="uid://cyfblxtblcsrg"]
 
 [ext_resource type="FontFile" uid="uid://me783eka0ak" path="res://Assets/HUD/Minecraftia-Regular.ttf" id="2_853f1"]
 [ext_resource type="PackedScene" uid="uid://biodnmnd52j34" path="res://Assets/Environment/ventCover.glb" id="3_8e205"]
