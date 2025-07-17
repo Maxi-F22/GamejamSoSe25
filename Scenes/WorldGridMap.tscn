@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cg1mt8ppkngax"]
+[gd_scene load_steps=23 format=3 uid="uid://cg1mt8ppkngax"]
 
 [ext_resource type="MeshLibrary" uid="uid://cvidrvhd4matp" path="res://Assets/Gridmap/Resources/blocks-wall-floorv09.tres" id="1_hxtjs"]
 [ext_resource type="PackedScene" uid="uid://bcsysk5dtq7hj" path="res://Assets/Models/camera.glb" id="2_vtsl5"]
@@ -36,6 +36,9 @@ size = Vector3(8.116, 5.336, 1.605)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6u7yt"]
 albedo_color = Color(0.758192, 0.758192, 0.758192, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f5tn2"]
+size = Vector3(4.85828, 4.73828, 1.29968)
 
 [node name="WorldGridMap" type="Node3D"]
 
@@ -235,11 +238,31 @@ surface_material_override/0 = SubResource("StandardMaterial3D_6u7yt")
 [node name="Gate1" parent="Türen" instance=ExtResource("12_f5tn2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02332, 3.98338, -33.7005)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Türen/Gate1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Türen/Gate1/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0614319, -0.206054, 0.149841)
+shape = SubResource("BoxShape3D_f5tn2")
+
 [node name="Gate2" parent="Türen" instance=ExtResource("12_f5tn2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02332, 3.98338, -27.5027)
 
+[node name="StaticBody3D2" type="StaticBody3D" parent="Türen/Gate2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.16605)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Türen/Gate2/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0614319, -0.206054, 0.149841)
+shape = SubResource("BoxShape3D_f5tn2")
+
 [node name="Gate3" parent="Türen" instance=ExtResource("12_f5tn2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02332, 3.98338, -21.6213)
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Türen/Gate3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.160028)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Türen/Gate3/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0614319, -0.206054, 0.149841)
+shape = SubResource("BoxShape3D_f5tn2")
 
 [node name="FinalDoor" parent="." instance=ExtResource("11_0u6gf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8551, 3.98693, -49.8626)

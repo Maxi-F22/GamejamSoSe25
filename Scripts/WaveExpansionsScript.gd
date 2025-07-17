@@ -1,5 +1,8 @@
 extends Node3D
 
+@export var electro_throw_scene  = preload("res://Scenes/Models/electro_throw.tscn")
+@export var electro_hit_scene= preload("res://Scenes/Models/electro_aufprall.tscn")
+# @export var screamo_throw_scene = preload("res://Scenes/Models/electro_aufprall.tscn")
 @export var scale_speed: float = 1
 @export var max_scale: float = 3
 @export var char_script: CharacterBody3D
@@ -8,6 +11,12 @@ extends Node3D
 var wave_triggered = false
 var is_activating = false
 var waves = []
+var hit_effect_duration: float = 1.0
+var hit_effect_scale: float = 1.0
+var throw_speed: float = 10.0
+var throw_distance: float = 20.0
+var active_throw_effects = []
+var stop_throw = false
 
 func _ready():
 	for child in get_children():	
@@ -29,10 +38,12 @@ func _physics_process(delta):
 		char_script.allow_movement = false
 		if char_script.name == "Elektro":
 			char_script.play_animation("interaction")
+			await get_tree().create_timer(0.25).timeout
 			trigger_wave()
+			spawn_throw_effect()
 		elif char_script.name == "Heavy":
 			char_script.play_animation("jump")
-			await get_tree().create_timer(1.5).timeout
+			await get_tree().create_timer(2.0).timeout
 			play_animation()
 			trigger_wave()
 		elif char_script.name == "Screamo":
@@ -51,6 +62,8 @@ func _physics_process(delta):
 						scale.z += scale_speed * delta
 				else:
 					reset()
+	# Update Throw-Effekte
+	update_throw_effects(delta)
 
 # make waves Visible and trigger the expansion
 func trigger_wave():
@@ -75,6 +88,7 @@ func reset(WaveHit: Area3D = null):
 		char_script.allow_movement = true
 		wave_triggered = false
 		is_activating = false
+		stop_throw = true
 		scale = Vector3(1, 1, 1)
 		for wave in waves:
 			wave.call_deferred("set", "visible", false)
@@ -86,6 +100,10 @@ func reset(WaveHit: Area3D = null):
 	
 #check if walls are hit if any reset the wave segment
 func _on_area_entered(hitting_area: Area3D, hit_area: Area3D):
+	if hit_area.name.contains("ElektroWave"):
+		# Spawn Hit-Effekt bei Kollision
+		spawn_hit_effect(hit_area.global_position)
+
 	if hitting_area.name.contains("GridMap"):
 		reset(hit_area)
 
@@ -99,3 +117,78 @@ func play_animation():
 		wave_model.scale += Vector3.ONE * 2.0 * get_physics_process_delta_time()
 	wave_model.visible = false
 	wave_model.scale = wave_model_orig_scale
+
+
+func spawn_hit_effect(hit_position: Vector3):
+	# Instanziiere die Hit-Szene
+	var hit_instance = electro_hit_scene.instantiate()
+	
+	# Füge zur Szene hinzu
+	get_tree().current_scene.add_child(hit_instance)
+	
+	# Setze Position an Aufprall-Stelle
+	hit_instance.global_position = hit_position
+	
+	# Starte mit kleiner Größe
+	hit_instance.scale = Vector3.ZERO
+	
+	# Animiere den Hit-Effekt
+	animate_hit_effect(hit_instance)
+
+func animate_hit_effect(hit_instance: Node3D):
+	# Erstelle Tween für Animation
+	var tween = create_tween()
+	tween.set_parallel(true)  # Erlaube mehrere gleichzeitige Animationen
+	
+	tween.tween_property(hit_instance, "scale", 
+		Vector3.ONE * hit_effect_scale, hit_effect_duration)
+	
+	tween.tween_property(hit_instance, "rotation_degrees", 
+		Vector3(0, 360, 0), hit_effect_duration)
+	
+	# Entferne Hit-Effekt nach Animation
+	tween.tween_callback(func(): hit_instance.queue_free()).set_delay(hit_effect_duration)
+
+
+func spawn_throw_effect():
+	var throw_instance = electro_throw_scene.instantiate()
+	get_tree().current_scene.add_child(throw_instance)
+	stop_throw = false
+	# Position am Spieler
+	throw_instance.global_position = char_script.global_position
+
+	# Richte die Rotation am Spieler aus
+	throw_instance.global_rotation = char_script.global_rotation
+	
+	# Berechne Richtung basierend auf Spieler-Rotation oder Input
+	var throw_direction = char_script.global_transform.basis.z
+	
+	# Füge zu aktiven Throw-Effekten hinzu
+	var throw_data = {
+		"instance": throw_instance,
+		"direction": throw_direction,
+		"start_position": throw_instance.global_position,
+		"distance_traveled": 0.0
+	}
+	active_throw_effects.append(throw_data)
+	
+	print("Spawned throw effect moving in direction: ", throw_direction)
+
+func update_throw_effects(delta: float):
+	for i in range(active_throw_effects.size() - 1, -1, -1):
+		var throw_data = active_throw_effects[i]
+		var throw_instance = throw_data.instance
+		
+		if not is_instance_valid(throw_instance):
+			active_throw_effects.remove_at(i)
+			continue
+		
+		# Bewege Throw-Effekt
+		var movement = throw_data.direction * throw_speed * delta
+		throw_instance.global_position += movement
+		throw_data.distance_traveled += movement.length()
+		
+		# Prüfe ob maximale Distanz erreicht
+		if stop_throw:
+			throw_instance.queue_free()
+			active_throw_effects.remove_at(i)

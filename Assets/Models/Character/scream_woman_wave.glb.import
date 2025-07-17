@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://titewbn4fye2"
-path="res://.godot/imported/fat_guy.glb-caae12854223d601462e290c78a163d8.scn"
+uid="uid://ces7ujm3pvu0o"
+path="res://.godot/imported/scream_woman_wave.glb-4ef9f94d1839b6753c1aea1a3d2a5cdf.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Character/fat_guy.glb"
-dest_files=["res://.godot/imported/fat_guy.glb-caae12854223d601462e290c78a163d8.scn"]
+source_file="res://Assets/Models/Character/scream_woman_wave.glb"
+dest_files=["res://.godot/imported/scream_woman_wave.glb-4ef9f94d1839b6753c1aea1a3d2a5cdf.scn"]
 
 [params]
 

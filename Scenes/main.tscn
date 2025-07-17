@@ -106,7 +106,7 @@ script = ExtResource("14_u50mg")
 transform = Transform3D(0.419262, 0, 0.907865, 0, 1, 0, -0.907865, 0, 0.419262, 4.70246, 3.38245, 17.751)
 
 [node name="Heavy" parent="." instance=ExtResource("9_ynf5e")]
-transform = Transform3D(0.0401492, 0, 0.999194, 0, 1, 0, -0.999194, 0, 0.0401492, 1.65897, 3.63308, 7.09071)
+transform = Transform3D(0.0401492, 0, 0.999194, 0, 1, 0, -0.999194, 0, 0.0401492, 5.01113, 3.63308, -16.8902)
 
 [node name="Screamo" parent="." instance=ExtResource("8_344ge")]
 transform = Transform3D(-0.0939693, 0, 0.995575, 0, 1, 0, -0.995575, 0, -0.0939693, 2.19043, 3.48966, 21.683)

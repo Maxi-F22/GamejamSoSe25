@@ -23,6 +23,10 @@ func _physics_process(delta: float) -> void:
 func _on_plate_area_entered(area: Area3D):
 	if area.name.contains("BoxArea"):
 		is_deactivated = true
-		await get_tree().create_timer(1.0).timeout
+		var former_cam_index = cam_switcher.current_cam_index
+		var former_cam_icon = cam_switcher.active_cam_icon
 		cam_switcher.current_cam_index = 8
 		cam_switcher.active_cam_icon = "CameraIcon7"
+		await get_tree().create_timer(3.0).timeout
+		cam_switcher.current_cam_index = former_cam_index
+		cam_switcher.active_cam_icon = former_cam_icon

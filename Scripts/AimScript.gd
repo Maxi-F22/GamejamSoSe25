@@ -20,7 +20,7 @@ func _process(_delta):
 	if not char_script.is_active_character:
 		_aimer_mesh.visible = false
 		return
-	_aimer_mesh.visible = true
+	#_aimer_mesh.visible = true
 	current_cam = cam_switcher.current_cam
 	if wave_area.visible or not char_script.allow_movement or char_script.is_moving:
 		return

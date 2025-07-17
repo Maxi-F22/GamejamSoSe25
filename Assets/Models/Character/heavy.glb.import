@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://titewbn4fye2"
-path="res://.godot/imported/fat_guy.glb-caae12854223d601462e290c78a163d8.scn"
+uid="uid://d38r5lyi1vkyq"
+path="res://.godot/imported/heavy.glb-71e6fdda54fa390a6ec4fb0b3d032e39.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Character/fat_guy.glb"
-dest_files=["res://.godot/imported/fat_guy.glb-caae12854223d601462e290c78a163d8.scn"]
+source_file="res://Assets/Models/Character/heavy.glb"
+dest_files=["res://.godot/imported/heavy.glb-71e6fdda54fa390a6ec4fb0b3d032e39.scn"]
 
 [params]
 
