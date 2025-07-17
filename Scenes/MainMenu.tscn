@@ -1,6 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://b3oecel8fspm3"]
+[gd_scene load_steps=20 format=3 uid="uid://cyfblxtblcsrg"]
 
-[ext_resource type="FontFile" uid="uid://me783eka0ak" path="res://Minecraftia-Regular.ttf" id="2_853f1"]
+[ext_resource type="FontFile" uid="uid://me783eka0ak" path="res://Assets/Menu/Minecraftia-Regular.ttf" id="2_853f1"]
 [ext_resource type="PackedScene" uid="uid://biodnmnd52j34" path="res://Assets/Environment/ventCover.glb" id="3_8e205"]
 [ext_resource type="PackedScene" uid="uid://cxdpe0vdxig1o" path="res://Assets/Environment/Poster/Poster4.tscn" id="4_2x1g0"]
 [ext_resource type="PackedScene" uid="uid://bap0knk6vg3ko" path="res://Scenes/fuse_box.tscn" id="5_8um5k"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bcsysk5dtq7hj" path="res://Assets/Models/camera.glb" id="8_if7li"]
 [ext_resource type="PackedScene" uid="uid://bdpu3ysvnmpgo" path="res://Assets/Models/Character/woman.glb" id="9_cmrfp"]
 [ext_resource type="Script" uid="uid://b3n2lpscjrrr0" path="res://Scripts/MainMenuScripts/LightScript.gd" id="10_loo7a"]
-[ext_resource type="Texture2D" uid="uid://cxlepal5iohd5" path="res://Assets/Models/overlay.png" id="11_if7li"]
+[ext_resource type="Texture2D" uid="uid://cxlepal5iohd5" path="res://Assets/HUD/overlay.png" id="11_if7li"]
 [ext_resource type="PackedScene" uid="uid://ccsd0v7bu6tl8" path="res://Assets/Environment/bed.glb" id="11_rrcx7"]
 [ext_resource type="PackedScene" uid="uid://ddhnovsc0qgrg" path="res://Assets/Environment/fireExtinguisher.glb" id="12_rrcx7"]
 [ext_resource type="PackedScene" uid="uid://bitsjf64hxo3k" path="res://Assets/Environment/PipeThingy.glb" id="13_fh7cp"]

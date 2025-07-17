@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://d2oqbh1jfmqg2"]
+[gd_scene load_steps=36 format=3 uid="uid://d2oqbh1jfmqg2"]
 
 [ext_resource type="Script" uid="uid://cuv1uwh8rujp2" path="res://Scripts/CamSwitchScript.gd" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://bmpo0m20oukcf" path="res://Assets/HUD/Electro_auswahl.png" id="2_b3802"]
@@ -25,7 +25,10 @@
 [ext_resource type="PackedScene" uid="uid://dxkyksootv8ny" path="res://Assets/Environment/Poster/Poster.tscn" id="23_7k868"]
 [ext_resource type="PackedScene" uid="uid://dff24ss15qpq5" path="res://Assets/Environment/Poster/Poster2.tscn" id="24_hpc6h"]
 [ext_resource type="PackedScene" uid="uid://cxdpe0vdxig1o" path="res://Assets/Environment/Poster/Poster4.tscn" id="25_kltya"]
+[ext_resource type="PackedScene" uid="uid://dtcb0wm8v5xiy" path="res://Assets/Environment/Poster/Poster3.tscn" id="26_6vcvc"]
 [ext_resource type="AudioStream" uid="uid://28fwv6ihoflp" path="res://Assets/Sounds/Music/game_music.wav" id="26_cbgmd"]
+[ext_resource type="Script" path="res://Scripts/MainMenuScripts/EndScript.gd" id="28_7k868"]
+[ext_resource type="Script" path="res://Scripts/MainMenuScripts/FadingScript.gd" id="29_hpc6h"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cbgmd"]
 sky_top_color = Color(0.281779, 0.487011, 0.513083, 1)
@@ -48,6 +51,9 @@ subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_kltya"]
 subpixel_positioning = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kltya"]
+size = Vector3(10.1548, 0.579772, 6.53552)
 
 [node name="Main" type="Node3D"]
 
@@ -560,7 +566,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.69306, -0.971648)
 [node name="Poster5" parent="Environment/Poster" instance=ExtResource("25_kltya")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.47419, 4.34711, 16.0066)
 
+[node name="Poster6" parent="Environment/Poster" instance=ExtResource("26_6vcvc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.8982, 4.55454, -19)
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_cbgmd")
 volume_db = -10.587
 autoplay = true
+
+[node name="LeavingArea" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.11993, 2.36007, -42.8398)
+
+[node name="Area3D" type="Area3D" parent="LeavingArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.21088, 0)
+script = ExtResource("28_7k868")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeavingArea/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.869965, -2.55459, -2.76776)
+shape = SubResource("BoxShape3D_kltya")
+
+[node name="FadeCanvas" type="CanvasLayer" parent="LeavingArea/Area3D"]
+layer = 3
+script = ExtResource("29_hpc6h")
+
+[node name="ColorRect" type="ColorRect" parent="LeavingArea/Area3D/FadeCanvas"]
+light_mask = 0
+visibility_layer = 1023
+offset_right = 1924.0
+offset_bottom = 1085.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[connection signal="body_entered" from="LeavingArea/Area3D" to="LeavingArea" method="_on_area_3d_body_entered"]
