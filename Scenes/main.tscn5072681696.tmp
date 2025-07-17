@@ -578,6 +578,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.69306, -0.971648)
 [node name="Poster5" parent="Environment/Poster" instance=ExtResource("25_kltya")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.47419, 4.34711, 16.0066)
 
+[node name="Poster6" parent="Environment/Poster" instance=ExtResource("27_1w6v2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.8982, 4.55454, -19)
+
 [node name="LeavingArea" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.11993, 2.36007, -42.8398)
 
@@ -590,18 +593,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.869965, -2.55459, -2.76776)
 shape = SubResource("BoxShape3D_u50mg")
 
 [node name="FadeCanvas" type="CanvasLayer" parent="LeavingArea/Area3D"]
-layer = 3
 script = ExtResource("28_ueoa1")
 
 [node name="ColorRect" type="ColorRect" parent="LeavingArea/Area3D/FadeCanvas"]
 light_mask = 0
-visibility_layer = 1023
+visibility_layer = 0
 offset_right = 1924.0
 offset_bottom = 1085.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
-
-[node name="Poster6" parent="LeavingArea" instance=ExtResource("27_1w6v2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77827, 2.19447, 23.8398)
 
 [connection signal="body_entered" from="LeavingArea/Area3D" to="LeavingArea" method="_on_area_3d_body_entered"]
