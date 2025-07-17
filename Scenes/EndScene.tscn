@@ -8,12 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://rlyewoyoc2uk" path="res://Assets/Environment/tree1.fbx" id="6_oen81"]
 [ext_resource type="PackedScene" uid="uid://ddhnovsc0qgrg" path="res://Assets/Environment/fireExtinguisher.glb" id="7_f7m51"]
 [ext_resource type="PackedScene" uid="uid://dff24ss15qpq5" path="res://Assets/Environment/Poster/Poster2.tscn" id="8_f7m51"]
-[ext_resource type="PackedScene" uid="uid://dtkwmvgyaid6p" path="res://Scenes/Models/heavy_model.tscn" id="8_oen81"]
-[ext_resource type="PackedScene" uid="uid://bn6uwkx8m74hu" path="res://Scenes/Models/scream_model.tscn" id="9_f7m51"]
+[ext_resource type="PackedScene" uid="uid://dtkwmvgyaid6p" path="res://Scenes/CharacterPrefabs/heavy_model.tscn" id="8_oen81"]
+[ext_resource type="PackedScene" uid="uid://bn6uwkx8m74hu" path="res://Scenes/CharacterPrefabs/scream_model.tscn" id="9_f7m51"]
 [ext_resource type="PackedScene" uid="uid://bitsjf64hxo3k" path="res://Assets/Environment/PipeThingy.glb" id="9_k65nm"]
 [ext_resource type="PackedScene" uid="uid://cvcvypfui43fv" path="res://Assets/Environment/elektro_sitzend.fbx" id="12_k65nm"]
-[ext_resource type="FontFile" uid="uid://me783eka0ak" path="res://Assets/Menu/Minecraftia-Regular.ttf" id="13_k65nm"]
-[ext_resource type="Script" uid="uid://c55xv6bya38yl" path="res://Scripts/MainMenuScripts/MainMenu.gd" id="13_y47l7"]
+[ext_resource type="FontFile" uid="uid://me783eka0ak" path="res://Assets/HUD/Minecraftia-Regular.ttf" id="13_k65nm"]
+[ext_resource type="Script" uid="uid://c55xv6bya38yl" path="res://Scripts/MainMenuAndEndScripts/MainMenu.gd" id="13_y47l7"]
 [ext_resource type="PackedScene" uid="uid://ccsd0v7bu6tl8" path="res://Assets/Environment/bed.glb" id="14_h4mj5"]
 [ext_resource type="PackedScene" uid="uid://cxdpe0vdxig1o" path="res://Assets/Environment/Poster/Poster4.tscn" id="15_b5jnr"]
 [ext_resource type="PackedScene" uid="uid://dtcb0wm8v5xiy" path="res://Assets/Environment/Poster/Poster3.tscn" id="15_peqs5"]
@@ -124,12 +124,6 @@ transform = Transform3D(-0.0809592, 0.0209375, 0.795617, 0.200304, 0.774517, 0, 
 
 [node name="woman2" parent="." instance=ExtResource("9_f7m51")]
 transform = Transform3D(-0.0239249, 0, -0.0550236, 0, 0.06, 0, 0.0550236, 0, -0.0239249, -1.52749, 1.82752, -0.410007)
-
-[node name="Camera" type="Node3D" parent="."]
-
-[node name="Camera3D" type="Camera3D" parent="Camera"]
-transform = Transform3D(-0.214735, -0.194717, 0.957065, 0, 0.979925, 0.199368, -0.976672, 0.0428113, -0.210424, 1.57536, 4.29977, -2.23242)
-environment = SubResource("Environment_nb8ct")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("13_y47l7")
@@ -270,6 +264,10 @@ offset_top = 835.0
 offset_right = 1097.0
 offset_bottom = 917.0
 text = "Quit"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.214735, -0.194717, 0.957065, 0, 0.979925, 0.199368, -0.976672, 0.0428112, -0.210424, 1.57536, 4.29977, -2.23242)
+environment = SubResource("Environment_nb8ct")
 
 [connection signal="ready" from="CanvasLayer/RichTextLabel2" to="CanvasLayer/RichTextLabel2" method="_on_ready"]
 [connection signal="ready" from="CanvasLayer/RichTextLabel3" to="CanvasLayer/RichTextLabel3" method="_on_ready"]

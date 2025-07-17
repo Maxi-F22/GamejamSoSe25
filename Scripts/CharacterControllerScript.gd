@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var mouse_arrow = preload("res://Scenes/Models/waypoint.tscn")
+@export var mouse_arrow = preload("res://Scenes/CharacterPrefabs/WavePrefabs/waypoint.tscn")
 @export var speed: float = 5.0
 @onready var _player_model: = $PlayerModel  as Node3D
 
@@ -107,16 +107,16 @@ func spawn_mouse_arrow(mouse_position: Vector3):
 
 func check_if_stuck(delta: float):
 	position_check_timer += delta
-    
+	
 	if position_check_timer >= 1.0:
 		var distance_moved = global_position.distance_to(last_position)
-        
-        # Wenn Charakter versucht sich zu bewegen aber stecken geblieben ist
+		
+		# Wenn Charakter versucht sich zu bewegen aber stecken geblieben ist
 		if is_moving and distance_moved < 0.1:
 			print("Character appears stuck - stopping movement")
 			is_moving = false
 			velocity = Vector3.ZERO
 			play_animation("idle")
-        
+		
 		last_position = global_position
 		position_check_timer = 0.0

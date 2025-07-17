@@ -1,21 +1,21 @@
-[gd_scene load_steps=20 format=3 uid="uid://cyfblxtblcsrg"]
+[gd_scene load_steps=20 format=3 uid="uid://b3oecel8fspm3"]
 
-[ext_resource type="FontFile" uid="uid://me783eka0ak" path="res://Assets/Menu/Minecraftia-Regular.ttf" id="2_853f1"]
+[ext_resource type="FontFile" uid="uid://me783eka0ak" path="res://Assets/HUD/Minecraftia-Regular.ttf" id="2_853f1"]
 [ext_resource type="PackedScene" uid="uid://biodnmnd52j34" path="res://Assets/Environment/ventCover.glb" id="3_8e205"]
 [ext_resource type="PackedScene" uid="uid://cxdpe0vdxig1o" path="res://Assets/Environment/Poster/Poster4.tscn" id="4_2x1g0"]
-[ext_resource type="PackedScene" uid="uid://bap0knk6vg3ko" path="res://Scenes/fuse_box.tscn" id="5_8um5k"]
-[ext_resource type="PackedScene" uid="uid://u7rplkk3umyo" path="res://Scenes/Models/electro_model.tscn" id="5_koqhg"]
-[ext_resource type="PackedScene" uid="uid://dtkwmvgyaid6p" path="res://Scenes/Models/heavy_model.tscn" id="6_cmrfp"]
-[ext_resource type="Script" uid="uid://ctr81psffoske" path="res://Scripts/MainMenuScripts/IdlePlayer.gd" id="6_if7li"]
+[ext_resource type="PackedScene" uid="uid://u7rplkk3umyo" path="res://Scenes/CharacterPrefabs/electro_model.tscn" id="5_koqhg"]
+[ext_resource type="PackedScene" uid="uid://dtkwmvgyaid6p" path="res://Scenes/CharacterPrefabs/heavy_model.tscn" id="6_cmrfp"]
+[ext_resource type="Script" uid="uid://ctr81psffoske" path="res://Scripts/MainMenuAndEndScripts/IdlePlayer.gd" id="6_if7li"]
 [ext_resource type="MeshLibrary" uid="uid://cvidrvhd4matp" path="res://Assets/Gridmap/Resources/blocks-wall-floorv09.tres" id="7_loo7a"]
 [ext_resource type="PackedScene" uid="uid://bcsysk5dtq7hj" path="res://Assets/Models/camera.glb" id="8_if7li"]
 [ext_resource type="PackedScene" uid="uid://bdpu3ysvnmpgo" path="res://Assets/Models/Character/woman.glb" id="9_cmrfp"]
-[ext_resource type="Script" uid="uid://b3n2lpscjrrr0" path="res://Scripts/MainMenuScripts/LightScript.gd" id="10_loo7a"]
+[ext_resource type="Script" uid="uid://b3n2lpscjrrr0" path="res://Scripts/InteractableAndEnvironmentalScripts/LightScript.gd" id="10_loo7a"]
 [ext_resource type="Texture2D" uid="uid://cxlepal5iohd5" path="res://Assets/HUD/overlay.png" id="11_if7li"]
 [ext_resource type="PackedScene" uid="uid://ccsd0v7bu6tl8" path="res://Assets/Environment/bed.glb" id="11_rrcx7"]
 [ext_resource type="PackedScene" uid="uid://ddhnovsc0qgrg" path="res://Assets/Environment/fireExtinguisher.glb" id="12_rrcx7"]
 [ext_resource type="PackedScene" uid="uid://bitsjf64hxo3k" path="res://Assets/Environment/PipeThingy.glb" id="13_fh7cp"]
 [ext_resource type="PackedScene" uid="uid://dpbpbrkl0muaa" path="res://Assets/Environment/Sirene.tscn" id="15_7467j"]
+[ext_resource type="Texture2D" uid="uid://dankq2ya3wm62" path="res://Assets/Environment/Poster/outdoor.jpg" id="16_2x1g0"]
 
 [sub_resource type="GDScript" id="GDScript_loo7a"]
 script/source = "extends CanvasLayer
@@ -153,10 +153,6 @@ rotation_speed = 210.0
 
 [node name="Envrionment" type="Node3D" parent="."]
 
-[node name="LaserBox" parent="Envrionment" instance=ExtResource("5_8um5k")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.29069, 3.31682, 24.8756)
-script = null
-
 [node name="electro_guy2" parent="Envrionment" instance=ExtResource("5_koqhg")]
 transform = Transform3D(-0.0607417, 0, 0.0520619, 0, 0.08, 0, -0.0520619, 0, -0.0607417, -8.12791, 2.00205, 22.5799)
 script = ExtResource("6_if7li")
@@ -182,6 +178,14 @@ transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 
 
 [node name="Sirene" parent="Envrionment" instance=ExtResource("15_7467j")]
 transform = Transform3D(1, 0, 0, 0, -0.997986, -0.063435, 0, 0.063435, -0.997986, -8.3048, 5.95947, 24.5158)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -11.5956, 4.53554, 22.6904)
+texture = ExtResource("16_2x1g0")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -11.5956, 4.53554, 17.3607)
+texture = ExtResource("16_2x1g0")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_on_button_pressed"]
 [connection signal="ready" from="CanvasLayer/RichTextLabel" to="CanvasLayer" method="_on_rich_text_label_ready"]

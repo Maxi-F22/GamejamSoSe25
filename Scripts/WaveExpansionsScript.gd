@@ -1,8 +1,8 @@
 extends Node3D
 
-@export var electro_throw_scene  = preload("res://Scenes/Models/electro_throw.tscn")
-@export var electro_hit_scene= preload("res://Scenes/Models/electro_aufprall.tscn")
-@export var screamo_throw_scene = preload("res://Scenes/Models/woman_scream.tscn")
+@export var electro_throw_scene  = preload("res://Scenes/CharacterPrefabs/WavePrefabs/electro_throw.tscn")
+@export var electro_hit_scene= preload("res://Scenes/CharacterPrefabs/WavePrefabs/electro_aufprall.tscn")
+@export var screamo_throw_scene = preload("res://Scenes/CharacterPrefabs/woman_scream.tscn")
 @export var scale_speed: float = 1
 @export var max_scale: float = 3
 @export var char_script: CharacterBody3D
@@ -216,12 +216,12 @@ func update_throw_effects(delta: float):
 
 func cleanup_throw_effects():
 	stop_throw = true	
-    
-    # Entferne alle aktiven Throw-Effekte sofort
+	
+	# Entferne alle aktiven Throw-Effekte sofort
 	for throw_data in active_throw_effects:
 		if is_instance_valid(throw_data.instance):
 			throw_data.instance.visible = false
 			throw_data.instance.queue_free()
-    
-    # Leere die Liste
+	
+	# Leere die Liste
 	active_throw_effects.clear()

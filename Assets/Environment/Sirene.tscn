@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dpbpbrkl0muaa"]
 
-[ext_resource type="PackedScene" uid="uid://bowlrq0eooxhh" path="res://Assets/Environment/siren (1).glb" id="1_f4iqg"]
-[ext_resource type="Script" uid="uid://b3n2lpscjrrr0" path="res://Scripts/MainMenuScripts/LightScript.gd" id="2_3vv1t"]
+[ext_resource type="PackedScene" uid="uid://bowlrq0eooxhh" path="res://Assets/Environment/SirenenModel.glb" id="1_f4iqg"]
+[ext_resource type="Script" uid="uid://b3n2lpscjrrr0" path="res://Scripts/InteractableAndEnvironmentalScripts/LightScript.gd" id="2_3vv1t"]
 
 [node name="Sirene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
