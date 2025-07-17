@@ -1,4 +1,6 @@
-extends Node3D  # Or DirectionalLight3D if it's the light itself
+extends Node3D
+
+# Rotates the red lights
 
 @export var rotation_speed: float = 45.0  # Degrees per second
 

@@ -1,4 +1,6 @@
-extends Node3D  # Or the type of your main node
+extends Node3D
+
+# Implements the animation for main menu and end screen
 
 func _ready():
 	var anim_player = $AnimationPlayer

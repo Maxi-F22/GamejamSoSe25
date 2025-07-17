@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+# Implements the functionality of the camera overlay
+
 @onready var time_label = $OverlayContainer/Control/TimeLabel
 @onready var date_label = $OverlayContainer/Control/DateLabel
 @onready var rec_dot = $OverlayContainer/Control/RecDot
@@ -12,7 +14,7 @@ func _ready():
 
 
 func _process(_delta):
-	# Uhrzeit aktualisieren
+	# Get the current time and update text
 	var current_time = Time.get_time_dict_from_system()
 	var hours = str(current_time["hour"]).pad_zeros(2)
 	var minutes = str(current_time["minute"]).pad_zeros(2)
@@ -20,7 +22,7 @@ func _process(_delta):
 	time_label.text = "%s:%s:%s" % [hours, minutes, seconds]
 
 func update_date():
-	# Datum einmal beim Start setzen
+	# Set date upon start
 	var date = Time.get_date_dict_from_system()
 	var day = str(date["day"]).pad_zeros(2)
 	var month = str(date["month"]).pad_zeros(2)
@@ -28,7 +30,8 @@ func update_date():
 	date_label.text = "%s.%s.%s" % [day, month, year]
 
 func start_rec_blink():
+	# Animate the blinking red dot
 	rec_tween = create_tween()
-	rec_tween.set_loops()  # Endlos
+	rec_tween.set_loops()
 	rec_tween.tween_property(rec_dot, "modulate:a", 0.0, 0.8).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	rec_tween.tween_property(rec_dot, "modulate:a", 1.0, 0.8).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)

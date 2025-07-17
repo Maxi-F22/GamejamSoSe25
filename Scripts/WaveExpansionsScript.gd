@@ -1,5 +1,7 @@
 extends Node3D
 
+# Implements the wave logic and animations
+
 @export var electro_throw_scene  = preload("res://Scenes/CharacterPrefabs/WavePrefabs/electro_throw.tscn")
 @export var electro_hit_scene= preload("res://Scenes/CharacterPrefabs/WavePrefabs/electro_aufprall.tscn")
 @export var screamo_throw_scene = preload("res://Scenes/CharacterPrefabs/woman_scream.tscn")
@@ -32,10 +34,10 @@ func _ready():
 		waves.append(child)
 
 	for wave in waves:
-		# Set correct collision layer
-		wave.collision_mask = 2
+		wave.collision_mask = 2 # Set correct collision layer for detecting interactables and walls
 		if wave is Area3D:
 			wave.area_entered.connect(_on_area_entered.bind(wave))
+		# Disable wave objects on start
 		for child in wave.get_children():
 			child.call_deferred("set", "visible", false)
 			if child is CollisionShape3D:
@@ -45,6 +47,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("Wave Activate") and char_script.is_active_character and not is_activating:
 		is_activating = true
 		char_script.allow_movement = false
+		# Differentiate between characters, as the have different times for the animations
 		if char_script.name == "Elektro":
 			char_script.play_animation("interaction")
 			projectile_sound.play()
@@ -64,6 +67,7 @@ func _physics_process(delta):
 			trigger_wave()
 			spawn_throw_effect()
 
+	# Grow the wave collision shapes
 	if wave_triggered:
 		for wave in waves:
 			for child in wave.get_children():
@@ -75,10 +79,9 @@ func _physics_process(delta):
 						scale.z += scale_speed * delta
 				else:
 					reset()
-	# Update Throw-Effekte
+	
 	update_throw_effects(delta)
 
-# make waves Visible and trigger the expansion
 func trigger_wave():
 	wave_triggered = true
 	for wave in waves:
@@ -86,18 +89,19 @@ func trigger_wave():
 		for child in wave.get_children():
 			child.call_deferred("set", "visible", true)
 			if child is CollisionShape3D:
+				# Activate the collision shapes to detect other areas
 				child.call_deferred("set", "disabled", false)
 
-# Reset position of certain or ALL wave segments
+# Reset position of certain or all wave segments on wall hit
 func reset(WaveHit: Area3D = null):
 	cleanup_throw_effects()
-	#triggered if wave has been hit by a wall
+	# triggered if wave has been hit by a wall
 	if WaveHit != null:
 		WaveHit.call_deferred("set", "visible", false)
 		for child in WaveHit.get_children():
 			if child is CollisionShape3D:
 				child.set_deferred("disabled", true)
-	#triggered to reset all the waves
+	# triggered to reset all the waves
 	else:
 		char_script.allow_movement = true
 		wave_triggered = false
@@ -111,16 +115,17 @@ func reset(WaveHit: Area3D = null):
 					child.set_deferred("disabled", true)
 	
 	
-#check if walls are hit if any reset the wave segment
+# check if walls are hit if any reset the wave segment
 func _on_area_entered(hitting_area: Area3D, hit_area: Area3D):
 	if hit_area.name.contains("ElektroWave"):
-		# Spawn Hit-Effekt bei Kollision
+		# On collision with Elektro, spawn hit effect
 		spawn_hit_effect(hit_area.global_position)
 
 	if hitting_area.name.contains("GridMap"):
 		reset(hit_area)
 
 func play_wave_animation():
+	# If char is Heavy, make the wave around him visible and grow
 	var wave_model
 	wave_model = char_script.get_node("WaveModel")
 	var	wave_model_orig_scale = wave_model.scale
@@ -131,39 +136,28 @@ func play_wave_animation():
 	wave_model.visible = false
 	wave_model.scale = wave_model_orig_scale
 
-
 func spawn_hit_effect(hit_position: Vector3):
-	# Instanziiere die Hit-Szene
+	# Instantiate the hit effect of Elektro and set position based on area collision impact
 	var hit_instance = electro_hit_scene.instantiate()
-	
-	# Füge zur Szene hinzu
 	get_tree().current_scene.add_child(hit_instance)
-	
-	# Setze Position an Aufprall-Stelle
 	hit_instance.global_position = hit_position
-	
-	# Starte mit kleiner Größe
 	hit_instance.scale = Vector3.ZERO
 	
-	# Animiere den Hit-Effekt
 	animate_hit_effect(hit_instance)
 
 func animate_hit_effect(hit_instance: Node3D):
-	# Erstelle Tween für Animation
 	var tween = create_tween()
-	tween.set_parallel(true)  # Erlaube mehrere gleichzeitige Animationen
-	
+	tween.set_parallel(true)
+	# Grow and rotate hit effect after spawning
 	tween.tween_property(hit_instance, "scale", 
 		Vector3.ONE * hit_effect_scale, hit_effect_duration)
-	
 	tween.tween_property(hit_instance, "rotation_degrees", 
 		Vector3(0, 360, 0), hit_effect_duration)
 	
-	# Entferne Hit-Effekt nach Animation
 	tween.tween_callback(func(): hit_instance.queue_free()).set_delay(hit_effect_duration)
 
-
 func spawn_throw_effect():
+	# If char is Elektro or Schall, instantiate their "throwable" waves
 	var throw_instance = null
 	if char_script.name == "Elektro":
 		throw_instance = electro_throw_scene.instantiate()
@@ -174,16 +168,13 @@ func spawn_throw_effect():
 
 	get_tree().current_scene.add_child(throw_instance)
 	stop_throw = false
-	# Position am Spieler
-	throw_instance.global_position = char_script.global_position
 
-	# Richte die Rotation am Spieler aus
+	# Base position and rotation on character
+	throw_instance.global_position = char_script.global_position
 	throw_instance.global_rotation = char_script.global_rotation
 	
-	# Berechne Richtung basierend auf Spieler-Rotation oder Input
 	var throw_direction = char_script.global_transform.basis.z
 	
-	# Füge zu aktiven Throw-Effekten hinzu
 	var throw_data = {
 		"instance": throw_instance,
 		"direction": throw_direction,
@@ -193,6 +184,7 @@ func spawn_throw_effect():
 	active_throw_effects.append(throw_data)
 
 func update_throw_effects(delta: float):
+	# Move throw effects
 	if stop_throw:
 		return
 	for i in range(active_throw_effects.size() - 1, -1, -1):
@@ -203,25 +195,16 @@ func update_throw_effects(delta: float):
 			active_throw_effects.remove_at(i)
 			continue
 		
-		# Bewege Throw-Effekt
 		var movement = throw_data.direction * throw_speed * delta
 		throw_instance.global_position += movement
 		throw_data.distance_traveled += movement.length()
-		
-		# Prüfe ob maximale Distanz erreicht
-		# if stop_throw:
-		# 	active_throw_effects.remove_at(i)
-		# 	throw_instance.queue_free()
-
 
 func cleanup_throw_effects():
+	# Remove throw effects on resetting wave
 	stop_throw = true	
-	
-	# Entferne alle aktiven Throw-Effekte sofort
 	for throw_data in active_throw_effects:
 		if is_instance_valid(throw_data.instance):
 			throw_data.instance.visible = false
 			throw_data.instance.queue_free()
 	
-	# Leere die Liste
 	active_throw_effects.clear()

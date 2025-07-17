@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+# Implements character movement control
+
 @export var mouse_arrow = preload("res://Scenes/CharacterPrefabs/WavePrefabs/waypoint.tscn")
 @export var speed: float = 5.0
 @onready var _player_model: = $PlayerModel  as Node3D
@@ -22,7 +24,7 @@ func _ready():
 	play_animation("idle")
 
 func _physics_process(delta):
-	# Add the gravity.
+	# Add the gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -68,52 +70,41 @@ func _unhandled_input(event: InputEvent) -> void:
 			target_position = result.position
 			spawn_mouse_arrow(result.position)
 
-func play_animation(anim_name) -> void:
+func play_animation(anim_name):
 	player_anim_player.play(anim_name)
 
 func spawn_mouse_arrow(mouse_position: Vector3):
-	# Entferne vorherigen Arrow falls vorhanden
+	# Instantiate the mouse_arrow scene according to raycast position
 	if active_arrow_instance != null and is_instance_valid(active_arrow_instance):
 		active_arrow_instance.queue_free()
 	
-	# Instanziiere neuen Arrow
 	active_arrow_instance = mouse_arrow.instantiate()
 	get_tree().current_scene.add_child(active_arrow_instance)
 	
 	active_arrow_instance.global_position = mouse_position + Vector3(0, 0, 0)
 	active_arrow_instance.scale = Vector3(0.2,0.2,0.2)
 
-
-	# AnimationPlayer zurücksetzen und korrekt starten
 	var arrow_anim_player = active_arrow_instance.get_node("AnimationPlayer")
-	
-	# Stoppe alle laufenden Animationen
 	arrow_anim_player.stop()
-	
-	# Setze auf Anfang zurück
 	arrow_anim_player.seek(0.0)
 	
-	# Warte einen Frame damit alles zurückgesetzt ist
 	await get_tree().process_frame
 	
-	# Starte Animation von vorne
 	arrow_anim_player.play("CubeAction")
-	
-	# Warte 3 Sekunden
 	await get_tree().create_timer(3.0).timeout
 
 	if is_instance_valid(active_arrow_instance):
 		active_arrow_instance.queue_free()
 
 func check_if_stuck(delta: float):
+	# Check if character is stuck in walk animation due to running into wall or other character
 	position_check_timer += delta
-	
+
+	# If character hasn't moved in 1 second, set animation to idle	
 	if position_check_timer >= 1.0:
 		var distance_moved = global_position.distance_to(last_position)
-		
-		# Wenn Charakter versucht sich zu bewegen aber stecken geblieben ist
+
 		if is_moving and distance_moved < 0.1:
-			print("Character appears stuck - stopping movement")
 			is_moving = false
 			velocity = Vector3.ZERO
 			play_animation("idle")

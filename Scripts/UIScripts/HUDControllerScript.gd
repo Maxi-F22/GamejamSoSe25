@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+# Implements character switcher overlay
+
 @onready var _hud_container := $CenterContainer as CenterContainer
 
 var border_heavy_texture: Texture2D = load("res://Assets/HUD/fat_border.png")
@@ -20,6 +22,7 @@ func _ready() -> void:
 	texture_rects = _hud_container.find_children("*", "TextureRect", true)
 	setup_hover_effects()
 
+# Grow on mouse hover
 func setup_hover_effects():
 	for rect in texture_rects:
 		rect.mouse_entered.connect(_on_texture_rect_hovered.bind(rect))
@@ -42,11 +45,13 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 func _process(_delta):
 	if _hud_container.visible:
+		# Get mouse hover and set active character
 		var hovered = get_viewport().gui_get_hovered_control()
 		if hovered and (hovered.name.contains("Elektro") or hovered.name.contains("Heavy") or hovered.name.contains("Screamo")):
 			active_char = hovered.name
 
 	else:
+		# Set activa char also in script of char themselves + add border
 		set_active_border(active_char)
 		if active_char == "Elektro":
 			char_elektro.is_active_character = true
@@ -62,13 +67,8 @@ func _process(_delta):
 			char_screamo.is_active_character = true
 
 func set_active_border(char_name: String):
-	# Entferne alle vorherigen Borders
 	remove_all_borders()
-	
-	# Warte einen Frame und füge neue Border hinzu
 	await get_tree().process_frame
-	
-	# Finde das TextureRect mit dem entsprechenden Namen
 	for rect in texture_rects:
 		if rect.name == char_name:
 			add_png_border(rect, char_name)
@@ -76,7 +76,7 @@ func set_active_border(char_name: String):
 			break
 
 func add_png_border(rect: TextureRect, char_name: String):
-	# Erstelle TextureRect für PNG-Border
+	# Use correct png to add behind character frame
 	var border = TextureRect.new()
 	border.name = "PngBorder"
 	if char_name == "Elektro":
@@ -85,28 +85,24 @@ func add_png_border(rect: TextureRect, char_name: String):
 		border.texture = border_screamo_texture
 	elif char_name == "Heavy":
 		border.texture = border_heavy_texture
-	border.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	border.mouse_filter = Control.MOUSE_FILTER_IGNORE # ignore mouse so that it only detects character frames
 	
-	# Erweiterte Konfiguration für das Border-PNG
 	border.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
 	border.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	
-	# Border größer als das Icon machen
 	var border_scale = 1.1
 	border.size = rect.size * border_scale
 	border.position = Vector2(
-		-(border.size.x - rect.size.x) / 2,  # Zentriere horizontal
-		-(border.size.y - rect.size.y) / 2   # Zentriere vertikal
+		-(border.size.x - rect.size.x) / 2,
+		-(border.size.y - rect.size.y) / 2
 	)
+	border.z_index = -1 
 	
-	border.z_index = -1  # Hinter das Icon
-	
-	# Border als erstes Kind hinzufügen (damit es hinten erscheint)
 	rect.add_child(border)
 	rect.move_child(border, 0)
 
 func remove_all_borders():
 	for rect in texture_rects:
-		var border = rect.get_node_or_null("PngBorder")  # Neuer Name
+		var border = rect.get_node_or_null("PngBorder")
 		if border:
 			border.queue_free()

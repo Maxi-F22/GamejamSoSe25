@@ -1,5 +1,7 @@
 extends Area3D
 
+# Implements functionality for detecting the boxes on the pressure plates
+
 @export var _door_control_name: String
 var door_unit_object: Node3D
 var is_deactivated = false
@@ -7,10 +9,10 @@ var cam_switcher
 var gitter_sound : AudioStreamPlayer3D
 var plate_sound : AudioStreamPlayer3D
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	plate_sound = get_node("PlateSound")
 	cam_switcher = get_tree().get_root().get_node("Main/CamSwitcher")
+	# correct collision layer and mask for detecting the boxes
 	collision_layer = 2
 	collision_mask = 2
 	area_entered.connect(_on_plate_area_entered)
@@ -19,7 +21,6 @@ func _ready() -> void:
 	door_unit_object = doors.get_node(_door_control_name)
 	gitter_sound = door_unit_object.get_node("GitterSound")
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if is_deactivated and door_unit_object.position.x > 2:
 		door_unit_object.global_position = door_unit_object.global_position + Vector3(-1,0,0) * delta
@@ -27,6 +28,7 @@ func _physics_process(delta: float) -> void:
 		gitter_sound.stop()
 
 func _on_plate_area_entered(area: Area3D):
+	# If box is on top, deactivate door and switch to relevant camera for 3 seconds
 	if area.name.contains("BoxArea"):
 		is_deactivated = true
 		plate_sound.play()

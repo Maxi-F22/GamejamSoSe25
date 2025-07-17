@@ -1,7 +1,8 @@
 extends CanvasLayer
 
-@export var LevelScene = preload("res://Scenes/main.tscn")
+# Implements button functionality for main menu and end screen
 
+@export var LevelScene = preload("res://Scenes/Main.tscn")
 
 func _on_button_pressed() -> void:
 	var scene = get_tree().current_scene
