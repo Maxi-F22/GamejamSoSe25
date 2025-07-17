@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bap0knk6vg3ko"]
 
-[ext_resource type="Script" uid="uid://dtq0q6ur73qw5" path="res://Scripts/LaserFuseBoxScript.gd" id="1_uwvrc"]
+[ext_resource type="Script" path="res://Scripts/LaserFuseBoxScript.gd" id="1_uwvrc"]
 [ext_resource type="PackedScene" uid="uid://dfsb8n6h7o7t" path="res://Assets/Models/stromkasten.glb" id="2_gojlo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fcbgt"]

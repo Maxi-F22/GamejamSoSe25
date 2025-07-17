@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://dd7gkrmajlrwb"]
+[gd_scene load_steps=20 format=3 uid="uid://b3oecel8fspm3"]
 
 [ext_resource type="FontFile" uid="uid://me783eka0ak" path="res://Minecraftia-Regular.ttf" id="2_853f1"]
 [ext_resource type="PackedScene" uid="uid://biodnmnd52j34" path="res://Assets/Environment/ventCover.glb" id="3_8e205"]
+[ext_resource type="PackedScene" uid="uid://cxdpe0vdxig1o" path="res://Assets/Environment/Poster/Poster4.tscn" id="4_2x1g0"]
 [ext_resource type="PackedScene" uid="uid://bap0knk6vg3ko" path="res://Scenes/fuse_box.tscn" id="5_8um5k"]
 [ext_resource type="PackedScene" uid="uid://u7rplkk3umyo" path="res://Scenes/Models/electro_model.tscn" id="5_koqhg"]
 [ext_resource type="PackedScene" uid="uid://dtkwmvgyaid6p" path="res://Scenes/Models/heavy_model.tscn" id="6_cmrfp"]
@@ -14,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ccsd0v7bu6tl8" path="res://Assets/Environment/bed.glb" id="11_rrcx7"]
 [ext_resource type="PackedScene" uid="uid://ddhnovsc0qgrg" path="res://Assets/Environment/fireExtinguisher.glb" id="12_rrcx7"]
 [ext_resource type="PackedScene" uid="uid://bitsjf64hxo3k" path="res://Assets/Environment/PipeThingy.glb" id="13_fh7cp"]
+[ext_resource type="PackedScene" uid="uid://dpbpbrkl0muaa" path="res://Assets/Environment/Sirene.tscn" id="15_7467j"]
 
 [sub_resource type="GDScript" id="GDScript_loo7a"]
 script/source = "extends CanvasLayer
@@ -118,6 +120,9 @@ texture = ExtResource("11_if7li")
 [node name="ventCover2" parent="CanvasLayer" instance=ExtResource("3_8e205")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9186, 5.35814, 20.1351)
 
+[node name="Poster2" parent="CanvasLayer" instance=ExtResource("4_2x1g0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.89179, 3.89259, 15.0051)
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, -0.0662739, 0.997801, 0, 0.997801, 0.0662739, -1, 2.89692e-09, -4.36153e-08, -2.77716, 4.57144, 19.9782)
 
@@ -149,7 +154,7 @@ rotation_speed = 210.0
 [node name="Envrionment" type="Node3D" parent="."]
 
 [node name="LaserBox" parent="Envrionment" instance=ExtResource("5_8um5k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.29069, 3.17861, 24.8756)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.29069, 3.31682, 24.8756)
 script = null
 
 [node name="electro_guy2" parent="Envrionment" instance=ExtResource("5_koqhg")]
@@ -174,6 +179,9 @@ transform = Transform3D(-4.37114e-08, 0, -1.36, 0, 1, 0, 1, 0, -5.94475e-08, -7.
 
 [node name="bed3" parent="Envrionment" instance=ExtResource("11_rrcx7")]
 transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -10.3648, 2.50328, 20.2087)
+
+[node name="Sirene" parent="Envrionment" instance=ExtResource("15_7467j")]
+transform = Transform3D(1, 0, 0, 0, -0.997986, -0.063435, 0, 0.063435, -0.997986, -8.3048, 5.95947, 24.5158)
 
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_on_button_pressed"]
 [connection signal="ready" from="CanvasLayer/RichTextLabel" to="CanvasLayer" method="_on_rich_text_label_ready"]

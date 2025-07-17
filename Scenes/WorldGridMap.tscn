@@ -1,13 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://pes71bkyp7wq"]
+[gd_scene load_steps=19 format=3 uid="uid://pes71bkyp7wq"]
 
 [ext_resource type="MeshLibrary" uid="uid://cvidrvhd4matp" path="res://Assets/Gridmap/Resources/blocks-wall-floorv09.tres" id="1_hxtjs"]
 [ext_resource type="PackedScene" uid="uid://bcsysk5dtq7hj" path="res://Assets/Models/camera.glb" id="2_vtsl5"]
 [ext_resource type="PackedScene" uid="uid://dy1jeka6sdnaf" path="res://Assets/Models/laser_04.glb" id="3_sdwh0"]
 [ext_resource type="PackedScene" uid="uid://d010bq3xj8xnb" path="res://Assets/Models/laser_horizontal_03.glb" id="4_lvmhw"]
 [ext_resource type="PackedScene" path="res://Scenes/stromkasten.tscn" id="5_6u7yt"]
-[ext_resource type="Texture2D" uid="uid://cxlepal5iohd5" path="res://Assets/Models/overlay.png" id="6_0c3lu"]
-[ext_resource type="Script" path="res://Scripts/Overlay.gd" id="6_d1s0c"]
-[ext_resource type="Texture2D" uid="uid://bbl1ct02dx6ab" path="res://Assets/Models/punkt.png" id="8_h3lhy"]
 [ext_resource type="PackedScene" uid="uid://co1x0gec2235y" path="res://Assets/Models/box.glb" id="9_ihnnn"]
 [ext_resource type="PackedScene" uid="uid://bsfisyfugskev" path="res://Assets/Models/pressureplate.glb" id="10_cx0ex"]
 [ext_resource type="PackedScene" uid="uid://c4713afk240bb" path="res://Assets/Models/door1.glb" id="11_0u6gf"]
@@ -24,10 +21,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0c3lu"]
 albedo_color = Color(0.758192, 0.758192, 0.758192, 1)
-
-[sub_resource type="SystemFont" id="SystemFont_h3lhy"]
-
-[sub_resource type="SystemFont" id="SystemFont_ihnnn"]
 
 [node name="WorldGridMap" type="Node3D"]
 
@@ -190,50 +183,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -10.05
 transform = Transform3D(30, 0, 0, 0, -1, 2.62268e-06, 0, -8.74228e-08, -30, 5, 6, -4.5)
 mesh = SubResource("PlaneMesh_6u7yt")
 surface_material_override/0 = SubResource("StandardMaterial3D_0c3lu")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("6_d1s0c")
-
-[node name="TimeLabel" type="Label" parent="CanvasLayer"]
-offset_left = 909.0
-offset_top = 85.0
-offset_right = 1105.0
-offset_bottom = 125.0
-theme_override_fonts/font = SubResource("SystemFont_h3lhy")
-theme_override_font_sizes/font_size = 29
-text = "18:32:21"
-horizontal_alignment = 1
-
-[node name="DateLabel" type="Label" parent="CanvasLayer"]
-offset_left = 931.0
-offset_top = 44.0
-offset_right = 1079.0
-offset_bottom = 84.0
-theme_override_fonts/font = SubResource("SystemFont_ihnnn")
-theme_override_font_sizes/font_size = 29
-text = "14.07.2025"
-
-[node name="pixelgröße" type="Label" parent="CanvasLayer"]
-offset_left = 423.0
-offset_top = 557.0
-offset_right = 694.0
-offset_bottom = 597.0
-theme_override_fonts/font = SubResource("SystemFont_ihnnn")
-theme_override_font_sizes/font_size = 29
-text = "1920 x 1080 | 25fps"
-
-[node name="Overlay" type="TextureRect" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.79, 0.74)
-texture = ExtResource("6_0c3lu")
-
-[node name="RecDot" type="TextureRect" parent="CanvasLayer"]
-offset_left = 48.0
-offset_top = 52.0
-offset_right = 78.0
-offset_bottom = 82.0
-texture = ExtResource("8_h3lhy")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.155, 10.485, 0)
