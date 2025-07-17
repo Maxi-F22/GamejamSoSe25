@@ -212,6 +212,15 @@ offset_right = -729.0
 offset_bottom = -332.0
 texture = ExtResource("12_gt3je")
 
+[node name="Control" type="Control" parent="CamSwitcher/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 960.0
+offset_top = 540.0
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_filter = 2
+
 [node name="Interactables" type="Node3D" parent="."]
 
 [node name="FuseBoxes" type="Node3D" parent="Interactables"]
