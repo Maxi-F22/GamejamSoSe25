@@ -1,0 +1,270 @@
+[gd_scene load_steps=20 format=3 uid="uid://bj6rh5h585gwt"]
+
+[ext_resource type="MeshLibrary" uid="uid://cvidrvhd4matp" path="res://Assets/Gridmap/Resources/blocks-wall-floorv09.tres" id="1_nb8ct"]
+[ext_resource type="PackedScene" uid="uid://dpbpbrkl0muaa" path="res://Assets/Environment/Sirene.tscn" id="2_sxgjw"]
+[ext_resource type="PackedScene" uid="uid://bpmrsf8epwllj" path="res://Assets/Environment/tree2.fbx" id="3_44jhl"]
+[ext_resource type="PackedScene" uid="uid://c4713afk240bb" path="res://Assets/Models/door1.glb" id="4_2gonq"]
+[ext_resource type="PackedScene" uid="uid://bcsysk5dtq7hj" path="res://Assets/Models/camera.glb" id="5_wctei"]
+[ext_resource type="PackedScene" uid="uid://rlyewoyoc2uk" path="res://Assets/Environment/tree1.fbx" id="6_oen81"]
+[ext_resource type="PackedScene" uid="uid://ddhnovsc0qgrg" path="res://Assets/Environment/fireExtinguisher.glb" id="7_f7m51"]
+[ext_resource type="PackedScene" uid="uid://dff24ss15qpq5" path="res://Assets/Environment/Poster/Poster2.tscn" id="8_f7m51"]
+[ext_resource type="PackedScene" uid="uid://dtkwmvgyaid6p" path="res://Scenes/Models/heavy_model.tscn" id="8_oen81"]
+[ext_resource type="PackedScene" uid="uid://bn6uwkx8m74hu" path="res://Scenes/Models/scream_model.tscn" id="9_f7m51"]
+[ext_resource type="PackedScene" uid="uid://bitsjf64hxo3k" path="res://Assets/Environment/PipeThingy.glb" id="9_k65nm"]
+[ext_resource type="PackedScene" uid="uid://cvcvypfui43fv" path="res://Assets/Environment/elektro_sitzend.fbx" id="12_k65nm"]
+[ext_resource type="FontFile" uid="uid://me783eka0ak" path="res://Assets/Menu/Minecraftia-Regular.ttf" id="13_k65nm"]
+[ext_resource type="Script" uid="uid://c55xv6bya38yl" path="res://Scripts/MainMenuScripts/MainMenu.gd" id="13_y47l7"]
+[ext_resource type="PackedScene" uid="uid://ccsd0v7bu6tl8" path="res://Assets/Environment/bed.glb" id="14_h4mj5"]
+[ext_resource type="PackedScene" uid="uid://cxdpe0vdxig1o" path="res://Assets/Environment/Poster/Poster4.tscn" id="15_b5jnr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nb8ct"]
+sky_top_color = Color(0.620996, 0.358839, 0.32818, 1)
+sky_horizon_color = Color(0.610372, 0.641453, 0.831082, 1)
+
+[sub_resource type="Sky" id="Sky_nb8ct"]
+sky_material = SubResource("ProceduralSkyMaterial_nb8ct")
+
+[sub_resource type="Environment" id="Environment_nb8ct"]
+background_mode = 2
+sky = SubResource("Sky_nb8ct")
+ambient_light_color = Color(0.906847, 0.191785, 0, 1)
+reflected_light_source = 2
+
+[node name="EndScene" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_nb8ct")
+data = {
+"cells": PackedInt32Array(2, 0, 3, 2, 65535, 3, 2, 65534, 3, 1, 65534, 3, 0, 65534, 3, 0, 65535, 3, 0, 0, 3, 1, 0, 3, 1, 65535, 393220, 3, 1, 1376257, 3, 0, 1376257, 3, 65535, 1376257, 3, 65534, 1376257, 3, 65533, 1376257, 2, 65533, 1376257, 1, 65533, 1376257, 0, 65533, 1376257, 65535, 65533, 1376257, 65535, 65534, 1376257, 65535, 65535, 1376257, 65535, 0, 1376257, 65535, 1, 1376257, 0, 1, 1376257, 1, 1, 1376257, 2, 1, 1376257, 65535, 2, 393218, 0, 2, 393218, 1, 2, 393218, 2, 2, 393218, 3, 2, 393218, 4, 2, 393218, 4, 1, 393218, 4, 0, 393218, 4, 65535, 393218, 4, 65534, 393218, 4, 65533, 393218, 4, 65532, 393218, 3, 65532, 393218, 2, 65532, 393218, 1, 65532, 393218, 0, 65532, 393218, 65535, 65532, 393218, 65534, 65532, 393218, 65534, 65533, 393218, 65534, 65534, 393218, 65534, 0, 393218, 65534, 1, 393218, 65534, 2, 393218, 131070, 1, 327686, 131070, 0, 1376262, 131070, 65534, 1310731, 131070, 65533, 327686, 131071, 65532, 65542, 65536, 65532, 65542, 65537, 65532, 65542, 65538, 65532, 65542, 65539, 65532, 65542, 131071, 2, 589830, 65536, 2, 589830, 65537, 2, 589830, 65538, 2, 589830, 65539, 2, 589830, 65540, 1, 851974, 65540, 0, 851974, 65540, 65535, 851974, 65540, 65534, 851974, 65540, 65533, 851974, 65540, 65532, 131081, 65540, 2, 1179657, 131070, 2, 524297, 131070, 65532, 1310729, 196606, 65532, 1310729, 131076, 65532, 131081, 196606, 2, 524297, 131076, 2, 1179657, 131072, 65532, 131080, 131074, 65532, 131080, 131072, 2, 524296, 131074, 2, 524296, 196606, 65533, 1310732, 196606, 0, 1245193, 196606, 1, 983046, 131071, 65533, 786443, 196607, 65532, 131078, 131073, 65532, 131078, 131075, 65532, 131078, 131076, 65533, 1179654, 131076, 65534, 1179654, 131076, 65535, 1179654, 131076, 0, 1179654, 131076, 1, 1179654, 131075, 2, 524294, 131073, 2, 524294, 196607, 2, 524294, 262142, 65533, 196617, 262142, 65535, 720905, 262142, 65534, 917511, 262142, 0, 1310726, 262142, 1, 1310726, 262143, 2, 524294, 196608, 2, 524294, 196609, 2, 524294, 196610, 2, 524294, 196611, 2, 524294, 196612, 1, 1179654, 196612, 0, 1179654, 196612, 65535, 1179654, 196612, 65534, 1179654, 196612, 65533, 1179654, 196611, 65532, 131078, 196610, 65532, 131078, 196609, 65532, 131078, 196608, 65532, 131078, 262143, 65532, 131078, 196612, 65532, 131081, 262142, 65532, 1310729, 196612, 2, 1179657, 262142, 2, 524297, 327678, 2, 524289, 327679, 2, 524289, 262144, 2, 524289, 262145, 2, 524289, 262146, 2, 524289, 262147, 2, 524289, 262148, 2, 524289, 262148, 1, 524289, 262148, 0, 524289, 262148, 65535, 524289, 262148, 65534, 524289, 262148, 65533, 524289, 262148, 65532, 524289, 262147, 65532, 524289, 262146, 65532, 524289, 262145, 65532, 524289, 262144, 65532, 524289, 327679, 65532, 524289, 327678, 65532, 524289, 327678, 65533, 524289, 327678, 65534, 524289, 327678, 65535, 524289, 327678, 0, 524289, 327678, 1, 524289, 327679, 1, 524289, 262144, 1, 524289, 262145, 1, 524289, 262146, 1, 524289, 262147, 1, 524289, 262147, 0, 524289, 262147, 65535, 524289, 262147, 65534, 524289, 262147, 65533, 524289, 262146, 65533, 524289, 262145, 65533, 524289, 262144, 65533, 524289, 327679, 65533, 524289, 327679, 65534, 524289, 327679, 65535, 524289, 262144, 65535, 524289, 262144, 0, 524289, 262145, 0, 524289, 262146, 0, 524289, 262146, 65535, 524289, 262146, 65534, 524289, 262145, 65534, 524289, 262144, 65534, 524289, 262145, 65535, 524289, 65534, 65535, 393218)
+}
+metadata/_editor_floor_ = Vector3(0, 2, 0)
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="Sirene" parent="Environment" instance=ExtResource("2_sxgjw")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 2.98236, 7.95193, -2.19345e-05)
+
+[node name="Sirene2" parent="Environment" instance=ExtResource("2_sxgjw")]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, -1.96659, 5.27732, 1.13757)
+
+[node name="Sirene3" parent="Environment" instance=ExtResource("2_sxgjw")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.2478, 5.27732, -6.94552)
+
+[node name="door12" parent="Environment" instance=ExtResource("4_2gonq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.95853, 3.94389, 5.22148)
+
+[node name="camera" parent="Environment" instance=ExtResource("5_wctei")]
+transform = Transform3D(0.248285, 0.0903683, 0.424486, -0.17101, 0.469846, 0, -0.398886, -0.145183, 0.264219, -2.69204, 3.94644, 5.93984)
+
+[node name="camera2" parent="Environment" instance=ExtResource("5_wctei")]
+transform = Transform3D(0.299491, 0.109006, -0.385257, -0.17101, 0.469846, 0, 0.362023, 0.131765, 0.318712, -3.55216, 3.93176, -7.66295)
+
+[node name="camera3" parent="Environment" instance=ExtResource("5_wctei")]
+transform = Transform3D(-0.369738, -0.134574, -0.308518, -0.17101, 0.469846, 0, 0.289912, 0.105519, -0.393467, 8.73524, 3.93176, -7.70533)
+
+[node name="tree2" parent="Environment" instance=ExtResource("3_44jhl")]
+transform = Transform3D(-0.851329, 0, -1.65529, 0, 1, 0, 1.95792, 0, -0.719742, -5.96063, -13.6885, 4.0011)
+
+[node name="tree4" parent="Environment" instance=ExtResource("3_44jhl")]
+transform = Transform3D(1.35803, 0, 1.39278, 0, 1, 0, -1.64742, 0, 1.14812, -28.411, -11.4858, -2.16604)
+
+[node name="tree3" parent="Environment" instance=ExtResource("3_44jhl")]
+transform = Transform3D(0.297135, 0, 1.78743, 0, 1, 0, -2.11422, 0, 0.251208, -16.562, -13.6885, 4.0011)
+
+[node name="Forest" type="Node3D" parent="Environment"]
+
+[node name="tree1" parent="Environment/Forest" instance=ExtResource("6_oen81")]
+transform = Transform3D(0.482963, 0, -0.12941, 0, 0.5, 0, 0.12941, 0, 0.482963, -15.2054, 2.89404, 7.61697)
+
+[node name="tree2" parent="Environment/Forest" instance=ExtResource("6_oen81")]
+transform = Transform3D(0.147455, 0, -0.135118, 0, 0.2, 0, 0.135118, 0, 0.147455, -6.98821, 3.06531, 2.50142)
+
+[node name="tree5" parent="Environment/Forest" instance=ExtResource("6_oen81")]
+transform = Transform3D(-0.493568, 0, 0.0799406, 0, 0.5, 0, -0.0799406, 0, -0.493568, -10.8299, 3.64453, -6.75479)
+
+[node name="tree6" parent="Environment/Forest" instance=ExtResource("6_oen81")]
+transform = Transform3D(0.0700415, 0, -0.187334, 0, 0.2, 0, 0.187334, 0, 0.0700415, -8.5621, 3.31657, -5.07606)
+
+[node name="tree3" parent="Environment/Forest" instance=ExtResource("3_44jhl")]
+transform = Transform3D(0.484508, 0, -0.559332, 0, 0.74, 0, 0.559332, 0, 0.484508, -27.6498, 4.75996, 9.69209)
+
+[node name="tree4" parent="Environment/Forest" instance=ExtResource("3_44jhl")]
+transform = Transform3D(-0.216612, 0, 0.456184, 0, 0.505, 0, -0.456184, 0, -0.216612, -27.6498, 3.79444, -1.96384)
+
+[node name="fireExtinguisher2" parent="Environment" instance=ExtResource("7_f7m51")]
+transform = Transform3D(0.69282, 0.4, 2.32169e-08, -7.03152e-09, -3.42549e-08, 0.8, 0.4, -0.69282, -2.61498e-08, -1.21941, 2.20279, 0.444047)
+
+[node name="Poster2" parent="Environment" instance=ExtResource("8_f7m51")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -1.99996, 4.43771, 1.50581)
+
+[node name="PipeThingy" parent="Environment" instance=ExtResource("9_k65nm")]
+transform = Transform3D(-0.680659, -0.0367596, -0.159224, 0, 0.682059, -0.157466, 0.163412, -0.153115, -0.663214, -5.54646, 2.21543, -2.79062)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.0469866, 0.281699, -0.958352, -0.20035, 0.942573, 0.267238, 0.978597, 0.179449, 0.100727, 0, 19.8516, 0)
+light_color = Color(1, 0.764706, 0.619608, 1)
+
+[node name="Heavy" parent="." instance=ExtResource("8_oen81")]
+transform = Transform3D(0.0166081, 0, -0.0471611, 0, 0.05, 0, 0.0471611, 0, 0.0166081, -1.33817, 2.10807, -3.03222)
+
+[node name="elektro_sitzend" parent="Heavy" instance=ExtResource("12_k65nm")]
+transform = Transform3D(-0.0809592, 0.0209375, 0.795617, 0.200304, 0.774517, 0, -0.770275, 0.199207, -0.0836228, -44.5654, 15.8177, 1.80602)
+
+[node name="woman2" parent="." instance=ExtResource("9_f7m51")]
+transform = Transform3D(-0.0239249, 0, -0.0550236, 0, 0.06, 0, 0.0550236, 0, -0.0239249, -1.52749, 1.82752, -0.410007)
+
+[node name="Camera" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Camera"]
+transform = Transform3D(-0.214735, -0.194717, 0.957065, 0, 0.979925, 0.199368, -0.976672, 0.0428113, -0.210424, 1.57536, 4.29977, -2.23242)
+environment = SubResource("Environment_nb8ct")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("13_y47l7")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.163542
+anchor_top = 0.301852
+anchor_right = 0.391667
+anchor_bottom = 0.587963
+offset_left = -311.0
+offset_top = -447.0
+offset_right = -111.0
+offset_bottom = -401.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/normal_font = ExtResource("13_k65nm")
+theme_override_fonts/bold_italics_font = ExtResource("13_k65nm")
+theme_override_fonts/bold_font = ExtResource("13_k65nm")
+theme_override_font_sizes/bold_italics_font_size = 10
+theme_override_font_sizes/italics_font_size = 10
+theme_override_font_sizes/mono_font_size = 10
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[center][b][wave amp=30 freq=5]   To be continued ... [/wave][/b][/center]"
+fit_content = true
+tab_size = 5
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/RichTextLabel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.159875
+anchor_top = 0.0507042
+anchor_right = 0.857367
+anchor_bottom = 0.988732
+offset_left = -100.0
+offset_top = -22.0
+offset_right = 99.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(100, 10)
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/normal_font = ExtResource("13_k65nm")
+theme_override_fonts/bold_italics_font = ExtResource("13_k65nm")
+theme_override_fonts/bold_font = ExtResource("13_k65nm")
+theme_override_font_sizes/bold_italics_font_size = 10
+theme_override_font_sizes/italics_font_size = 10
+theme_override_font_sizes/mono_font_size = 10
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[center][b][wave amp=30 freq=5]   To be continued ... [/wave][/b][/center]"
+fit_content = true
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.163542
+anchor_top = 0.301852
+anchor_right = 0.391667
+anchor_bottom = 0.587963
+offset_left = -325.001
+offset_top = -52.0001
+offset_right = -125.001
+offset_bottom = -6.00012
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/normal_font = ExtResource("13_k65nm")
+theme_override_fonts/bold_italics_font = ExtResource("13_k65nm")
+theme_override_fonts/bold_font = ExtResource("13_k65nm")
+theme_override_font_sizes/bold_italics_font_size = 1
+theme_override_font_sizes/italics_font_size = 0
+theme_override_font_sizes/mono_font_size = 0
+theme_override_font_sizes/normal_font_size = 0
+theme_override_font_sizes/bold_font_size = 0
+bbcode_enabled = true
+text = "[center][b][wave amp=30 freq=5]   or not[/wave][/b][/center]"
+fit_content = true
+tab_size = 5
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/RichTextLabel3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.143678
+anchor_top = 0.05446
+anchor_right = 0.84117
+anchor_bottom = 0.992488
+offset_left = -100.0
+offset_top = -22.0
+offset_right = 108.277
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(100, 10)
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = -425
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/normal_font = ExtResource("13_k65nm")
+theme_override_fonts/bold_italics_font = ExtResource("13_k65nm")
+theme_override_fonts/bold_font = ExtResource("13_k65nm")
+theme_override_font_sizes/bold_italics_font_size = 1
+theme_override_font_sizes/italics_font_size = 0
+theme_override_font_sizes/mono_font_size = 0
+theme_override_font_sizes/normal_font_size = 0
+theme_override_font_sizes/bold_font_size = 0
+bbcode_enabled = true
+text = "[center][b][wave amp=30 freq=5]   or not[/wave][/b][/center]"
+fit_content = true
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 824.0
+offset_top = 835.0
+offset_right = 1097.0
+offset_bottom = 917.0
+text = "Quit"
+
+[node name="bed2" parent="." instance=ExtResource("14_h4mj5")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.52726, 2.49279, 4.51399)
+
+[node name="Poster2" parent="." instance=ExtResource("15_b5jnr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.93996, 3.71151, 5)
+
+[connection signal="ready" from="CanvasLayer/RichTextLabel2" to="CanvasLayer/RichTextLabel2" method="_on_ready"]
+[connection signal="ready" from="CanvasLayer/RichTextLabel3" to="CanvasLayer/RichTextLabel3" method="_on_ready"]
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_on_button_pressed"]

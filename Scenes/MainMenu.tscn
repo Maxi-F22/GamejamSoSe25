@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://me783eka0ak" path="res://Assets/Menu/Minecraftia-Regular.ttf" id="2_853f1"]
 [ext_resource type="PackedScene" uid="uid://biodnmnd52j34" path="res://Assets/Environment/ventCover.glb" id="3_8e205"]
 [ext_resource type="PackedScene" uid="uid://cxdpe0vdxig1o" path="res://Assets/Environment/Poster/Poster4.tscn" id="4_2x1g0"]
-[ext_resource type="PackedScene" uid="uid://bap0knk6vg3ko" path="res://Scenes/fuse_box.tscn" id="5_8um5k"]
+[ext_resource type="PackedScene" uid="uid://bap0knk6vg3ko" path="res://Scenes/Prefabs/fuse_box.tscn" id="5_8um5k"]
 [ext_resource type="PackedScene" uid="uid://u7rplkk3umyo" path="res://Scenes/Models/electro_model.tscn" id="5_koqhg"]
 [ext_resource type="PackedScene" uid="uid://dtkwmvgyaid6p" path="res://Scenes/Models/heavy_model.tscn" id="6_cmrfp"]
 [ext_resource type="Script" uid="uid://ctr81psffoske" path="res://Scripts/MainMenuScripts/IdlePlayer.gd" id="6_if7li"]
