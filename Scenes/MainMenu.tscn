@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://cyfblxtblcsrg"]
 
-[ext_resource type="FontFile" uid="uid://me783eka0ak" path="res://Assets/HUD/Minecraftia-Regular.ttf" id="2_853f1"]
+[ext_resource type="FontFile" uid="uid://bjmdq7evn2b0w" path="res://Assets/HUD/PublicPixel.ttf" id="1_2x1g0"]
 [ext_resource type="PackedScene" uid="uid://biodnmnd52j34" path="res://Assets/Environment/ventCover.glb" id="3_8e205"]
 [ext_resource type="PackedScene" uid="uid://cxdpe0vdxig1o" path="res://Assets/Environment/Poster/Poster4.tscn" id="4_2x1g0"]
 [ext_resource type="PackedScene" uid="uid://u7rplkk3umyo" path="res://Scenes/CharacterPrefabs/electro_model.tscn" id="5_koqhg"]
@@ -41,108 +41,95 @@ border_color = Color(0.205117, 0.205117, 0.205117, 1)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = SubResource("GDScript_loo7a")
 
-[node name="Button" type="Button" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = -0.0657986
-anchor_top = -0.0679012
-anchor_right = -0.0376736
-anchor_bottom = -0.0679012
-offset_left = 936.333
-offset_top = 844.333
-offset_right = 1153.33
-offset_bottom = 967.333
-theme = SubResource("Theme_cmrfp")
-theme_override_colors/icon_normal_color = Color(0.33815, 0.888754, 1.54018e-06, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_853f1")
-theme_override_styles/normal = SubResource("StyleBoxFlat_loo7a")
-text = "Play"
-metadata/_edit_use_anchors_ = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -306.0
-offset_top = -326.0
-offset_right = -106.0
-offset_bottom = -280.0
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(3, 3)
-size_flags_horizontal = 4
-size_flags_vertical = 6
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_constants/shadow_offset_y = 10
-theme_override_fonts/normal_font = ExtResource("2_853f1")
-theme_override_fonts/bold_italics_font = ExtResource("2_853f1")
-theme_override_fonts/bold_font = ExtResource("2_853f1")
-theme_override_font_sizes/bold_italics_font_size = 10
-bbcode_enabled = true
-text = "[center][b][wave amp=30 freq=5]   WAVES OF FREEDOM [/wave][/b][/center]"
-tab_size = 5
-metadata/_edit_use_anchors_ = true
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/RichTextLabel"]
+[node name="Control" type="Control" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/CenterContainer/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -22.0
-offset_right = 99.0
-offset_bottom = 6.0
+offset_left = -150.0
+offset_top = 230.0
+offset_right = 150.0
+offset_bottom = 350.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(100, 10)
-theme_override_colors/default_color = Color(1, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_constants/shadow_offset_y = 10
-theme_override_fonts/normal_font = ExtResource("2_853f1")
-theme_override_fonts/bold_italics_font = ExtResource("2_853f1")
-theme_override_fonts/bold_font = ExtResource("2_853f1")
-theme_override_font_sizes/bold_italics_font_size = 10
-bbcode_enabled = true
-text = "[center][b][wave amp=30 freq=5]   WAVES OF FREEDOM [/wave][/b][/center]"
-metadata/_edit_use_anchors_ = true
+pivot_offset = Vector2(150, 60)
+theme = SubResource("Theme_cmrfp")
+theme_override_colors/icon_normal_color = Color(0.33815, 0.888754, 1.54018e-06, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_2x1g0")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_loo7a")
+text = "Play"
 
-[node name="Overlay" type="Sprite2D" parent="CanvasLayer"]
+[node name="Overlay" type="Sprite2D" parent="CanvasLayer/CenterContainer/Control"]
 modulate = Color(1, 1, 1, 0.172549)
-position = Vector2(958, 546.5)
-scale = Vector2(1.3168, 1.23543)
+position = Vector2(18, 12)
+scale = Vector2(1.3, 1.219)
 texture = ExtResource("11_if7li")
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer"]
-offset_left = 85.0
-offset_top = 872.0
-offset_right = 353.0
-offset_bottom = 974.0
+[node name="Tutorial" type="RichTextLabel" parent="CanvasLayer/CenterContainer/Control"]
+offset_left = -846.0
+offset_top = 357.0
+offset_right = -450.0
+offset_bottom = 459.0
 theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
-theme_override_fonts/normal_font = ExtResource("2_853f1")
-theme_override_fonts/mono_font = ExtResource("2_853f1")
-theme_override_fonts/italics_font = ExtResource("2_853f1")
-theme_override_fonts/bold_italics_font = ExtResource("2_853f1")
-theme_override_fonts/bold_font = ExtResource("2_853f1")
-theme_override_font_sizes/bold_font_size = 17
+theme_override_constants/line_separation = 10
+theme_override_fonts/normal_font = ExtResource("1_2x1g0")
+theme_override_fonts/mono_font = ExtResource("1_2x1g0")
+theme_override_fonts/italics_font = ExtResource("1_2x1g0")
+theme_override_fonts/bold_italics_font = ExtResource("1_2x1g0")
+theme_override_fonts/bold_font = ExtResource("1_2x1g0")
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
 bbcode_enabled = true
-text = "[b]Tab - Minimap
+text = "Tab - Minimap
 Leertaste - Fähigkeiten
-Q - Charakter Auswahl[/b]"
+Q - Charakter Auswahl"
+vertical_alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="CanvasLayer/CenterContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -350.0
+offset_right = 600.0
+offset_bottom = -230.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(600, 60)
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_outline_size = 32
+theme_override_fonts/bold_font = ExtResource("1_2x1g0")
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "[center][b][wave amp=30 freq=5] WAVES OF FREEDOM [/wave][/b][/center]"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, -0.0662739, 0.997801, 0, 0.997801, 0.0662739, -1, 2.89692e-09, -4.36153e-08, -2.77716, 4.57144, 19.9782)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
-transform = Transform3D(1, 3.992e-08, 5.24129e-08, -4.65013e-08, -0.135906, 0.990722, 4.66728e-08, -0.990722, -0.135906, 0, 3.4014, -17.6956)
-script = ExtResource("10_loo7a")
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("7_loo7a")
@@ -153,17 +140,6 @@ metadata/_editor_floor_ = Vector3(0, 2, 0)
 
 [node name="camera" parent="." instance=ExtResource("8_if7li")]
 transform = Transform3D(0.47378, 0.0878099, 0.507762, -0.127565, 0.688278, 0, -0.49926, -0.0925323, 0.481848, -11.52, 2.43704, 25.4956)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(0.6197, -0.514088, 0.593032, 0.096987, 0.799979, 0.592138, -0.778823, -0.309431, 0.545606, -4.84186, 5.71541, 19.903)
-light_color = Color(1, 0, 0.211765, 1)
-light_energy = 16.0
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 0.0
-light_size = 1.0
-light_specular = 2.278
-script = ExtResource("10_loo7a")
-rotation_speed = 210.0
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -199,6 +175,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9186, 5.35814, 20.1351)
 [node name="Poster2" parent="Environment" instance=ExtResource("4_2x1g0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.89179, 3.89259, 15.0051)
 
+[node name="SpotLight3D" type="SpotLight3D" parent="Environment"]
+transform = Transform3D(0.6197, -0.514087, 0.593031, 0.096987, 0.799979, 0.592138, -0.778823, -0.309432, 0.545607, -4.84186, 5.71541, 19.903)
+light_color = Color(1, 0, 0.211765, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 0.0
+light_size = 1.0
+light_specular = 2.278
+script = ExtResource("10_loo7a")
+rotation_speed = 210.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-4.28457e-08, 0.553072, -0.833134, -8.65633e-09, 0.833134, 0.553072, 1, 3.09086e-08, -3.09086e-08, -9.83938, 3.2201, 17.279)
+shadow_enabled = true
+
+[node name="OmniLight3D1" type="OmniLight3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1246, 5.742, 19.978)
+light_color = Color(0.904452, 0.875655, 0.690502, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 21.0
+
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -11.5956, 4.53554, 22.6904)
 texture = ExtResource("16_2x1g0")
@@ -207,6 +205,4 @@ texture = ExtResource("16_2x1g0")
 transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -11.5956, 4.53554, 17.3607)
 texture = ExtResource("16_2x1g0")
 
-[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_on_button_pressed"]
-[connection signal="ready" from="CanvasLayer/RichTextLabel" to="CanvasLayer" method="_on_rich_text_label_ready"]
-[connection signal="ready" from="CanvasLayer/RichTextLabel" to="CanvasLayer/RichTextLabel" method="_on_ready"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/Control/Button" to="CanvasLayer" method="_on_button_pressed"]

@@ -12,11 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://bn6uwkx8m74hu" path="res://Scenes/CharacterPrefabs/scream_model.tscn" id="9_f7m51"]
 [ext_resource type="PackedScene" uid="uid://bitsjf64hxo3k" path="res://Assets/Environment/PipeThingy.glb" id="9_k65nm"]
 [ext_resource type="PackedScene" uid="uid://cvcvypfui43fv" path="res://Assets/Environment/elektro_sitzend.fbx" id="12_k65nm"]
-[ext_resource type="FontFile" uid="uid://me783eka0ak" path="res://Assets/HUD/Minecraftia-Regular.ttf" id="13_k65nm"]
 [ext_resource type="Script" uid="uid://c55xv6bya38yl" path="res://Scripts/MainMenuAndEndScripts/MainMenu.gd" id="13_y47l7"]
 [ext_resource type="PackedScene" uid="uid://ccsd0v7bu6tl8" path="res://Assets/Environment/bed.glb" id="14_h4mj5"]
 [ext_resource type="PackedScene" uid="uid://cxdpe0vdxig1o" path="res://Assets/Environment/Poster/Poster4.tscn" id="15_b5jnr"]
 [ext_resource type="PackedScene" uid="uid://dtcb0wm8v5xiy" path="res://Assets/Environment/Poster/Poster3.tscn" id="15_peqs5"]
+[ext_resource type="FontFile" uid="uid://bjmdq7evn2b0w" path="res://Assets/HUD/PublicPixel.ttf" id="17_peqs5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nb8ct"]
 sky_top_color = Color(0.620996, 0.358839, 0.32818, 1)
@@ -128,147 +128,70 @@ transform = Transform3D(-0.0239249, 0, -0.0550236, 0, 0.06, 0, 0.0550236, 0, -0.
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("13_y47l7")
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.163542
-anchor_top = 0.301852
-anchor_right = 0.391667
-anchor_bottom = 0.587963
-offset_left = -314.001
-offset_top = -601.0
-offset_right = -114.001
-offset_bottom = -555.0
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(3, 3)
-size_flags_horizontal = 4
-size_flags_vertical = 6
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
+
+[node name="Control" type="Control" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+
+[node name="EndScreen" type="RichTextLabel" parent="CanvasLayer/CenterContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -350.0
+offset_right = 700.0
+offset_bottom = -230.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(600, 60)
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 10
-theme_override_fonts/normal_font = ExtResource("13_k65nm")
-theme_override_fonts/bold_italics_font = ExtResource("13_k65nm")
-theme_override_fonts/bold_font = ExtResource("13_k65nm")
-theme_override_font_sizes/bold_italics_font_size = 10
-theme_override_font_sizes/italics_font_size = 10
-theme_override_font_sizes/mono_font_size = 10
-theme_override_font_sizes/normal_font_size = 10
-theme_override_font_sizes/bold_font_size = 25
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_outline_size = 32
+theme_override_fonts/bold_font = ExtResource("17_peqs5")
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
 bbcode_enabled = true
-text = "[center][b][wave amp=30 freq=5]   To be continued ... [/wave][/b][/center]"
-fit_content = true
-tab_size = 5
+text = "[center][b][wave amp=30 freq=5] To be continued... [/wave][/b][/center]"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/RichTextLabel2"]
+[node name="EndScreen2" type="RichTextLabel" parent="CanvasLayer/CenterContainer/Control"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.159875
-anchor_top = 0.0507042
-anchor_right = 0.857367
-anchor_bottom = 0.988732
-offset_left = -100.0
-offset_top = -22.0
-offset_right = 99.0
-offset_bottom = 6.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = 210.0
+offset_right = 600.0
+offset_bottom = 330.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(100, 10)
+pivot_offset = Vector2(600, 60)
 theme_override_colors/default_color = Color(1, 0, 0, 1)
-theme_override_constants/outline_size = 5
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 10
-theme_override_fonts/normal_font = ExtResource("13_k65nm")
-theme_override_fonts/bold_italics_font = ExtResource("13_k65nm")
-theme_override_fonts/bold_font = ExtResource("13_k65nm")
-theme_override_font_sizes/bold_italics_font_size = 10
-theme_override_font_sizes/italics_font_size = 10
-theme_override_font_sizes/mono_font_size = 10
-theme_override_font_sizes/normal_font_size = 10
-theme_override_font_sizes/bold_font_size = 25
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_outline_size = 32
+theme_override_fonts/bold_font = ExtResource("17_peqs5")
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 32
 bbcode_enabled = true
-text = "[center][b][wave amp=30 freq=5]   To be continued ... [/wave][/b][/center]"
-fit_content = true
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="RichTextLabel3" type="RichTextLabel" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.163542
-anchor_top = 0.301852
-anchor_right = 0.391667
-anchor_bottom = 0.587963
-offset_left = -325.001
-offset_top = -52.0001
-offset_right = -125.001
-offset_bottom = -6.00012
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(3, 3)
-size_flags_horizontal = 4
-size_flags_vertical = 6
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_constants/shadow_offset_y = 10
-theme_override_fonts/normal_font = ExtResource("13_k65nm")
-theme_override_fonts/bold_italics_font = ExtResource("13_k65nm")
-theme_override_fonts/bold_font = ExtResource("13_k65nm")
-theme_override_font_sizes/bold_italics_font_size = 1
-theme_override_font_sizes/italics_font_size = 0
-theme_override_font_sizes/mono_font_size = 0
-theme_override_font_sizes/normal_font_size = 0
-theme_override_font_sizes/bold_font_size = 0
-bbcode_enabled = true
-text = "[center][b][wave amp=30 freq=5]   or not[/wave][/b][/center]"
-fit_content = true
-tab_size = 5
+text = "[center][b][wave amp=30 freq=5] or not [/wave][/b][/center]"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/RichTextLabel3"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.143678
-anchor_top = 0.05446
-anchor_right = 0.84117
-anchor_bottom = 0.992488
-offset_left = -100.0
-offset_top = -22.0
-offset_right = 108.277
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(100, 10)
-theme_override_colors/default_color = Color(1, 0, 0, 1)
-theme_override_constants/outline_size = -425
-theme_override_constants/shadow_offset_y = 10
-theme_override_fonts/normal_font = ExtResource("13_k65nm")
-theme_override_fonts/bold_italics_font = ExtResource("13_k65nm")
-theme_override_fonts/bold_font = ExtResource("13_k65nm")
-theme_override_font_sizes/bold_italics_font_size = 1
-theme_override_font_sizes/italics_font_size = 0
-theme_override_font_sizes/mono_font_size = 0
-theme_override_font_sizes/normal_font_size = 0
-theme_override_font_sizes/bold_font_size = 0
-bbcode_enabled = true
-text = "[center][b][wave amp=30 freq=5]   or not[/wave][/b][/center]"
-fit_content = true
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Button" type="Button" parent="CanvasLayer"]
-offset_left = 824.0
-offset_top = 835.0
-offset_right = 1097.0
-offset_bottom = 917.0
-text = "Quit"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.214735, -0.194717, 0.957065, 0, 0.979925, 0.199368, -0.976672, 0.0428112, -0.210424, 1.57536, 4.29977, -2.23242)
 environment = SubResource("Environment_nb8ct")
-
-[connection signal="ready" from="CanvasLayer/RichTextLabel2" to="CanvasLayer/RichTextLabel2" method="_on_ready"]
-[connection signal="ready" from="CanvasLayer/RichTextLabel3" to="CanvasLayer/RichTextLabel3" method="_on_ready"]
-[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_on_button_pressed"]
