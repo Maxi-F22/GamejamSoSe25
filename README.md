@@ -17,4 +17,4 @@ Some of the assets were built in real life and scanned in 3D, while others were 
 **Space:** Use special ability
 
 You can play the game in your browser using the following link:  
-https://maxi-f22.github.io/GamejamSoSe25/ 
+https://maxi-f22.github.io/GamejamSoSe25/WavesofFreedom.html
