@@ -68,8 +68,10 @@ func _process(_delta: float) -> void:
 		var cam = cams[i]
 		var world_pos = cam.global_position
 		var screen_pos = minimap_cam.unproject_position(world_pos)
+
+		var viewport = get_viewport()
+		var viewport_size = viewport.get_visible_rect().size
 		
-		var viewport_size = get_viewport().size
 		if screen_pos.x < 0 or screen_pos.x > viewport_size.x or screen_pos.y < 0 or screen_pos.y > viewport_size.y:
 			continue
 		var control_rect = minimap_root.get_rect()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://d2oqbh1jfmqg2"]
+[gd_scene load_steps=35 format=3 uid="uid://d2oqbh1jfmqg2"]
 
 [ext_resource type="Script" uid="uid://cuv1uwh8rujp2" path="res://Scripts/UIScripts/CamSwitchScript.gd" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://bmpo0m20oukcf" path="res://Assets/HUD/Electro_auswahl.png" id="2_b3802"]
@@ -22,6 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://ddhnovsc0qgrg" path="res://Assets/Environment/fireExtinguisher.glb" id="20_1w6v2"]
 [ext_resource type="PackedScene" uid="uid://biodnmnd52j34" path="res://Assets/Environment/ventCover.glb" id="21_ueoa1"]
 [ext_resource type="PackedScene" uid="uid://dpbpbrkl0muaa" path="res://Assets/Environment/Sirene.tscn" id="22_6vcvc"]
+[ext_resource type="PackedScene" uid="uid://dff24ss15qpq5" path="res://Assets/Environment/Poster/Poster2.tscn" id="24_hpc6h"]
+[ext_resource type="PackedScene" uid="uid://cxdpe0vdxig1o" path="res://Assets/Environment/Poster/Poster4.tscn" id="25_kltya"]
+[ext_resource type="PackedScene" uid="uid://dtcb0wm8v5xiy" path="res://Assets/Environment/Poster/Poster3.tscn" id="26_6vcvc"]
 [ext_resource type="AudioStream" uid="uid://28fwv6ihoflp" path="res://Assets/Sounds/Music/game_music.wav" id="26_cbgmd"]
 [ext_resource type="Script" uid="uid://c2yrlc8os2ymj" path="res://Scripts/MainMenuAndEndScripts/EndScript.gd" id="28_7k868"]
 [ext_resource type="Script" uid="uid://d1exim58cwly7" path="res://Scripts/MainMenuAndEndScripts/FadingScript.gd" id="29_hpc6h"]
@@ -544,6 +547,23 @@ transform = Transform3D(0.986689, -1.42167e-08, -0.16262, 0, -1, 8.74228e-08, -0
 
 [node name="Sirene4" parent="Environment" instance=ExtResource("22_6vcvc")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -18.9082, 5.98426, -17.6364)
+
+[node name="Poster" type="Node3D" parent="Environment"]
+
+[node name="Poster1" parent="Environment/Poster" instance=ExtResource("26_6vcvc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.8982, 4.55454, -19)
+
+[node name="Poster2" parent="Environment/Poster" instance=ExtResource("24_hpc6h")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.06578, 4.13223, -8.26605)
+
+[node name="Poster3" parent="Environment/Poster" instance=ExtResource("25_kltya")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1978, 3.68043, -7.99542)
+
+[node name="Poster4" parent="Environment/Poster" instance=ExtResource("25_kltya")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.69306, -0.971648)
+
+[node name="Poster5" parent="Environment/Poster" instance=ExtResource("25_kltya")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.47419, 4.34711, 16.0066)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_cbgmd")

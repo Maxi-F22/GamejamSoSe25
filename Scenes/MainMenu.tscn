@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cyfblxtblcsrg"]
+[gd_scene load_steps=21 format=3 uid="uid://cyfblxtblcsrg"]
 
 [ext_resource type="FontFile" uid="uid://bjmdq7evn2b0w" path="res://Assets/HUD/PublicPixel.ttf" id="1_2x1g0"]
 [ext_resource type="PackedScene" uid="uid://biodnmnd52j34" path="res://Assets/Environment/ventCover.glb" id="3_8e205"]
@@ -28,6 +28,18 @@ func _on_button_pressed() -> void:
 
 [sub_resource type="Theme" id="Theme_cmrfp"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2x1g0"]
+bg_color = Color(0.489622, 0.489622, 0.489622, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.203922, 0.203922, 0.203922, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_loo7a"]
 bg_color = Color(0.419813, 0.419813, 0.419813, 1)
 border_width_left = 5
@@ -35,6 +47,10 @@ border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0.205117, 0.205117, 0.205117, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="MainMenu" type="Node3D"]
 
@@ -58,9 +74,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
+offset_left = -160.0
 offset_top = 230.0
-offset_right = 150.0
+offset_right = 140.0
 offset_bottom = 350.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -70,12 +86,12 @@ theme_override_colors/icon_normal_color = Color(0.33815, 0.888754, 1.54018e-06, 
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_2x1g0")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_2x1g0")
 theme_override_styles/normal = SubResource("StyleBoxFlat_loo7a")
 text = "Play"
 
 [node name="Overlay" type="Sprite2D" parent="CanvasLayer/CenterContainer/Control"]
 modulate = Color(1, 1, 1, 0.172549)
-position = Vector2(18, 12)
 scale = Vector2(1.3, 1.219)
 texture = ExtResource("11_if7li")
 
