@@ -27,6 +27,10 @@ window/stretch/aspect="expand"
 
 project/assembly_name="Gamejam"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/minimize_html_build/plugin.cfg")
+
 [input]
 
 "Switch Cam"={
